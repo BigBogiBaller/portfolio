@@ -25,7 +25,7 @@ export default function Page() {
               <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border mt-2">
+              <Avatar className="size-28 border">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
@@ -38,9 +38,9 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            <Markdown>{DATA.summary}</Markdown>
+          </div>
         </BlurFade>
       </section>
       <section id="projects">
@@ -68,7 +68,7 @@ export default function Page() {
                   title={project.title}
                   description={project.description}
                   dates={project.dates}
-                  tags={project.technologies || []}
+                  tags={project.technologies}
                   image={project.image}
                   video={project.video}
                   links={project.links}

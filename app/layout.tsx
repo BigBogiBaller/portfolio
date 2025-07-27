@@ -1,20 +1,20 @@
 import type React from "react"
-import Navbar from "@/components/navbar"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { DATA } from "@/data/resume"
 import { cn } from "@/lib/utils"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL
+  ? `https://${process.env.NEXT_PUBLIC_APP_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000"
 
-export const metadata: Metadata = {
-  metadataBase: new URL(DATA.url),
+export const metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     default: DATA.name,
     template: `%s | ${DATA.name}`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
-    url: DATA.url,
+    url: baseUrl,
     siteName: `${DATA.name}`,
     locale: "en_US",
     type: "website",
@@ -50,24 +50,22 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          inter.variable,
+          GeistSans.variable,
+          GeistMono.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
-          </TooltipProvider>
+          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
