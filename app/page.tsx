@@ -80,19 +80,7 @@ export default function Page() {
                   image={project.image}
                   video={project.video}
                   links={project.links}
-                >
-                  <Markdown
-                    components={{
-                      p: ({ children }) => (
-                        <p className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-                          {children}
-                        </p>
-                      ),
-                    }}
-                  >
-                    {project.description}
-                  </Markdown>
-                </ProjectCard>
+                />
               </BlurFade>
             ))}
           </div>
