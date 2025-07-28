@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons"
-import { HomeIcon, NotebookIcon } from "lucide-react"
+import { HomeIcon } from "lucide-react"
 
 export const DATA = {
   name: "Bogi",
@@ -26,10 +26,7 @@ export const DATA = {
     "Java",
     "C++",
   ],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
-  ],
+  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
     email: "hello@example.com",
     tel: "+123456789",
@@ -151,6 +148,24 @@ export const DATA = {
         },
       ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
+      video: "",
+    },
+        {
+      title: "Lovable Competition",
+      href: "https://x.com/bogi_lekic/status/1916753631367336275",
+      dates: "March 23rd - 25th, 2025",
+      active: true,
+      description:
+        "The company Lovable created an competition where the goal was to create a version 2.0 of any product and the winner would get 8000$.",
+      technologies: ["React", "Next.js", "Tailwind CSS"],
+      links: [
+        {
+          type: "Website",
+          href: "https://x.com/bogi_lekic/status/1916753631367336275",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mpPrM8KIoElZ1sIR00EA6blA0A3wqu.png",
       video: "",
     },
   ],
