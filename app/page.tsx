@@ -38,7 +38,15 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown
+            components={{
+              p: ({ children }) => (
+                <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                  {children}
+                </p>
+              ),
+            }}
+          >
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -72,7 +80,19 @@ export default function Page() {
                   image={project.image}
                   video={project.video}
                   links={project.links}
-                />
+                >
+                  <Markdown
+                    components={{
+                      p: ({ children }) => (
+                        <p className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
+                          {children}
+                        </p>
+                      ),
+                    }}
+                  >
+                    {project.description}
+                  </Markdown>
+                </ProjectCard>
               </BlurFade>
             ))}
           </div>
