@@ -46,7 +46,6 @@ const BlurFadeText = ({
               exit="hidden"
               variants={combinedVariants}
               transition={{
-                yoyo: Number.POSITIVE_INFINITY,
                 delay: delay + i * characterDelay,
                 ease: "easeOut",
               }}
@@ -70,7 +69,6 @@ const BlurFadeText = ({
           exit="hidden"
           variants={combinedVariants}
           transition={{
-            yoyo: Number.POSITIVE_INFINITY,
             delay,
             ease: "easeOut",
           }}
