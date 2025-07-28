@@ -76,7 +76,7 @@ export default function Page() {
                   title={project.title}
                   description={project.description}
                   dates={project.dates}
-                  tags={project.technologies || []}
+                  tags={[]}
                   image={project.image}
                   video={project.video}
                   links={project.links}
