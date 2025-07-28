@@ -1,7 +1,4 @@
 import type React from "react"
-import Navbar from "@/components/navbar"
-import LanguageSwitcher from "@/components/language-switcher"
-import I18nProvider from "@/components/i18n-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { DATA } from "@/data/resume"
@@ -9,6 +6,9 @@ import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import Navbar from "@/components/navbar"
+import { I18nProvider } from "@/components/i18n-provider"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -65,15 +65,15 @@ export default function RootLayout({
           inter.variable,
         )}
       >
-        <I18nProvider>
-          <ThemeProvider attribute="class" defaultTheme="light">
-            <TooltipProvider delayDuration={0}>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <TooltipProvider delayDuration={0}>
+            <I18nProvider>
               {children}
               <Navbar />
               <LanguageSwitcher />
-            </TooltipProvider>
-          </ThemeProvider>
-        </I18nProvider>
+            </I18nProvider>
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

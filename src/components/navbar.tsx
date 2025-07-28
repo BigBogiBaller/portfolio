@@ -27,7 +27,7 @@ export default function Navbar() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{t(`navbar.${item.label.toLowerCase()}`)}</p>
+                  <p>{t(`nav.${item.label.toLowerCase()}`)}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
