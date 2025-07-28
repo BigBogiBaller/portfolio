@@ -1,3 +1,6 @@
+"use client"
+
+import { useTranslation } from "react-i18next"
 import { HackathonCard } from "@/components/hackathon-card"
 import BlurFade from "@/components/magicui/blur-fade"
 import BlurFadeText from "@/components/magicui/blur-fade-text"
@@ -10,6 +13,8 @@ import Markdown from "react-markdown"
 const BLUR_FADE_DELAY = 0.04
 
 export default function Page() {
+  const { t } = useTranslation()
+
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -20,9 +25,9 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                text={t("hero.greeting", { name: DATA.name.split(" ")[0] })}
               />
-              <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description} />
+              <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={t("hero.description")} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border mt-2">
@@ -33,28 +38,37 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="text-xl font-bold">{t("about.title")}</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
+          <Markdown
+            components={{
+              p: ({ children }) => (
+                <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                  {children}
+                </p>
+              ),
+            }}
+          >
+            {t("about.content")}
           </Markdown>
         </BlurFade>
       </section>
+
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
+                  {t("projects.title")}
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Check out my latest work</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("projects.subtitle")}</h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple websites to complex web applications. Here are
-                  a few of my favorites.
+                  {t("projects.description")}
                 </p>
               </div>
             </div>
@@ -68,7 +82,7 @@ export default function Page() {
                   title={project.title}
                   description={project.description}
                   dates={project.dates}
-                  tags={project.technologies}
+                  tags={[]}
                   image={project.image}
                   video={project.video}
                   links={project.links}
@@ -78,17 +92,18 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
+                  {t("hackathons.title")}
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">I like building things</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("hackathons.subtitle")}</h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During the last few years, I participated in a couple of hackathons. People from around the world come together and try to build incredible things in 2-3 days. It was interesting to see what you can do when you have little time but  endless possibilities brought to life by a group of motivated and passionate individuals.
+                  {t("hackathons.description")}
                 </p>
               </div>
             </div>
@@ -111,14 +126,17 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
             <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">Contact</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
+              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                {t("contact.title")}
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("contact.subtitle")}</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
+                {t("contact.description")}{" "}
                 <Link href={DATA.contact.social.X.url} className="text-blue-500 hover:underline">
                   with a direct question on twitter
                 </Link>{" "}

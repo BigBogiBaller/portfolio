@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "about": "Über mich",
+    "work": "Arbeit",
+    "education": "Bildung",
+    "skills": "Fähigkeiten",
+    "projects": "Projekte",
+    "contact": "Kontakt"
+  },
+  "about": {
+    "title": "Hallo, ich bin Bogi 👋",
+    "summary": "Ende 2022 wurde ich in die KI und das Erstellen schöner Websites mit verschiedenen Tools eingeführt. In der Vergangenheit führte ich ein erfolgreiches Content-Creation-Geschäft, wo ich meine eigenen Social-Media-Seiten hatte und Inhalte für Unternehmen drehte. Ich hatte auch das Vergnügen, an verschiedenen Hackathons teilzunehmen."
+  },
+  "work": {
+    "title": "Berufserfahrung"
+  },
+  "education": {
+    "title": "Bildung"
+  },
+  "skills": {
+    "title": "Fähigkeiten"
+  },
+  "projects": {
+    "title": "Meine Projekte",
+    "subtitle": "Schauen Sie sich meine neuesten Arbeiten an",
+    "description": "Ich habe an verschiedenen Projekten gearbeitet, von einfachen Websites bis hin zu komplexen Webanwendungen. Hier sind einige meiner Favoriten."
+  },
+  "hackathons": {
+    "title": "Hackathons",
+    "subtitle": "Ich baue gerne Dinge",
+    "description": "In den letzten Jahren habe ich an einigen Hackathons teilgenommen. Menschen aus der ganzen Welt kommen zusammen und versuchen, unglaubliche Dinge in 2-3 Tagen zu bauen. Es war interessant zu sehen, was man schaffen kann, wenn man wenig Zeit hat, aber endlose Möglichkeiten durch eine Gruppe motivierter und leidenschaftlicher Menschen zum Leben erweckt werden."
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "description": "Möchten Sie chatten? Schicken Sie mir einfach eine DM mit einer direkten Frage auf Twitter und ich antworte, wann immer ich kann. Ich werde alle Werbung ignorieren."
+  },
+  "languages": {
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch",
+    "serbian": "Serbisch"
+  }
+}

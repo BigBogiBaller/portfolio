@@ -1,5 +1,7 @@
 import type React from "react"
 import Navbar from "@/components/navbar"
+import LanguageSwitcher from "@/components/language-switcher"
+import I18nProvider from "@/components/i18n-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { DATA } from "@/data/resume"
@@ -63,12 +65,15 @@ export default function RootLayout({
           inter.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
-          </TooltipProvider>
-        </ThemeProvider>
+        <I18nProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <TooltipProvider delayDuration={0}>
+              {children}
+              <Navbar />
+              <LanguageSwitcher />
+            </TooltipProvider>
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   )

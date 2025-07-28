@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "about": "À propos",
+    "work": "Travail",
+    "education": "Éducation",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "Salut, je suis Bogi 👋",
+    "summary": "À la fin de 2022, j'ai été initié à l'IA et à la création de beaux sites web en utilisant différents outils. Dans le passé, j'ai dirigé une entreprise de création de contenu prospère où j'avais mes propres pages de médias sociaux et je tournais du contenu pour des entreprises. J'ai aussi eu le plaisir de participer à quelques hackathons différents."
+  },
+  "work": {
+    "title": "Expérience professionnelle"
+  },
+  "education": {
+    "title": "Éducation"
+  },
+  "skills": {
+    "title": "Compétences"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Découvrez mes derniers travaux",
+    "description": "J'ai travaillé sur une variété de projets, des sites web simples aux applications web complexes. Voici quelques-uns de mes favoris."
+  },
+  "hackathons": {
+    "title": "Hackathons",
+    "subtitle": "J'aime construire des choses",
+    "description": "Au cours des dernières années, j'ai participé à quelques hackathons. Des gens du monde entier se rassemblent et essaient de construire des choses incroyables en 2-3 jours. Il était intéressant de voir ce qu'on peut faire quand on a peu de temps mais des possibilités infinies amenées à la vie par un groupe d'individus motivés et passionnés."
+  },
+  "contact": {
+    "title": "Entrer en contact",
+    "description": "Envie de discuter ? Envoyez-moi simplement un message direct avec une question directe sur Twitter et je répondrai dès que possible. J'ignorerai toute sollicitation."
+  },
+  "languages": {
+    "english": "Anglais",
+    "german": "Allemand",
+    "french": "Français",
+    "serbian": "Serbe"
+  }
+}

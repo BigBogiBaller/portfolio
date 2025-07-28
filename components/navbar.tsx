@@ -1,3 +1,6 @@
+"use client"
+
+import { useTranslation } from "react-i18next"
 import { Dock, DockIcon } from "@/components/magicui/dock"
 import { ModeToggle } from "@/components/mode-toggle"
 import { buttonVariants } from "@/components/ui/button"
@@ -8,6 +11,8 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 export default function Navbar() {
+  const { t } = useTranslation()
+
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
       <TooltipProvider>
@@ -22,7 +27,7 @@ export default function Navbar() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{item.label}</p>
+                  <p>{t(`nav.${item.label.toLowerCase()}`)}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
@@ -54,7 +59,7 @@ export default function Navbar() {
                 <ModeToggle />
               </TooltipTrigger>
               <TooltipContent>
-                <p>Theme</p>
+                <p>{t("nav.theme")}</p>
               </TooltipContent>
             </Tooltip>
           </DockIcon>
