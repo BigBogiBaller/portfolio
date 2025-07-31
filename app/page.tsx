@@ -3,6 +3,7 @@ import BlurFade from "@/components/magicui/blur-fade"
 import BlurFadeText from "@/components/magicui/blur-fade-text"
 import { ProjectCard } from "@/components/project-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Testimonials } from "@/components/ui/testimonials-columns-1"
 import { DATA } from "@/data/resume"
 import Link from "next/link"
 import Markdown from "react-markdown"
@@ -38,15 +39,7 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown
-            components={{
-              p: ({ children }) => (
-                <p className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-                  {children}
-                </p>
-              ),
-            }}
-          >
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -76,7 +69,7 @@ export default function Page() {
                   title={project.title}
                   description={project.description}
                   dates={project.dates}
-                  tags={[]}
+                  tags={project.technologies}
                   image={project.image}
                   video={project.video}
                   links={project.links}
@@ -86,6 +79,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <Testimonials />
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
