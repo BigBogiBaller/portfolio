@@ -18,7 +18,7 @@ export default function Navbar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href={item.href} className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
-                    {item.icon({ className: "size-4" })}
+                    <item.icon className="size-4" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -38,7 +38,7 @@ export default function Navbar() {
                       href={social.url}
                       className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
                     >
-                      {social.icon({ className: "size-4" })}
+                      <social.icon className="size-4" />
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
