@@ -5,6 +5,12 @@ import { motion } from "framer-motion"
 
 const testimonials = [
   {
+    text: "Bogdan ist ein junger, aufstrebender und vor allem unglaublich kreativer Webdesigner. Er hat all meine Wünsche nicht nur geduldig, sondern auch mit viel Liebe zum Detail perfekt umgesetzt. Wenn ihr eine Website sucht, die nicht nur funktioniert, sondern begeistert, dann ist Bogdan genau der Richtige dafür. 🚀",
+    image: "/images/andy-seebacher.png",
+    name: "Andy Seebacher",
+    role: "Business Owner",
+  },
+  {
     text: "Working with Bogi was an absolute pleasure. His attention to detail and creative vision brought our project to life in ways we never imagined.",
     image: "https://randomuser.me/api/portraits/women/1.jpg",
     name: "Sarah Johnson",
@@ -108,9 +114,9 @@ export const TestimonialsColumn = (props: {
   )
 }
 
-const firstColumn = testimonials.slice(0, 3)
-const secondColumn = testimonials.slice(3, 6)
-const thirdColumn = testimonials.slice(6, 9)
+const firstColumn = testimonials.slice(0, 4)
+const secondColumn = testimonials.slice(4, 7)
+const thirdColumn = testimonials.slice(7, 10)
 
 export const Testimonials = () => {
   return (

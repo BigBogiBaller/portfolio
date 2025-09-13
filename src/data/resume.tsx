@@ -64,6 +64,7 @@ export const DATA = {
       active: true,
       description:
         "With this design, I decided to build a modern looking agency page which allows potential leads to schedule a call and learn more about the agency and its services.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       links: [
         {
           type: "Website",
@@ -73,6 +74,24 @@ export const DATA = {
       ],
       image: "",
       video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/therealvision_wpatsw.mp4",
+    },
+    {
+      title: "SpherAura",
+      href: "https://www.spheraura.com/",
+      dates: "August 2025",
+      active: true,
+      description:
+        "I redesigned the website of a digital marketing agency completely from scratch because the initial website they had was not converting very well and was also not that pleasant to look at.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.spheraura.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/SpherAura_xbuqqg.mp4",
     },
     {
       title: "Genesis Motorcycles",
