@@ -3,11 +3,16 @@ import BlurFade from "@/components/magicui/blur-fade"
 import BlurFadeText from "@/components/magicui/blur-fade-text"
 import { ProjectCard } from "@/components/project-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Testimonials } from "@/components/ui/testimonials-columns-1"
+import { Pricing } from "@/components/ui/pricing"
 import { DATA } from "@/data/resume"
+import { Calendar, ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Markdown from "react-markdown"
 
 const BLUR_FADE_DELAY = 0.04
+const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
 export default function Page() {
   return (
@@ -31,8 +36,34 @@ export default function Page() {
               </Avatar>
             </BlurFade>
           </div>
+
+          {/* Primary CTA Button - Hero Section */}
+          <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
+                <Button
+                  size="lg"
+                  className="w-full gap-2 h-12 px-8 text-base font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                >
+                  <Calendar className="size-5" />
+                  Schedule a Call
+                </Button>
+              </Link>
+              <Link href="#projects" className="flex-1 sm:flex-initial">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full gap-2 h-12 px-8 text-base font-semibold hover:bg-accent transition-all duration-300 bg-transparent"
+                >
+                  View My Work
+                  <ArrowRight className="size-4" />
+                </Button>
+              </Link>
+            </div>
+          </BlurFade>
         </div>
       </section>
+
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">About</h2>
@@ -43,6 +74,7 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -76,8 +108,31 @@ export default function Page() {
               </BlurFade>
             ))}
           </div>
+
+          {/* Secondary CTA Button - After Projects */}
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <div className="flex flex-col items-center gap-4 pt-8">
+              <p className="text-sm text-muted-foreground text-center max-w-md">
+                Impressed by what you see? {"Let's"} discuss how I can help bring your vision to life.
+              </p>
+              <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="gap-2 h-12 px-8 text-base font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                >
+                  <Sparkles className="size-5" />
+                  {"Let's"} Work Together
+                </Button>
+              </Link>
+            </div>
+          </BlurFade>
         </div>
       </section>
+
+      <Testimonials />
+
+      <Pricing />
+
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -88,7 +143,10 @@ export default function Page() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">I like building things</h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During the last few years, I participated in a couple of hackathons. People from around the world come together and try to build incredible things in 2-3 days. It was interesting to see what you can do when you have little time but  endless possibilities brought to life by a group of motivated and passionate individuals.
+                  During the last few years, I participated in a couple of hackathons. People from around the world come
+                  together and try to build incredible things in 2-3 days. It was interesting to see what you can do
+                  when you have little time but endless possibilities brought to life by a group of motivated and
+                  passionate individuals.
                 </p>
               </div>
             </div>
@@ -111,6 +169,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
@@ -122,8 +181,21 @@ export default function Page() {
                 <Link href={DATA.contact.social.X.url} className="text-blue-500 hover:underline">
                   with a direct question on twitter
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all soliciting.
+                and I&apos;ll respond whenever I can.
               </p>
+
+              {/* Final CTA Button - Contact Section */}
+              <div className="pt-6">
+                <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    size="lg"
+                    className="gap-2 h-14 px-10 text-lg font-bold bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-100"
+                  >
+                    <Calendar className="size-6" />
+                    Book Your Free Consultation
+                  </Button>
+                </Link>
+              </div>
             </div>
           </BlurFade>
         </div>
