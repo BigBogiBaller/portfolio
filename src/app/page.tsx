@@ -37,7 +37,6 @@ export default function Page() {
             </BlurFade>
           </div>
 
-          {/* Primary CTA Button - Hero Section */}
           <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
               <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
@@ -109,7 +108,6 @@ export default function Page() {
             ))}
           </div>
 
-          {/* Secondary CTA Button - After Projects */}
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <div className="flex flex-col items-center gap-4 pt-8">
               <p className="text-sm text-muted-foreground text-center max-w-md">
@@ -128,10 +126,6 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-
-      <Testimonials />
-
-      <Pricing />
 
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
@@ -170,6 +164,10 @@ export default function Page() {
         </div>
       </section>
 
+      <Testimonials />
+
+      <Pricing />
+
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
@@ -184,7 +182,6 @@ export default function Page() {
                 and I&apos;ll respond whenever I can.
               </p>
 
-              {/* Final CTA Button - Contact Section */}
               <div className="pt-6">
                 <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
                   <Button

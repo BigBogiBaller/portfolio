@@ -4,6 +4,7 @@ import BlurFadeText from "@/components/magicui/blur-fade-text"
 import { ProjectCard } from "@/components/project-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
+import { Button } from "@/components/ui/button"
 import { DATA } from "@/data/resume"
 import Link from "next/link"
 import Markdown from "react-markdown"
@@ -79,7 +80,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <Testimonials />
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -116,6 +116,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+      <Testimonials />
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
@@ -129,6 +130,23 @@ export default function Page() {
                 </Link>{" "}
                 and I&apos;ll respond whenever I can. I will ignore all soliciting.
               </p>
+            </div>
+          </BlurFade>
+        </div>
+      </section>
+      <section id="schedule-call">
+        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl">Ready to Work Together?</h3>
+              <p className="mx-auto max-w-[600px] text-muted-foreground">
+                Schedule a 30-minute call to discuss your project and how I can help bring your ideas to life.
+              </p>
+              <Button asChild size="lg" className="mt-4">
+                <Link href="https://calendly.com/bogilekic123/30min" target="_blank" rel="noopener noreferrer">
+                  Schedule a Call
+                </Link>
+              </Button>
             </div>
           </BlurFade>
         </div>

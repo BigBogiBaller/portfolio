@@ -2,10 +2,11 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 import { Diamond, Sparkles } from "lucide-react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
+// Define the props for the PricingCard component
 interface PricingCardProps {
   title: string
   price?: string
@@ -13,13 +14,14 @@ interface PricingCardProps {
   description: string
   features?: string[]
   buttonText: string
-  buttonLink: string
   imageSrc?: string
   imageAlt?: string
-  useSparkles?: boolean
+  isUnique?: boolean
   className?: string
+  useSparkles?: boolean
 }
 
+// Framer Motion variants for animations
 const cardVariants = {
   initial: { scale: 1, y: 0 },
   hover: {
@@ -49,9 +51,9 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
       description,
       features,
       buttonText,
-      buttonLink,
       imageSrc,
       imageAlt,
+      isUnique = false,
       useSparkles = false,
       ...props
     },
@@ -63,10 +65,14 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
         variants={cardVariants}
         initial="initial"
         whileHover="hover"
-        className={`relative flex flex-col justify-between rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 ${className || ""}`}
+        className={cn(
+          "relative flex flex-col justify-between rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300",
+          className,
+        )}
         {...props}
       >
         <div className="flex flex-col space-y-4">
+          {/* Card Header with optional image */}
           <div className="flex justify-between items-start">
             <div>
               <h3 className="text-xl font-semibold">{title}</h3>
@@ -83,22 +89,24 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
                 alt={imageAlt || title}
                 width={80}
                 height={80}
-                className="select-none rounded-lg"
+                className="select-none"
                 variants={imageVariants}
               />
             )}
           </div>
 
+          {/* Card Description */}
           <p className="text-muted-foreground">{description}</p>
 
+          {/* Feature List */}
           {features && (
             <ul className="space-y-2 pt-4">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-2">
                   {useSparkles ? (
-                    <Sparkles className="h-4 w-4 text-primary flex-shrink-0" />
+                    <Sparkles className="h-4 w-4 text-primary" />
                   ) : (
-                    <Diamond className="h-4 w-4 text-primary flex-shrink-0" />
+                    <Diamond className="h-4 w-4 text-primary" />
                   )}
                   <span className="text-sm">{feature}</span>
                 </li>
@@ -107,20 +115,18 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
           )}
         </div>
 
+        {/* Card Footer with Button */}
         <div className="mt-6">
-          <Link href={buttonLink} target="_blank" rel="noopener noreferrer">
-            <Button className="w-full">{buttonText}</Button>
-          </Link>
+          <Button className="w-full">{buttonText}</Button>
         </div>
       </motion.div>
     )
   },
 )
+
 PricingCard.displayName = "PricingCard"
 
-export function Pricing() {
-  const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
-
+export default function PricingSection() {
   const plans = [
     {
       title: "Starter",
@@ -129,7 +135,6 @@ export function Pricing() {
       description: "Perfect for small projects and simple websites that need a professional touch.",
       features: ["Experienced Designer", "Fast Delivery", "Responsive Design", "Basic SEO Setup"],
       buttonText: "Let's Talk",
-      buttonLink: CALENDLY_LINK,
       imageSrc:
         "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75",
       imageAlt: "Pink cherry blossom tree",
@@ -141,7 +146,6 @@ export function Pricing() {
       description: "Ideal for businesses that need a complete website with advanced features and functionality.",
       features: ["Experienced Designer", "Fast Delivery", "Conversion Focused", "Advanced Animations"],
       buttonText: "Let's Talk",
-      buttonLink: CALENDLY_LINK,
       imageSrc:
         "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-v98BP3EQdx0Yd0NkjHPnWx33WvzwGP.png&w=320&q=75",
       imageAlt: "Yellow autumn tree",
@@ -153,7 +157,6 @@ export function Pricing() {
       description: "For complex projects requiring custom development, integrations, and ongoing support.",
       features: ["Dedicated Design Team", "Priority Support", "Custom Development", "Full Design System"],
       buttonText: "Let's Talk",
-      buttonLink: CALENDLY_LINK,
       imageSrc:
         "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75",
       imageAlt: "Premium design",
@@ -162,55 +165,33 @@ export function Pricing() {
   ]
 
   return (
-    <section className="w-full py-12 bg-background">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          {/* Title Section */}
-          <div className="text-center">
-            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm mb-4">
-              Pricing Plans
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Transparent Pricing, No Surprises</h2>
-            <p className="mt-4 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto">
-              Choose the perfect plan for your project. All packages include responsive design and modern development
-              practices.
-            </p>
-          </div>
+    <div className="w-full px-4 py-12">
+      <div className="w-full max-w-5xl mx-auto space-y-8">
+        {/* Title Section */}
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Pricing Plans</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Transparent Pricing, No Surprises</h1>
+        </div>
 
-          {/* Pricing Cards Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {plans.map((plan) => (
-              <PricingCard key={plan.title} {...plan} />
-            ))}
-          </div>
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {plans.map((plan) => (
+            <PricingCard key={plan.title} {...plan} />
+          ))}
+        </div>
 
-          {/* Unique Request Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm max-w-6xl mx-auto"
-          >
-            <h3 className="text-xl font-semibold">Unique Request</h3>
-            <p className="mt-2 text-muted-foreground">
-              Are you looking for something custom? {"Don't"} hesitate to contact us, and {"we'll"} help brainstorm your
-              product to success.
-            </p>
-            <div className="mt-6">
-              <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full md:w-auto">{"Let's"} Talk</Button>
-              </Link>
-            </div>
-          </motion.div>
-        </motion.div>
+        {/* Unique Request Card */}
+        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
+          <h3 className="text-xl font-semibold">Unique Request</h3>
+          <p className="mt-2 text-muted-foreground">
+            Are you looking for something custom? Don't hesitate to contact us, and we'll help brainstorm your product
+            to success.
+          </p>
+          <div className="mt-6">
+            <Button className="w-full md:w-auto">Let's Talk</Button>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }
