@@ -14,8 +14,6 @@ interface PricingCardProps {
   features?: string[]
   buttonText: string
   buttonLink: string
-  imageSrc?: string
-  imageAlt?: string
   useSparkles?: boolean
   className?: string
 }
@@ -26,15 +24,6 @@ const cardVariants = {
     scale: 1.03,
     y: -5,
     boxShadow: "0px 15px 30px -5px hsl(var(--foreground) / 0.1)",
-    transition: { type: "spring", stiffness: 300, damping: 20 },
-  },
-}
-
-const imageVariants = {
-  initial: { scale: 1, rotate: 0 },
-  hover: {
-    scale: 1.1,
-    rotate: -5,
     transition: { type: "spring", stiffness: 300, damping: 20 },
   },
 }
@@ -50,8 +39,6 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
       features,
       buttonText,
       buttonLink,
-      imageSrc,
-      imageAlt,
       useSparkles = false,
       ...props
     },
@@ -63,29 +50,17 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
         variants={cardVariants}
         initial="initial"
         whileHover="hover"
-        className={`relative flex flex-col justify-between rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-shadow duration-300 ${className || ""}`}
+        className={`relative flex flex-col justify-between rounded-lg border bg-card p-8 text-card-foreground shadow-sm transition-shadow duration-300 ${className || ""}`}
         {...props}
       >
         <div className="flex flex-col space-y-4">
-          <div className="flex justify-between items-start">
-            <div>
-              <h3 className="text-xl font-semibold">{title}</h3>
-              {price && (
-                <div className="mt-2">
-                  <span className="text-4xl font-bold">{price}</span>
-                  <p className="text-sm text-muted-foreground">{priceDescription}</p>
-                </div>
-              )}
-            </div>
-            {imageSrc && (
-              <motion.img
-                src={imageSrc}
-                alt={imageAlt || title}
-                width={80}
-                height={80}
-                className="select-none rounded-lg"
-                variants={imageVariants}
-              />
+          <div>
+            <h3 className="text-xl font-semibold">{title}</h3>
+            {price && (
+              <div className="mt-2">
+                <span className="text-4xl font-bold">{price}</span>
+                <p className="text-sm text-muted-foreground">{priceDescription}</p>
+              </div>
             )}
           </div>
 
@@ -130,9 +105,6 @@ export function Pricing() {
       features: ["Experienced Designer", "Fast Delivery", "Responsive Design", "Basic SEO Setup"],
       buttonText: "Let's Talk",
       buttonLink: CALENDLY_LINK,
-      imageSrc:
-        "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75",
-      imageAlt: "Pink cherry blossom tree",
     },
     {
       title: "Professional",
@@ -142,9 +114,6 @@ export function Pricing() {
       features: ["Experienced Designer", "Fast Delivery", "Conversion Focused", "Advanced Animations"],
       buttonText: "Let's Talk",
       buttonLink: CALENDLY_LINK,
-      imageSrc:
-        "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-v98BP3EQdx0Yd0NkjHPnWx33WvzwGP.png&w=320&q=75",
-      imageAlt: "Yellow autumn tree",
     },
     {
       title: "Enterprise",
@@ -154,9 +123,6 @@ export function Pricing() {
       features: ["Dedicated Design Team", "Priority Support", "Custom Development", "Full Design System"],
       buttonText: "Let's Talk",
       buttonLink: CALENDLY_LINK,
-      imageSrc:
-        "https://www.thiings.co/_next/image?url=https%3A%2F%2Flftz25oez4aqbxpq.public.blob.vercel-storage.com%2Fimage-gyoxLFpXzRRzVsgPJOKvB2r4tvzpcy.png&w=320&q=75",
-      imageAlt: "Premium design",
       useSparkles: true,
     },
   ]
@@ -184,7 +150,7 @@ export function Pricing() {
           </div>
 
           {/* Pricing Cards Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {plans.map((plan) => (
               <PricingCard key={plan.title} {...plan} />
             ))}
@@ -196,7 +162,7 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm max-w-6xl mx-auto"
+            className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm max-w-7xl mx-auto"
           >
             <h3 className="text-xl font-semibold">Unique Request</h3>
             <p className="mt-2 text-muted-foreground">

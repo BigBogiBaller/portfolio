@@ -4,12 +4,15 @@ import BlurFadeText from "@/components/magicui/blur-fade-text"
 import { ProjectCard } from "@/components/project-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
+import { Pricing } from "@/components/ui/pricing"
 import { Button } from "@/components/ui/button"
 import { DATA } from "@/data/resume"
+import { Calendar, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Markdown from "react-markdown"
 
 const BLUR_FADE_DELAY = 0.04
+const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
 export default function Page() {
   return (
@@ -33,8 +36,23 @@ export default function Page() {
               </Avatar>
             </BlurFade>
           </div>
+
+          <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-initial">
+                <Button
+                  size="lg"
+                  className="w-full gap-2 h-12 px-8 text-base font-semibold bg-black hover:bg-black/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                >
+                  <Calendar className="size-5" />
+                  Schedule a Call
+                </Button>
+              </Link>
+            </div>
+          </BlurFade>
         </div>
       </section>
+
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">About</h2>
@@ -45,6 +63,7 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -78,8 +97,26 @@ export default function Page() {
               </BlurFade>
             ))}
           </div>
+
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <div className="flex flex-col items-center gap-4 pt-8">
+              <p className="text-sm text-muted-foreground text-center max-w-md">
+                Impressed by what you see? {"Let's"} discuss how I can help bring your vision to life.
+              </p>
+              <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="gap-2 h-12 px-8 text-base font-semibold bg-black hover:bg-black/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                >
+                  <Sparkles className="size-5" />
+                  {"Let's"} Work Together
+                </Button>
+              </Link>
+            </div>
+          </BlurFade>
         </div>
       </section>
+
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -116,7 +153,11 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
       <Testimonials />
+
+      <Pricing />
+
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
@@ -128,25 +169,33 @@ export default function Page() {
                 <Link href={DATA.contact.social.X.url} className="text-blue-500 hover:underline">
                   with a direct question on twitter
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all soliciting.
+                and I&apos;ll respond whenever I can.
               </p>
             </div>
           </BlurFade>
         </div>
       </section>
-      <section id="schedule-call">
+
+      <section id="schedule">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold tracking-tighter sm:text-3xl">Ready to Work Together?</h3>
-              <p className="mx-auto max-w-[600px] text-muted-foreground">
-                Schedule a 30-minute call to discuss your project and how I can help bring your ideas to life.
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">Schedule a Call</h2>
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-lg">
+                Ready to discuss your project? Book a free 30-minute consultation call and {"let's"} explore how we can
+                work together.
               </p>
-              <Button asChild size="lg" className="mt-4">
-                <Link href="https://calendly.com/bogilekic123/30min" target="_blank" rel="noopener noreferrer">
-                  Schedule a Call
+              <div className="pt-4">
+                <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    size="lg"
+                    className="gap-2 h-12 px-8 text-base font-semibold bg-black hover:bg-black/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                  >
+                    <Calendar className="size-5" />
+                    Schedule a Call
+                  </Button>
                 </Link>
-              </Button>
+              </div>
             </div>
           </BlurFade>
         </div>
