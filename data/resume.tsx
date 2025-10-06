@@ -37,6 +37,12 @@ export const DATA = {
         icon: Icons.github,
         navbar: true,
       },
+      LinkedIn: {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/bogdan-lekic-99a182285/",
+        icon: Icons.linkedin,
+        navbar: true,
+      },
       X: {
         name: "X",
         url: "https://x.com/bogi_lekic",
@@ -150,7 +156,7 @@ export const DATA = {
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
       video: "",
     },
-        {
+    {
       title: "Lovable Competition",
       href: "https://x.com/bogi_lekic/status/1916753631367336275",
       dates: "March 23rd - 25th, 2025",

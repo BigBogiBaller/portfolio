@@ -35,14 +35,18 @@ export const DATA = {
         name: "GitHub",
         url: "https://github.com/BigBogiBaller",
         icon: Icons.github,
-
+        navbar: true,
+      },
+      LinkedIn: {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/bogdan-lekic-99a182285/",
+        icon: Icons.linkedin,
         navbar: true,
       },
       X: {
         name: "X",
         url: "https://x.com/bogi_lekic",
         icon: Icons.x,
-
         navbar: true,
       },
       Youtube: {
@@ -53,7 +57,6 @@ export const DATA = {
       },
     },
   },
-
   work: [],
   education: [],
   projects: [
