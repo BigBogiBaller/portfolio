@@ -1,4 +1,4 @@
-import { Icons } from "../components/icons"
+import { Icons } from "@/components/icons"
 import { HomeIcon } from "lucide-react"
 
 export const DATA = {
@@ -9,7 +9,7 @@ export const DATA = {
   locationLink:
     "https://www.google.com/maps/place/Wien,+%C3%96sterreich/@48.2201153,16.2148352,11z/data=!3m1!4b1!4m6!3m5!1s0x476d079e5136ca9f:0xfdc2e58a51a25b46!8m2!3d48.2080696!4d16.3713095!16zL20vMGZocDk?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D",
   description:
-    "Web Developer and Aspiring Entrepeneur.I love building things and helping people. Very active on Twitter.",
+    "Web Developer and Aspiring Entrepeneur. I love building things and helping people. Very active on Twitter and LinkedIn.",
   summary:
     "At the end of 2022, I got introduced to AI and building beautiful websites using different tools. In the past, I ran a successful content creation business where I had my own social media pages and shot content for companies. I also had the pleasure of participating in a couple of different hackathons. Furthermore i created some beautiful websites for different brands and agencies.",
   avatarUrl: "/profile-updated.png",
@@ -49,10 +49,16 @@ export const DATA = {
         icon: Icons.x,
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "https://www.youtube.com/@BGD-Media",
-        icon: Icons.youtube,
+      Instagram: {
+        name: "Instagram",
+        url: "https://www.instagram.com/itsbogii/",
+        icon: Icons.instagram,
+        navbar: true,
+      },
+      Email: {
+        name: "Email",
+        url: "mailto:bogilekic123@gmail.com",
+        icon: Icons.email,
         navbar: true,
       },
     },
@@ -60,6 +66,24 @@ export const DATA = {
   work: [],
   education: [],
   projects: [
+    {
+      title: "Activ8Pay",
+      href: "https://www.activ8pay.com",
+      dates: "October 2025",
+      active: true,
+      description:
+        "I created a website for a fintech and payment company to showcase what is possible and how to convert software copy and animations into clients!",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://www.activ8pay.com",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/Activ8Pay_After_website_rdpy0r.mp4",
+    },
     {
       title: "Vision Agency",
       href: "https://www.vision-agency.com/",
@@ -103,6 +127,7 @@ export const DATA = {
       active: true,
       description:
         "Designed, developed completely with the help of AI showcasing what is possible with the technology nowadays.",
+      technologies: ["Next.js", "React", "AI", "Tailwind CSS"],
       links: [
         {
           type: "Website",
@@ -120,6 +145,7 @@ export const DATA = {
       active: true,
       description:
         "I took part in the bolt.new hackathon trying to build a site that lets participants sign up to the start of the hackathon",
+      technologies: ["React", "JavaScript", "HTML", "CSS"],
       links: [
         {
           type: "Website",
@@ -142,6 +168,7 @@ export const DATA = {
       active: true,
       description:
         "This was one of my first projects that I did when I discovered the world of web design and web development.",
+      technologies: ["HTML", "CSS", "JavaScript"],
       links: [
         {
           type: "Website",
@@ -159,11 +186,17 @@ export const DATA = {
       active: true,
       description:
         "I entered the competition in order to create a fun and interacting website for the 2025 Vibe Coding Jam organised by Peter Lievels.",
+      technologies: ["React", "Next.js", "Tailwind CSS"],
       links: [
         {
           type: "Website",
           href: "https://vibejambolt.netlify.app/",
           icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/BigBogiBaller/github-bolt",
+          icon: <Icons.github className="size-3" />,
         },
       ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
@@ -172,32 +205,51 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "Bolt Hackathon",
-      dates: "March 19 - March 21,2025",
-      location: "Online",
-      description: "Created a website for the Bolt Hackathon.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OFBRDYT8rTvhjIOCbaGLXo9FmUFtmh.png",
-      mlh: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OFBRDYT8rTvhjIOCbaGLXo9FmUFtmh.png",
-      links: [],
-    },
-    {
-      title: "Lovable Competition",
-      dates: "April 25 - April 28, 2025",
-      location: "Online",
-      description:
-        "The company Lovable created an competition where the goal was to create a version 2.0 of any product and the winner would get 8000$.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AoTobKfDacPYhdzXaXYraD1If63x1b.png",
-      mlh: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AoTobKfDacPYhdzXaXYraD1If63x1b.png",
-      links: [],
-    },
-    {
       title: "Vibe Coding Jam",
       dates: "March 23rd - 25th, 2025",
-      location: "San Francisco, California",
+      location: "Online",
+      description: "Developed a fun and interactive website for the 2025 Vibe Coding Jam organised by Peter Lievels.",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
+      links: [
+        {
+          title: "Website",
+          icon: <Icons.globe className="size-3" />,
+          href: "https://vibejambolt.netlify.app/",
+        },
+        {
+          title: "Source",
+          icon: <Icons.github className="size-3" />,
+          href: "https://github.com/BigBogiBaller/github-bolt",
+        },
+      ],
+    },
+    {
+      title: "bolt.new Hackathon",
+      dates: "March 2025",
+      location: "Online",
       description:
-        "I entered the competition in order to create a fun and interacting website for the 2025 Vibe Coding Jam organised by Peter Lievels.",
-      icon: "public",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4YUEsWC5jAPJi2TTa4tBFXEWWDdx9R.png",
+        "Built a site that lets participants sign up to the start of the hackathon using React and modern web technologies.",
+      image: "/bolt-new-hackathon-coding-event-logo.jpg",
+      links: [
+        {
+          title: "Website",
+          icon: <Icons.globe className="size-3" />,
+          href: "https://x.com/bogi_lekic/status/1903172009061720558",
+        },
+        {
+          title: "Source",
+          icon: <Icons.github className="size-3" />,
+          href: "https://github.com/BigBogiBaller/github-bolt",
+        },
+      ],
+    },
+    {
+      title: "AI Hackathon",
+      dates: "January 2025",
+      location: "Online",
+      description:
+        "Participated in an AI-focused hackathon, building innovative solutions using cutting-edge AI technologies.",
+      image: "/artificial-intelligence-ai-hackathon-logo.jpg",
       links: [],
     },
   ],

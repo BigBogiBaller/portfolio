@@ -49,10 +49,10 @@ export const DATA = {
         icon: Icons.x,
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "https://www.youtube.com/@BGD-Media",
-        icon: Icons.youtube,
+      Email: {
+        name: "Email",
+        url: "mailto:bogilekic123@gmail.com",
+        icon: Icons.email,
         navbar: true,
       },
     },

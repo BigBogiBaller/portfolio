@@ -11,6 +11,12 @@ const testimonials = [
     role: "Business Owner",
   },
   {
+    text: "Outstanding work! delivered exactly what I needed with professionalism and attention to detail. Communication was clear and timely, and they went above and beyond to ensure the project's success. Highly recommend for anyone seeking quality and reliability!",
+    image: "/images/muhammad-rizwan.jpg",
+    name: "Muhammad Rizwan",
+    role: "Saudi Arabia",
+  },
+  {
     text: "Working with Bogi was an absolute pleasure. His attention to detail and creative vision brought our project to life in ways we never imagined.",
     image: "https://randomuser.me/api/portraits/women/1.jpg",
     name: "Sarah Johnson",
