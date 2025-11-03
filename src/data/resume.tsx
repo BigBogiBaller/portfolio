@@ -209,7 +209,7 @@ export const DATA = {
       dates: "March 23rd - 25th, 2025",
       location: "Online",
       description: "Developed a fun and interactive website for the 2025 Vibe Coding Jam organised by Peter Lievels.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
+      image: "/vibrant-coding-jam-event-logo.jpg",
       links: [
         {
           title: "Website",
