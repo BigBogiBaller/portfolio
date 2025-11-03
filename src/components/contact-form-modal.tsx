@@ -37,7 +37,13 @@ export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) 
       })
 
       if (response.ok) {
-        toast.success("Message sent successfully!")
+        const data = await response.json()
+
+        if (data.mailtoLink) {
+          window.location.href = data.mailtoLink
+        }
+
+        toast.success("Thank you for reaching out! I will be contacting you shortly.")
         setFormData({ name: "", email: "", message: "" })
         onOpenChange(false)
       } else {
