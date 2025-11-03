@@ -28,27 +28,20 @@ export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) 
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+      // Create mailto link with pre-filled content
+      const subject = encodeURIComponent(`Contact from ${formData.name}`)
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+      )
+      const mailtoLink = `mailto:bogilekic123@gmail.com?subject=${subject}&body=${body}`
 
-      if (response.ok) {
-        const data = await response.json()
+      // Open mailto link
+      window.location.href = mailtoLink
 
-        if (data.mailtoLink) {
-          window.location.href = data.mailtoLink
-        }
-
-        toast.success("Thank you for reaching out! I will be contacting you shortly.")
-        setFormData({ name: "", email: "", message: "" })
-        onOpenChange(false)
-      } else {
-        toast.error("Failed to send message. Please try again.")
-      }
+      // Show success message and close modal
+      toast.success("Thank you for reaching out! I will be contacting you shortly.")
+      setFormData({ name: "", email: "", message: "" })
+      onOpenChange(false)
     } catch (error) {
       toast.error("An error occurred. Please try again.")
     } finally {
