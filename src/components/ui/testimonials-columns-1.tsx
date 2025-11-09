@@ -11,6 +11,12 @@ const testimonials = [
     role: "Business Owner",
   },
   {
+    text: "I had the pleasure of working with Bogdan on the design and development of my company website, and I couldn't recommend him more highly. He's a talented young web developer: responsive, detail-oriented, and genuinely committed to delivering great results. Throughout the project, Bogdan was proactive in suggesting improvements, quick to implement feedback, and always available when needed. A reliable and hardworking professional with a great attitude. I look forward to working with him again on future projects.",
+    image: "/images/charles-baudin.png",
+    name: "Charles Baudin",
+    role: "Founder & CEO at Activ8Pay",
+  },
+  {
     text: "Outstanding work! delivered exactly what I needed with professionalism and attention to detail. Communication was clear and timely, and they went above and beyond to ensure the project's success. Highly recommend for anyone seeking quality and reliability!",
     image: "/images/muhammad-rizwan.jpg",
     name: "Muhammad Rizwan",
