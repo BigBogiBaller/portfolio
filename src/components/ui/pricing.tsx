@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Diamond, Sparkles } from "lucide-react"
 import Link from "next/link"
@@ -58,7 +58,18 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
             <h3 className="text-xl font-semibold">{title}</h3>
             {price && (
               <div className="mt-2">
-                <span className="text-4xl font-bold">{price}</span>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={price}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-4xl font-bold inline-block"
+                  >
+                    {price}
+                  </motion.span>
+                </AnimatePresence>
                 <p className="text-sm text-muted-foreground">{priceDescription}</p>
               </div>
             )}
@@ -96,10 +107,42 @@ PricingCard.displayName = "PricingCard"
 export function Pricing() {
   const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
+  const [currency, setCurrency] = React.useState<"EUR" | "USD">("EUR")
+
+  const EUR_TO_USD = 1.1
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrency((prev) => (prev === "EUR" ? "USD" : "EUR"))
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const formatPrice = (eurPrice: string) => {
+    const numericPrice = Number.parseFloat(eurPrice.replace(/[^0-9.]/g, ""))
+
+    if (isNaN(numericPrice)) {
+      if (eurPrice.includes("+")) {
+        const basePrice = Number.parseFloat(eurPrice.replace(/[^0-9]/g, ""))
+        if (currency === "USD") {
+          return `$${Math.round(basePrice * EUR_TO_USD)}+`
+        }
+        return eurPrice
+      }
+      return eurPrice
+    }
+
+    if (currency === "USD") {
+      return `$${Math.round(numericPrice * EUR_TO_USD)}`
+    }
+    return eurPrice
+  }
+
   const plans = [
     {
       title: "Starter",
-      price: "€500",
+      price: formatPrice("€500"),
       priceDescription: "Starting from",
       description: "Perfect for small projects and simple websites that need a professional touch.",
       features: ["Experienced Designer", "Fast Delivery", "Responsive Design", "Basic SEO Setup"],
@@ -108,7 +151,7 @@ export function Pricing() {
     },
     {
       title: "Professional",
-      price: "€1000",
+      price: formatPrice("€1000"),
       priceDescription: "Starting from",
       description: "Ideal for businesses that need a complete website with advanced features and functionality.",
       features: ["Experienced Designer", "Fast Delivery", "Conversion Focused", "Advanced Animations"],
@@ -117,7 +160,7 @@ export function Pricing() {
     },
     {
       title: "Enterprise",
-      price: "€1500+",
+      price: formatPrice("€1500+"),
       priceDescription: "Starting from",
       description: "For complex projects requiring custom development, integrations, and ongoing support.",
       features: ["Dedicated Design Team", "Priority Support", "Custom Development", "Full Design System"],
@@ -147,6 +190,21 @@ export function Pricing() {
               Choose the perfect plan for your project. All packages include responsive design and modern development
               practices.
             </p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <span className="text-sm text-muted-foreground">Showing prices in:</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currency}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                  className="font-semibold text-primary"
+                >
+                  {currency === "EUR" ? "🇪🇺 Euros (€)" : "🇺🇸 US Dollars ($)"}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Pricing Cards Grid */}
