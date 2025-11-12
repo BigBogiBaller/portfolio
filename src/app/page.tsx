@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
 import { Pricing } from "@/components/ui/pricing"
 import { DATA } from "@/data/resume"
-import { Calendar, ArrowRight, Sparkles } from "lucide-react"
+import { Calendar, ArrowRight, Sparkles, FileCheck } from "lucide-react"
 import Link from "next/link"
 import Markdown from "react-markdown"
 
@@ -46,6 +46,15 @@ export default function Page() {
                 >
                   <Calendar className="size-5" />
                   Schedule a Call
+                </Button>
+              </Link>
+              <Link href="/audit" className="flex-1 sm:flex-initial">
+                <Button
+                  size="lg"
+                  className="w-full gap-2 h-12 px-8 text-base font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-100"
+                >
+                  <FileCheck className="size-5" />
+                  Get Free Audit
                 </Button>
               </Link>
               <Link href="#projects" className="flex-1 sm:flex-initial">

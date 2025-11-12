@@ -104,7 +104,7 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
 )
 PricingCard.displayName = "PricingCard"
 
-export function Pricing() {
+export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
   const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
   const [currency, setCurrency] = React.useState<"EUR" | "USD">("EUR")
@@ -139,32 +139,98 @@ export function Pricing() {
     return eurPrice
   }
 
+  const translations = {
+    en: {
+      tag: "Pricing Plans",
+      title: "Transparent Pricing, No Surprises",
+      description:
+        "Choose the perfect plan for your project. All packages include responsive design and modern development practices.",
+      showingPrices: "Showing prices in:",
+      starter: "Starter",
+      starterDesc: "Perfect for small projects and simple websites that need a professional touch.",
+      professional: "Professional",
+      professionalDesc: "Ideal for businesses that need a complete website with advanced features and functionality.",
+      enterprise: "Enterprise",
+      enterpriseDesc: "For complex projects requiring custom development, integrations, and ongoing support.",
+      startingFrom: "Starting from",
+      letsTalk: "Let's Talk",
+      features: {
+        designer: "Experienced Designer",
+        fastDelivery: "Fast Delivery",
+        responsive: "Responsive Design",
+        seo: "Basic SEO Setup",
+        conversion: "Conversion Focused",
+        animations: "Advanced Animations",
+        team: "Dedicated Design Team",
+        support: "Priority Support",
+        custom: "Custom Development",
+        system: "Full Design System",
+      },
+      uniqueRequest: "Unique Request",
+      uniqueDesc:
+        "Are you looking for something custom? Don't hesitate to contact us, and we'll help brainstorm your product to success.",
+    },
+    de: {
+      tag: "Preispläne",
+      title: "Transparente Preise, keine Überraschungen",
+      description:
+        "Wählen Sie den perfekten Plan für Ihr Projekt. Alle Pakete beinhalten responsives Design und moderne Entwicklungspraktiken.",
+      showingPrices: "Preise werden angezeigt in:",
+      starter: "Starter",
+      starterDesc: "Perfekt für kleine Projekte und einfache Websites, die eine professionelle Note benötigen.",
+      professional: "Professionell",
+      professionalDesc: "Ideal für Unternehmen, die eine vollständige Website mit erweiterten Funktionen benötigen.",
+      enterprise: "Enterprise",
+      enterpriseDesc:
+        "Für komplexe Projekte, die individuelle Entwicklung, Integrationen und laufenden Support erfordern.",
+      startingFrom: "Ab",
+      letsTalk: "Lassen Sie uns sprechen",
+      features: {
+        designer: "Erfahrener Designer",
+        fastDelivery: "Schnelle Lieferung",
+        responsive: "Responsives Design",
+        seo: "Grundlegendes SEO-Setup",
+        conversion: "Conversion-fokussiert",
+        animations: "Erweiterte Animationen",
+        team: "Dediziertes Design-Team",
+        support: "Prioritäts-Support",
+        custom: "Individuelle Entwicklung",
+        system: "Vollständiges Design-System",
+      },
+      uniqueRequest: "Individuelle Anfrage",
+      uniqueDesc:
+        "Suchen Sie etwas Individuelles? Zögern Sie nicht, uns zu kontaktieren, und wir helfen Ihnen, Ihr Produkt zum Erfolg zu führen.",
+    },
+  }
+
+  const t = translations[language]
+
   const plans = [
     {
-      title: "Starter",
+      title: t.starter,
       price: formatPrice("€500"),
-      priceDescription: "Starting from",
-      description: "Perfect for small projects and simple websites that need a professional touch.",
-      features: ["Experienced Designer", "Fast Delivery", "Responsive Design", "Basic SEO Setup"],
-      buttonText: "Let's Talk",
+      priceDescription: t.startingFrom,
+      description: t.starterDesc,
+      features: [t.features.designer, t.features.fastDelivery, t.features.responsive, t.features.seo],
+      buttonText: t.letsTalk,
       buttonLink: CALENDLY_LINK,
     },
     {
-      title: "Professional",
+      title: t.professional,
       price: formatPrice("€1000"),
-      priceDescription: "Starting from",
-      description: "Ideal for businesses that need a complete website with advanced features and functionality.",
-      features: ["Experienced Designer", "Fast Delivery", "Conversion Focused", "Advanced Animations"],
-      buttonText: "Let's Talk",
+      priceDescription: t.startingFrom,
+      description: t.professionalDesc,
+      features: [t.features.designer, t.features.fastDelivery, t.features.conversion, t.features.animations],
+      buttonText: t.letsTalk,
       buttonLink: CALENDLY_LINK,
     },
     {
-      title: "Enterprise",
+      title: t.enterprise,
       price: formatPrice("€1500+"),
-      priceDescription: "Starting from",
-      description: "For complex projects requiring custom development, integrations, and ongoing support.",
-      features: ["Dedicated Design Team", "Priority Support", "Custom Development", "Full Design System"],
-      buttonText: "Let's Talk",
+      priceDescription: t.startingFrom,
+      description: t.enterpriseDesc,
+      features: [t.features.team, t.features.support, t.features.custom, t.features.system],
+      buttonText: t.letsTalk,
       buttonLink: CALENDLY_LINK,
       useSparkles: true,
     },
@@ -180,18 +246,14 @@ export function Pricing() {
           viewport={{ once: true }}
           className="space-y-8"
         >
-          {/* Title Section */}
           <div className="text-center">
-            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm mb-4">
-              Pricing Plans
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Transparent Pricing, No Surprises</h2>
+            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm mb-4">{t.tag}</div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t.title}</h2>
             <p className="mt-4 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto">
-              Choose the perfect plan for your project. All packages include responsive design and modern development
-              practices.
+              {t.description}
             </p>
             <div className="mt-4 flex items-center justify-center gap-2">
-              <span className="text-sm text-muted-foreground">Showing prices in:</span>
+              <span className="text-sm text-muted-foreground">{t.showingPrices}</span>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currency}
@@ -207,14 +269,12 @@ export function Pricing() {
             </div>
           </div>
 
-          {/* Pricing Cards Grid */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
             {plans.map((plan) => (
               <PricingCard key={plan.title} {...plan} />
             ))}
           </div>
 
-          {/* Unique Request Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -222,14 +282,11 @@ export function Pricing() {
             viewport={{ once: true }}
             className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm max-w-7xl mx-auto"
           >
-            <h3 className="text-xl font-semibold">Unique Request</h3>
-            <p className="mt-2 text-muted-foreground">
-              Are you looking for something custom? {"Don't"} hesitate to contact us, and {"we'll"} help brainstorm your
-              product to success.
-            </p>
+            <h3 className="text-xl font-semibold">{t.uniqueRequest}</h3>
+            <p className="mt-2 text-muted-foreground">{t.uniqueDesc}</p>
             <div className="mt-6">
               <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full md:w-auto">{"Let's"} Talk</Button>
+                <Button className="w-full md:w-auto">{t.letsTalk}</Button>
               </Link>
             </div>
           </motion.div>
