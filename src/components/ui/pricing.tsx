@@ -184,7 +184,8 @@ export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
       enterpriseDesc:
         "Für komplexe Projekte, die individuelle Entwicklung, Integrationen und laufenden Support erfordern.",
       startingFrom: "Ab",
-      letsTalk: "Lassen Sie uns sprechen",
+      letsTalk: "Kontakt",
+      letsTalkUnique: "Lassen Sie Uns Sprechen",
       features: {
         designer: "Erfahrener Designer",
         fastDelivery: "Schnelle Lieferung",
@@ -208,7 +209,7 @@ export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
   const plans = [
     {
       title: t.starter,
-      price: formatPrice("€500"),
+      price: formatPrice("€1000"),
       priceDescription: t.startingFrom,
       description: t.starterDesc,
       features: [t.features.designer, t.features.fastDelivery, t.features.responsive, t.features.seo],
@@ -217,7 +218,7 @@ export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
     },
     {
       title: t.professional,
-      price: formatPrice("€1000"),
+      price: formatPrice("€2000"),
       priceDescription: t.startingFrom,
       description: t.professionalDesc,
       features: [t.features.designer, t.features.fastDelivery, t.features.conversion, t.features.animations],
@@ -226,7 +227,7 @@ export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
     },
     {
       title: t.enterprise,
-      price: formatPrice("€1500+"),
+      price: formatPrice("€3000+"),
       priceDescription: t.startingFrom,
       description: t.enterpriseDesc,
       features: [t.features.team, t.features.support, t.features.custom, t.features.system],
@@ -286,7 +287,7 @@ export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
             <p className="mt-2 text-muted-foreground">{t.uniqueDesc}</p>
             <div className="mt-6">
               <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full md:w-auto">{t.letsTalk}</Button>
+                <Button className="w-full md:w-auto">{language === "de" ? t.letsTalkUnique : t.letsTalk}</Button>
               </Link>
             </div>
           </motion.div>
