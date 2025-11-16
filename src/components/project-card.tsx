@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -10,6 +12,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { useEffect, useRef } from "react";
 
 interface Props {
   title: string;
@@ -40,6 +43,42 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
+  const videoRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    if (!videoRef.current || !video || !video.includes('youtube.com')) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            videoRef.current.contentWindow?.postMessage(
+              '{"event":"command","func":"playVideo","args":""}',
+              "*"
+            )
+          } else if (videoRef.current) {
+            videoRef.current.contentWindow?.postMessage(
+              '{"event":"command","func":"pauseVideo","args":""}',
+              "*"
+            )
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(videoRef.current)
+
+    return () => observer.disconnect()
+  }, [video])
+
+  const getYoutubeEmbedUrl = (url: string) => {
+    const videoId = url.match(/embed\/([^?]+)/)?.[1]
+    if (!videoId) return url
+    // Add playlist parameter with same video ID to enable loop
+    return `${url}?enablejsapi=1&mute=1&autoplay=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&playsinline=1`
+  }
+
   return (
     <Card
       className={
@@ -50,19 +89,28 @@ export function ProjectCard({
         href={href || "#"}
         className={cn("block cursor-pointer", className)}
       >
-        {video && (
+        {video && video.includes('youtube.com') ? (
+          <iframe
+            ref={videoRef}
+            src={getYoutubeEmbedUrl(video)}
+            className="pointer-events-none mx-auto h-40 w-full object-cover"
+            allow="autoplay; encrypted-media"
+            style={{ border: 'none' }}
+            title={title}
+          />
+        ) : video ? (
           <video
             src={video}
             autoPlay
             loop
             muted
             playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
           />
-        )}
+        ) : null}
         {image && (
           <Image
-            src={image}
+            src={image || "/placeholder.svg"}
             alt={title}
             width={500}
             height={300}

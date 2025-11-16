@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -5,6 +7,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import Markdown from "react-markdown"
+import { useEffect, useRef } from "react"
 
 interface Props {
   title: string
@@ -24,21 +27,58 @@ interface Props {
 }
 
 export function ProjectCard({ title, href, description, dates, tags, link, image, video, links, className }: Props) {
+  const videoRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    if (!videoRef.current || !video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            videoRef.current.contentWindow?.postMessage(
+              '{"event":"command","func":"playVideo","args":""}',
+              "*"
+            )
+          } else if (videoRef.current) {
+            videoRef.current.contentWindow?.postMessage(
+              '{"event":"command","func":"pauseVideo","args":""}',
+              "*"
+            )
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(videoRef.current)
+
+    return () => observer.disconnect()
+  }, [video])
+
   return (
     <Card
       className={"flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"}
     >
       <Link href={href || "#"} className={cn("block cursor-pointer", className)}>
-        {video && (
+        {video && video.includes('youtube.com') ? (
+          <iframe
+            ref={videoRef}
+            src={`${video}?enablejsapi=1&mute=1&autoplay=1&loop=1&controls=0&modestbranding=1`}
+            className="pointer-events-none mx-auto h-40 w-full object-cover"
+            allow="autoplay; encrypted-media"
+            style={{ border: 'none' }}
+          />
+        ) : video ? (
           <video
             src={video}
             autoPlay
             loop
             muted
             playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
           />
-        )}
+        ) : null}
         {image && (
           <Image
             src={image || "/placeholder.svg"}

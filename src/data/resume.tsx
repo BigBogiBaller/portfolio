@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons"
-import { HomeIcon } from "lucide-react"
+import { HomeIcon } from 'lucide-react'
 
 export const DATA = {
   name: "Bogi",
@@ -82,7 +82,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/Activ8Pay_After_website_rdpy0r.mp4",
+      video: "https://www.youtube.com/embed/caeMYLjmN_U?rel=0",
     },
     {
       title: "Vision Agency",
@@ -100,7 +100,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/therealvision_wpatsw.mp4",
+      video: "https://www.youtube.com/embed/vU_WnouNT3k?rel=0",
     },
     {
       title: "SpherAura",
@@ -118,7 +118,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/SpherAura_xbuqqg.mp4",
+      video: "https://www.youtube.com/embed/X8LTBp27XUc?rel=0",
     },
     {
       title: "Genesis Motorcycles",
@@ -136,7 +136,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/genesis_twe1rv.mp4",
+      video: "https://www.youtube.com/embed/Y50rbdrfnJI?rel=0",
     },
     {
       title: "bolt.new hackathon",
@@ -159,7 +159,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "https://res.cloudinary.com/dtwg2gvyn/video/upload/clip2_pquujh.mp4",
+      video: "https://www.youtube.com/embed/DIjixIM7NN0?rel=0",
     },
     {
       title: "Hairsalon Website",
@@ -176,8 +176,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QThXtBW1AYXweS5SfyaiE2vgiEtP7g.png",
-      video: "",
+      video: "https://www.youtube.com/embed/PyrVKj9wbKs?rel=0",
     },
     {
       title: "Vibe Coding Jam",
@@ -199,8 +198,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OyI3pJ24h4ScAcusUoXJ9FWeabYh91.png",
-      video: "",
+      video: "https://www.youtube.com/embed/o6xdXj1W6gk?rel=0",
     },
   ],
   hackathons: [
