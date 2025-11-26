@@ -13,6 +13,7 @@ import { Icons } from "@/components/icons"
 import Link from "next/link"
 import Markdown from "react-markdown"
 import { useState } from "react"
+import { ProcessTimeline } from "@/components/process-timeline"
 
 const BLUR_FADE_DELAY = 0.04
 const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
@@ -220,6 +221,8 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+
+      <ProcessTimeline language={language} />
 
       <section id="projects">
         <div className="space-y-12 w-full py-12">
