@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons"
-import { HomeIcon } from 'lucide-react'
+import { HomeIcon } from "lucide-react"
 
 export const DATA = {
   name: "Bogi",
@@ -227,7 +227,7 @@ export const DATA = {
       location: "Online",
       description:
         "Built a site that lets participants sign up to the start of the hackathon using React and modern web technologies.",
-      image: "/bolt-new-hackathon-coding-event-logo.jpg",
+      image: "/bolt-logo.png",
       links: [
         {
           title: "Website",

@@ -115,7 +115,7 @@ const translations = {
 }
 
 export default function Page() {
-  const [language, setLanguage] = useState<"en" | "de">("en")
+  const [language, setLanguage] = useState<"en" | "de">("de")
   const t = translations[language]
 
   const translatedProjects = DATA.projects.map((project) => ({
@@ -158,20 +158,20 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <div className="fixed top-4 right-4 z-50 flex gap-2 bg-background/80 backdrop-blur-sm border rounded-lg p-2 shadow-lg">
         <button
-          onClick={() => setLanguage("en")}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            language === "en" ? "bg-foreground text-background" : "hover:bg-muted"
-          }`}
-        >
-          EN
-        </button>
-        <button
           onClick={() => setLanguage("de")}
           className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
             language === "de" ? "bg-foreground text-background" : "hover:bg-muted"
           }`}
         >
           DE
+        </button>
+        <button
+          onClick={() => setLanguage("en")}
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+            language === "en" ? "bg-foreground text-background" : "hover:bg-muted"
+          }`}
+        >
+          EN
         </button>
       </div>
 
