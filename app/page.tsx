@@ -72,7 +72,7 @@ const translations = {
     summary:
       "Ende 2022 wurde ich in die Welt der KI und des Erstellens schöner Websites mit verschiedenen Tools eingeführt. In der Vergangenheit führte ich ein erfolgreiches Content-Creation-Geschäft, bei dem ich meine eigenen Social-Media-Seiten hatte und Content für Unternehmen produzierte. Ich hatte auch das Vergnügen, an einigen verschiedenen Hackathons teilzunehmen. Darüber hinaus habe ich einige schöne Websites für verschiedene Marken und Agenturen erstellt.",
     about: "Über mich",
-    myProjects: "Meine Projekte",
+    myProjects: "Meine Projekt",
     checkOutWork: "Schauen Sie sich meine neuesten Arbeiten an",
     projectsDescription:
       "Ich habe an verschiedenen Projekten gearbeitet, von einfachen Websites bis hin zu komplexen Webanwendungen. Hier sind einige meiner Favoriten.",
