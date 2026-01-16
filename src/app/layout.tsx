@@ -57,6 +57,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          defer
+          data-website-id="dfid_6zdm1LRWqqd4W1h2NaLHA"
+          data-domain="www.bogdanlekic.com"
+          data-allow-localhost="true"
+          src="https://datafa.st/js/script.js"
+        ></script>
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
