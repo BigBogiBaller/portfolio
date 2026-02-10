@@ -188,8 +188,8 @@ export default function Page() {
               <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={t.description} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border mt-8">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} />
+              <Avatar className="size-28 border mt-2">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="object-cover object-bottom" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -221,8 +221,6 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
-
-      <ProcessTimeline language={language} />
 
       <section id="projects">
         <div className="space-y-12 w-full py-12">
@@ -273,6 +271,8 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
+      <ProcessTimeline language={language} />
 
       <section id="hackathons">
         <div className="space-y-12 w-full py-12">
