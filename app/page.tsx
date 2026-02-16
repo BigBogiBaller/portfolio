@@ -189,7 +189,7 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border mt-2">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} />
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="object-cover object-bottom" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -221,8 +221,6 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
-
-      <ProcessTimeline language={language} />
 
       <section id="projects">
         <div className="space-y-12 w-full py-12">
@@ -274,41 +272,9 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="hackathons">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  {t.hackathons}
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t.likeBuildingThings}</h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  {t.hackathonsDescription}
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 8}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {translatedHackathons.map((project, id) => (
-                <BlurFade key={project.title + project.dates} delay={BLUR_FADE_DELAY * 9 + id * 0.05}>
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-      </section>
-
       <Testimonials language={language} />
+
+      <ProcessTimeline language={language} />
 
       <Pricing language={language} />
 
