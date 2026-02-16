@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const fontSans = Inter({
@@ -80,6 +81,7 @@ export default function RootLayout({
             <Toaster position="top-center" />
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
