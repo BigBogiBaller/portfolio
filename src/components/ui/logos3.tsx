@@ -70,7 +70,7 @@ const Logos3 = ({
   return (
     <section className="py-12">
       <div className="container flex flex-col items-center text-center">
-        <h2 className="my-6 text-xl font-bold text-pretty lg:text-2xl text-muted-foreground">
+        <h2 className="my-6 text-xl font-bold text-pretty lg:text-2xl text-foreground">
           {t.heading}
         </h2>
       </div>
