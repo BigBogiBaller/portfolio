@@ -24,6 +24,12 @@ const testimonials = {
       role: "Saudi Arabia",
     },
     {
+      text: "I highly recommend working with Bogdan Lekic. What impressed me was his quick analytical ability to understand the client's situation and make concrete, sustainable suggestions. I also appreciated his professionalism and his human side. His flexibility rounds off his profile perfectly for me.",
+      image: "/images/david-ayemle.png",
+      name: "David Ayemle",
+      role: "Coaching for Personal Development",
+    },
+    {
       text: "Working with Bogi was an absolute pleasure. His attention to detail and creative vision brought our project to life in ways we never imagined.",
       image: "https://randomuser.me/api/portraits/women/1.jpg",
       name: "Sarah Johnson",
@@ -96,6 +102,12 @@ const testimonials = {
       image: "/images/muhammad-rizwan.jpg",
       name: "Muhammad Rizwan",
       role: "Saudi-Arabien",
+    },
+    {
+      text: "Ich empfehle die Zusammenarbeit mit Bogdan Lekic sehr gerne. Was mich begeistert hat ist seine schnelle Analytische Fähigkeit, die Situation des Kunden schnell zu verstehen und konkrete Vorschläge zu unterbreiten die nachhaltig sind. Mich hat auch seine Professionalität und seine menschliche Seite gefallen. Seine Flexibilität rundet für mich sein Profil gut ab.",
+      image: "/images/david-ayemle.png",
+      name: "David Ayemle",
+      role: "Coaching für Persönlichkeitsbildung",
     },
     {
       text: "Die Zusammenarbeit mit Bogi war eine absolute Freude. Seine Aufmerksamkeit auf Details und kreative Vision brachten unser Projekt auf eine Weise zum Leben, die wir niemals vorstellten.",
@@ -177,7 +189,7 @@ export const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card" key={i}>
+                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card">
                   <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
                   <div className="flex items-center gap-3 mt-4">
                     <img
@@ -185,11 +197,11 @@ export const TestimonialsColumn = (props: {
                       height={40}
                       src={image || "/placeholder.svg"}
                       alt={name}
-                      className="h-10 w-10 rounded-full object-cover"
+                      className="h-10 w-10 rounded-full object-cover shrink-0"
                     />
-                    <div className="flex flex-col">
-                      <div className="font-medium tracking-tight leading-5 text-foreground">{name}</div>
-                      <div className="leading-5 text-muted-foreground tracking-tight text-sm">{role}</div>
+                    <div className="flex flex-col min-w-0">
+                      <div className="font-medium tracking-tight leading-5 text-foreground truncate">{name}</div>
+                      <div className="leading-5 text-muted-foreground tracking-tight text-xs break-words">{role}</div>
                     </div>
                   </div>
                 </div>
@@ -204,9 +216,9 @@ export const TestimonialsColumn = (props: {
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
-  const firstColumn = currentTestimonials.slice(0, 4)
-  const secondColumn = currentTestimonials.slice(4, 7)
-  const thirdColumn = currentTestimonials.slice(7, 10)
+  const firstColumn = currentTestimonials.slice(0, 5)
+  const secondColumn = currentTestimonials.slice(5, 9)
+  const thirdColumn = currentTestimonials.slice(9, 13)
 
   return (
     <section className="bg-background my-20 relative">

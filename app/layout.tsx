@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Toaster } from "sonner"
+import Script from "next/script"
 import "./globals.css"
 
 const fontSans = Inter({
@@ -59,13 +60,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <Script
           defer
           data-website-id="dfid_6zdm1LRWqqd4W1h2NaLHA"
           data-domain="www.bogdanlekic.com"
           data-allow-localhost="true"
           src="https://datafa.st/js/script.js"
-        ></script>
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={cn(

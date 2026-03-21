@@ -14,6 +14,7 @@ import Link from "next/link"
 import Markdown from "react-markdown"
 import { useState } from "react"
 import { ProcessTimeline } from "@/components/process-timeline"
+import { FaqSection } from "@/components/faq-section"
 
 const BLUR_FADE_DELAY = 0.04
 const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
@@ -277,6 +278,8 @@ export default function Page() {
       <ProcessTimeline language={language} />
 
       <Pricing language={language} />
+
+      <FaqSection language={language} />
 
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
