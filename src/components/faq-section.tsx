@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/accordion"
 import BlurFade from "@/components/magicui/blur-fade"
 import Link from "next/link"
-import { DATA } from "@/data/resume"
+
+const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
 const BLUR_FADE_DELAY = 0.04
 
@@ -62,8 +63,8 @@ const faqData = {
     title: "Häufig gestellte Fragen",
     description:
       "Hier finden Sie häufig gestellte Fragen und Antworten zu meinen Dienstleistungen. Falls Sie nicht finden, wonach Sie suchen, kontaktieren Sie mich gerne.",
-    contactText: "Können Sie nicht finden, wonach Sie suchen? Kontaktieren Sie mich",
-    contactLink: "direkt auf Twitter",
+    contactText: "Können Sie nicht finden, wonach Sie suchen?",
+    contactLink: "Vereinbaren Sie gerne ein unverbindliches Erstgespräch und ich helfe Ihnen gerne weiter!",
     questions: [
       {
         id: "item-1",
@@ -148,7 +149,7 @@ export function FaqSection({ language }: FaqSectionProps) {
           </Accordion>
           <p className="text-muted-foreground text-center">
             {t.contactText}{" "}
-            <Link href={DATA.contact.social.X.url} className="text-primary hover:underline">
+            <Link href={CALENDLY_LINK} className="text-primary hover:underline">
               {t.contactLink}
             </Link>
           </p>
