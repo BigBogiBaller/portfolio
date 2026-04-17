@@ -30,6 +30,12 @@ const testimonials = {
       role: "Coaching for Personal Development",
     },
     {
+      text: "Bogdan Lekic caught my attention here online. What appealed to me from the start was the ease of our working process. There was no sales pressure from him - just a straightforward offer. He gave me time to think it over, and then we collaborated online. On this journey, a new page for my newsletter was created. He sensitively aligned the content, format, and layout with my existing website while bringing in his own fresh perspective. That's exactly what I needed: an exchange with an innovative, fresh outside view. He also helped me get started with the newsletter tool Brevo, as I previously had no newsletter system. Beyond his professional expertise, I especially appreciate his patience and calm demeanor. He guided me through the entire process and gave me many valuable tips and tricks along the way.",
+      image: "/images/elisabeth-brommer-kern.png",
+      name: "Elisabeth Brommer Kern",
+      role: "Founder at SJPDevelopment GmbH",
+    },
+    {
       text: "Working with Bogi was an absolute pleasure. His attention to detail and creative vision brought our project to life in ways we never imagined.",
       image: "https://randomuser.me/api/portraits/women/1.jpg",
       name: "Sarah Johnson",
@@ -108,6 +114,12 @@ const testimonials = {
       image: "/images/david-ayemle.png",
       name: "David Ayemle",
       role: "Coaching für Persönlichkeitsbildung",
+    },
+    {
+      text: "Bogdan Lekic begegnete mir hier im Netz. Was mich von Anfang an angesprochen hat, war die Leichtigkeit in unserem Arbeitsprozess. Von ihm ging kein Verkaufsdruck aus - einfach ein sachliches Angebot. Er liess mir Zeit zum Überlegen, und dann haben wir online zusammengearbeitet. Auf dieser Reise ist eine neue Seite für meinen Newsletter entstanden. Dabei hat er Inhalte, Format und Layout sensibel an meine bestehende Webseite angelehnt und gleichzeitig einen eigenen, frischen Wind eingebracht. Genau das habe ich gebraucht: einen Austausch mit einem innovativen, frischen Blick von aussen. Ausserdem hat er mir den Einstieg in das Newsletter-Tool Brevo ermöglicht, da ich bisher kein Newsletter-System hatte. Neben seiner fachlichen Expertise schätze ich besonders seine Geduld und Ruhe. Er hat mich durch den gesamten Prozess begleitet und mir darüber hinaus viele wertvolle Tipps und Tricks mit auf den Weg gegeben.",
+      image: "/images/elisabeth-brommer-kern.png",
+      name: "Elisabeth Brommer Kern",
+      role: "Gründerin von SJPDevelopment GmbH",
     },
     {
       text: "Die Zusammenarbeit mit Bogi war eine absolute Freude. Seine Aufmerksamkeit auf Details und kreative Vision brachten unser Projekt auf eine Weise zum Leben, die wir niemals vorstellten.",
