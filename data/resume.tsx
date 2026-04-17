@@ -62,6 +62,24 @@ export const DATA = {
   education: [],
   projects: [
     {
+      title: "Newsletter Funnel SJP Development",
+      href: "https://news.sjpdevelopment.ch",
+      dates: "April 2026",
+      active: true,
+      description:
+        "Ich habe einen Newsletter Funnel mit Landingpage und Brevo Automations gebaut um so viele Leser wie möglich zu bekommen und für zukünftige Kurse und Webinare zu werben.",
+      technologies: ["Brevo", "Newsletter", "Automation", "Landing Page"],
+      links: [
+        {
+          type: "Website",
+          href: "https://news.sjpdevelopment.ch",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://www.youtube.com/embed/7oFSYyCnZgY",
+    },
+    {
       title: "Vision Agency",
       href: "https://www.vision-agency.com/",
       dates: "June 2025",
