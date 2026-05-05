@@ -201,7 +201,7 @@ export const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card">
+                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 max-w-sm w-full bg-card">
                   <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
                   <div className="flex items-center gap-3 mt-4">
                     <img
@@ -233,14 +233,14 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
   const thirdColumn = currentTestimonials.slice(9, 13)
 
   return (
-    <section className="bg-background my-20 relative">
-      <div className="container z-10 mx-auto px-4">
+    <section className="bg-background my-20 relative w-full">
+      <div className="z-10 mx-auto px-4 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+          className="flex flex-col items-center justify-center max-w-2xl mx-auto"
         >
           <div className="flex justify-center">
             <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -256,7 +256,7 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
               : "See what my clients have to say about working with me."}
           </p>
         </motion.div>
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden w-full">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
