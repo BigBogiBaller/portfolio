@@ -7,6 +7,7 @@ import { DATA } from "@/data/resume"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Mona_Sans as FontSans } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const fontSans = FontSans({
@@ -79,6 +80,7 @@ export default function RootLayout({
             <Toaster position="top-center" />
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
