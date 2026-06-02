@@ -178,53 +178,7 @@ const testimonials = {
   ],
 }
 
-export const TestimonialsColumn = (props: {
-  className?: string
-  testimonials: typeof testimonials.en
-  duration?: number
-}) => {
-  return (
-    <div className={`flex-shrink-0 w-full max-w-[320px] ${props.className || ""}`}>
-      <motion.div
-        animate={{
-          translateY: "-50%",
-        }}
-        transition={{
-          duration: props.duration || 10,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "linear",
-          repeatType: "loop",
-        }}
-        className="flex flex-col gap-6 pb-6 bg-background"
-      >
-        {[
-          ...new Array(2).fill(0).map((_, index) => (
-            <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div key={`${index}-${i}`} className="p-5 rounded-2xl border shadow-md shadow-primary/5 w-full bg-card">
-                  <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
-                  <div className="flex items-center gap-3 mt-4">
-                    <img
-                      width={40}
-                      height={40}
-                      src={image || "/placeholder.svg"}
-                      alt={name}
-                      className="h-10 w-10 rounded-full object-cover shrink-0"
-                    />
-                    <div className="flex flex-col min-w-0">
-                      <div className="font-medium tracking-tight leading-5 text-foreground truncate">{name}</div>
-                      <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </React.Fragment>
-          )),
-        ]}
-      </motion.div>
-    </div>
-  )
-}
+
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
@@ -256,10 +210,67 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
               : "See what my clients have to say about working with me."}
           </p>
         </motion.div>
-        <div className="flex justify-center gap-4 lg:gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[800px] overflow-hidden w-full">
-          <TestimonialsColumn testimonials={firstColumn} duration={18} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={22} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={20} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-10 w-full">
+          <div className="flex flex-col gap-6">
+            {firstColumn.map(({ text, image, name, role }, i) => (
+              <div key={i} className="p-5 rounded-2xl border shadow-md shadow-primary/5 bg-card">
+                <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
+                <div className="flex items-center gap-3 mt-4">
+                  <img
+                    width={40}
+                    height={40}
+                    src={image || "/placeholder.svg"}
+                    alt={name}
+                    className="h-10 w-10 rounded-full object-cover shrink-0"
+                  />
+                  <div className="flex flex-col min-w-0">
+                    <div className="font-medium tracking-tight leading-5 text-foreground truncate">{name}</div>
+                    <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden md:flex flex-col gap-6">
+            {secondColumn.map(({ text, image, name, role }, i) => (
+              <div key={i} className="p-5 rounded-2xl border shadow-md shadow-primary/5 bg-card">
+                <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
+                <div className="flex items-center gap-3 mt-4">
+                  <img
+                    width={40}
+                    height={40}
+                    src={image || "/placeholder.svg"}
+                    alt={name}
+                    className="h-10 w-10 rounded-full object-cover shrink-0"
+                  />
+                  <div className="flex flex-col min-w-0">
+                    <div className="font-medium tracking-tight leading-5 text-foreground truncate">{name}</div>
+                    <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:flex flex-col gap-6">
+            {thirdColumn.map(({ text, image, name, role }, i) => (
+              <div key={i} className="p-5 rounded-2xl border shadow-md shadow-primary/5 bg-card">
+                <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
+                <div className="flex items-center gap-3 mt-4">
+                  <img
+                    width={40}
+                    height={40}
+                    src={image || "/placeholder.svg"}
+                    alt={name}
+                    className="h-10 w-10 rounded-full object-cover shrink-0"
+                  />
+                  <div className="flex flex-col min-w-0">
+                    <div className="font-medium tracking-tight leading-5 text-foreground truncate">{name}</div>
+                    <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
