@@ -93,7 +93,7 @@ export const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card" key={i}>
+                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 w-[320px] bg-card" key={i}>
                   <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
                   <div className="flex items-center gap-2 mt-5">
                     <img
@@ -150,7 +150,7 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden px-4">
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-y-hidden overflow-x-visible px-6">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
