@@ -150,7 +150,7 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-y-hidden overflow-x-visible px-6">
+        <div className="flex justify-center gap-6 mt-10 max-h-[740px] overflow-hidden px-6">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
