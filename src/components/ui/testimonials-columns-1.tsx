@@ -120,9 +120,9 @@ export const TestimonialsColumn = (props: {
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
-  const firstColumn = currentTestimonials.slice(0, 2)
-  const secondColumn = currentTestimonials.slice(2, 4)
-  const thirdColumn = currentTestimonials.slice(4, 5)
+  const firstColumn = [currentTestimonials[0], currentTestimonials[3]]
+  const secondColumn = [currentTestimonials[1], currentTestimonials[4]]
+  const thirdColumn = [currentTestimonials[2], currentTestimonials[0]]
 
   return (
     <section className="bg-background my-20 relative">
@@ -150,10 +150,10 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 max-h-[740px] overflow-hidden px-6">
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={20} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={26} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={23} />
         </div>
       </div>
     </section>
