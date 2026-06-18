@@ -70,63 +70,37 @@ const testimonials = {
   ],
 }
 
-export const TestimonialsColumn = (props: {
-  className?: string
-  testimonials: typeof testimonials.en
-  duration?: number
+const TestimonialCard = ({
+  text,
+  image,
+  name,
+  role,
+}: {
+  text: string
+  image: string
+  name: string
+  role: string
 }) => {
   return (
-    <div className={props.className}>
-      <motion.div
-        animate={{
-          translateY: "-50%",
-        }}
-        transition={{
-          duration: props.duration || 10,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
-        }}
-        className="flex flex-col gap-6 pb-6 bg-background"
-      >
-        {[
-          ...new Array(2).fill(0).map((_, index) => (
-            <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 w-[320px] bg-card" key={i}>
-                  <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
-                  <div className="flex items-center gap-2 mt-5">
-                    <img
-                      width={40}
-                      height={40}
-                      src={image}
-                      alt={name}
-                      className="h-10 w-10 rounded-full object-cover"
-                    />
-                    <div className="flex flex-col">
-                      <div className="font-medium tracking-tight leading-5">{name}</div>
-                      <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </React.Fragment>
-          )),
-        ]}
-      </motion.div>
+    <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 bg-card break-inside-avoid mb-6">
+      <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
+      <div className="flex items-center gap-2 mt-5">
+        <img width={40} height={40} src={image || "/placeholder.svg"} alt={name} className="h-10 w-10 rounded-full object-cover" />
+        <div className="flex flex-col">
+          <div className="font-medium tracking-tight leading-5">{name}</div>
+          <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
-  const firstColumn = [currentTestimonials[0], currentTestimonials[3]]
-  const secondColumn = [currentTestimonials[1], currentTestimonials[4]]
-  const thirdColumn = [currentTestimonials[2], currentTestimonials[0]]
 
   return (
     <section className="bg-background my-20 relative">
-      <div className="container z-10 mx-auto">
+      <div className="z-10 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -150,10 +124,10 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={20} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={26} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={23} />
+        <div className="mt-10 columns-1 md:columns-2 gap-6">
+          {currentTestimonials.map((testimonial, i) => (
+            <TestimonialCard key={i} {...testimonial} />
+          ))}
         </div>
       </div>
     </section>
