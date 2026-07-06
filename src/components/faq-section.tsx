@@ -10,6 +10,7 @@ import BlurFade from "@/components/magicui/blur-fade"
 import Link from "next/link"
 
 const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
+const WHATSAPP_LINK = "https://wa.me/436764716297"
 
 const BLUR_FADE_DELAY = 0.04
 
@@ -18,8 +19,8 @@ const faqData = {
     title: "Frequently Asked Questions",
     description:
       "Here are some common questions and answers about my services. If you don't find the answer you're looking for, feel free to reach out.",
-    contactText: "Can't find what you're looking for? Contact me",
-    contactLink: "directly on Twitter",
+    contactText: "Can't find what you're looking for? Send me a",
+    contactLink: "WhatsApp message",
     questions: [
       {
         id: "item-1",
@@ -63,8 +64,8 @@ const faqData = {
     title: "Häufig gestellte Fragen",
     description:
       "Hier finden Sie häufig gestellte Fragen und Antworten zu meinen Dienstleistungen. Falls Sie nicht finden, wonach Sie suchen, kontaktieren Sie mich gerne.",
-    contactText: "Können Sie nicht finden, wonach Sie suchen?",
-    contactLink: "Vereinbaren Sie gerne ein unverbindliches Erstgespräch und ich helfe Ihnen gerne weiter!",
+    contactText: "Können Sie nicht finden, wonach Sie suchen? Schicken Sie mir einfach eine",
+    contactLink: "Nachricht auf Whatsapp",
     questions: [
       {
         id: "item-1",
@@ -149,7 +150,7 @@ export function FaqSection({ language }: FaqSectionProps) {
           </Accordion>
           <p className="text-muted-foreground text-center">
             {t.contactText}{" "}
-            <Link href={CALENDLY_LINK} className="text-primary hover:underline">
+            <Link href={WHATSAPP_LINK} className="text-primary hover:underline">
               {t.contactLink}
             </Link>
           </p>

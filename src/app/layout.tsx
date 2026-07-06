@@ -1,4 +1,5 @@
 import type React from "react"
+import Script from "next/script"
 import Navbar from "@/components/navbar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -57,21 +58,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          defer
-          data-website-id="dfid_6zdm1LRWqqd4W1h2NaLHA"
-          data-domain="www.bogdanlekic.com"
-          data-allow-localhost="true"
-          src="https://datafa.st/js/script.js"
-        ></script>
-      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
           fontSans.variable,
         )}
       >
+        <Script
+          defer
+          data-website-id="dfid_6zdm1LRWqqd4W1h2NaLHA"
+          data-domain="www.bogdanlekic.com"
+          data-allow-localhost="true"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
             {children}
