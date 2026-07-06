@@ -35,6 +35,30 @@ const testimonials = {
       name: "Elisabeth Brommer Kern",
       role: "Founder at SJPDevelopment GmbH",
     },
+    {
+      text: "Working with Bogdan was a fantastic experience from start to finish. He truly understood our brand and delivered a website that exceeded our expectations.",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      name: "Sophie Meyer",
+      role: "Marketing Manager",
+    },
+    {
+      text: "Fast, reliable, and creative. Bogdan turned our ideas into a polished, professional website. Communication was clear throughout the entire process.",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      name: "Lukas Berger",
+      role: "Startup Founder",
+    },
+    {
+      text: "Highly professional and detail-oriented. The result was a modern, fast website that perfectly represents our company online.",
+      image: "https://randomuser.me/api/portraits/women/68.jpg",
+      name: "Julia Fischer",
+      role: "Business Owner",
+    },
+    {
+      text: "Bogdan delivered exactly what we needed on time and on budget. His technical skills and design sense are truly impressive.",
+      image: "https://randomuser.me/api/portraits/men/75.jpg",
+      name: "Thomas Wagner",
+      role: "Managing Director",
+    },
   ],
   de: [
     {
@@ -67,40 +91,90 @@ const testimonials = {
       name: "Elisabeth Brommer Kern",
       role: "Gründerin von SJPDevelopment GmbH",
     },
+    {
+      text: "Die Zusammenarbeit mit Bogdan war von Anfang bis Ende eine fantastische Erfahrung. Er hat unsere Marke wirklich verstanden und eine Website geliefert, die unsere Erwartungen übertroffen hat.",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      name: "Sophie Meyer",
+      role: "Marketing Managerin",
+    },
+    {
+      text: "Schnell, zuverlässig und kreativ. Bogdan hat unsere Ideen in eine ausgefeilte, professionelle Website verwandelt. Die Kommunikation war während des gesamten Prozesses klar.",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      name: "Lukas Berger",
+      role: "Startup-Gründer",
+    },
+    {
+      text: "Sehr professionell und detailorientiert. Das Ergebnis war eine moderne, schnelle Website, die unser Unternehmen perfekt online repräsentiert.",
+      image: "https://randomuser.me/api/portraits/women/68.jpg",
+      name: "Julia Fischer",
+      role: "Geschäftsinhaberin",
+    },
+    {
+      text: "Bogdan hat genau das geliefert, was wir brauchten - pünktlich und im Budget. Seine technischen Fähigkeiten und sein Designgespür sind wirklich beeindruckend.",
+      image: "https://randomuser.me/api/portraits/men/75.jpg",
+      name: "Thomas Wagner",
+      role: "Geschäftsführer",
+    },
   ],
 }
 
-const TestimonialCard = ({
-  text,
-  image,
-  name,
-  role,
-}: {
-  text: string
-  image: string
-  name: string
-  role: string
+export const TestimonialsColumn = (props: {
+  className?: string
+  testimonials: typeof testimonials.en
+  duration?: number
 }) => {
   return (
-    <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 bg-card break-inside-avoid mb-6">
-      <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
-      <div className="flex items-center gap-2 mt-5">
-        <img width={40} height={40} src={image || "/placeholder.svg"} alt={name} className="h-10 w-10 rounded-full object-cover" />
-        <div className="flex flex-col">
-          <div className="font-medium tracking-tight leading-5">{name}</div>
-          <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
-        </div>
-      </div>
+    <div className={props.className}>
+      <motion.div
+        animate={{
+          translateY: "-50%",
+        }}
+        transition={{
+          duration: props.duration || 10,
+          repeat: Infinity,
+          ease: "linear",
+          repeatType: "loop",
+        }}
+        className="flex flex-col gap-6 pb-6 bg-background"
+      >
+        {[
+          ...new Array(2).fill(0).map((_, index) => (
+            <React.Fragment key={index}>
+              {props.testimonials.map(({ text, image, name, role }, i) => (
+                <div className="p-6 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full bg-card" key={i}>
+                  <div className="text-sm text-muted-foreground leading-relaxed">{text}</div>
+                  <div className="flex items-center gap-2 mt-5">
+                    <img
+                      width={40}
+                      height={40}
+                      src={image || "/placeholder.svg"}
+                      alt={name}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                    <div className="flex flex-col">
+                      <div className="font-medium tracking-tight leading-5">{name}</div>
+                      <div className="leading-5 text-muted-foreground tracking-tight text-xs">{role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </React.Fragment>
+          )),
+        ]}
+      </motion.div>
     </div>
   )
 }
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
+  const firstColumn = currentTestimonials.slice(0, 3)
+  const secondColumn = currentTestimonials.slice(3, 6)
+  const thirdColumn = currentTestimonials.slice(6, 9)
 
   return (
     <section className="bg-background my-20 relative">
-      <div className="z-10 mx-auto">
+      <div className="container z-10 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -124,10 +198,10 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="mt-10 columns-1 md:columns-2 gap-6">
-          {currentTestimonials.map((testimonial, i) => (
-            <TestimonialCard key={i} {...testimonial} />
-          ))}
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
         </div>
       </div>
     </section>
