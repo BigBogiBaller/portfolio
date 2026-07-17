@@ -67,24 +67,6 @@ export const DATA = {
   education: [],
   projects: [
     {
-      title: "PostIQ",
-      href: "https://postiq.app",
-      dates: "2026",
-      active: true,
-      description:
-        "PostIQ ist dadurch entstanden dass ich sowohl bei mir als auch bei meinen Kunden gesehen habe dass es kein Tool gab welches es leicht macht auf Linkedin effektiven und coolen Content zu posten.",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI"],
-      links: [
-        {
-          type: "Website",
-          href: "https://postiq.app",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://www.youtube.com/embed/6p4kODoc0So",
-    },
-    {
       title: "Oberkogleralm",
       href: "https://oberkogleralm.at",
       dates: "2026",
@@ -101,6 +83,24 @@ export const DATA = {
       ],
       image: "",
       video: "https://www.youtube.com/embed/-7YwhT3sLLQ",
+    },
+    {
+      title: "PostIQ",
+      href: "https://postiq.app",
+      dates: "2026",
+      active: true,
+      description:
+        "PostIQ ist dadurch entstanden dass ich sowohl bei mir als auch bei meinen Kunden gesehen habe dass es kein Tool gab welches es leicht macht auf Linkedin effektiven und coolen Content zu posten.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI"],
+      links: [
+        {
+          type: "Website",
+          href: "https://postiq.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://www.youtube.com/embed/6p4kODoc0So",
     },
     {
       title: "Newsletter Funnel SJP Development",

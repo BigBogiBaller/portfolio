@@ -16,6 +16,9 @@ import { useState } from "react"
 import { ProcessTimeline } from "@/components/process-timeline"
 import { FaqSection } from "@/components/faq-section"
 import { Logos3 } from "@/components/ui/logos3"
+import { SummerOfferBanner } from "@/components/summer-offer-banner"
+
+const WHATSAPP_LINK = "https://wa.me/436764716297"
 
 const BLUR_FADE_DELAY = 0.04
 const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
@@ -26,8 +29,8 @@ const translations = {
     description:
       "Web Developer and Aspiring Entrepeneur. I love building things and helping people. Very active on Twitter and LinkedIn.",
     summary:
-      "At the end of 2022, I got introduced to AI and building beautiful websites using different tools. In the past, I ran a successful content creation business where I had my own social media pages and shot content for companies. I also had the pleasure of participating in a couple of different hackathons. Furthermore i created some beautiful websites for different brands and agencies.",
-    about: "About",
+      "I build websites that don't just look good, but move your business forward.\n\nSince 2022 I've combined AI, clear design and conversion optimization to build landing pages and digital products that grab attention and turn visitors into paying customers. Through my experience in the content creation business, at hackathons and as a developer for brands and agencies, I know exactly what matters: a clear message, fast load times and a design that instantly builds trust.\n\nMy scope goes beyond classic websites. I also build online shops that sell, custom SaaS solutions, automations that take over repetitive tasks, as well as strategic email sequences that warm up leads and drive them to purchase.\n\nFor you that means: less waiting, more inquiries and a digital product that sells itself – whether you're a start-up, established brand or agency.",
+    about: "About Me",
     myProjects: "My Projects",
     checkOutWork: "Check out my latest work",
     projectsDescription:
@@ -41,8 +44,8 @@ const translations = {
       "During the last few years, I participated in a couple of hackathons. People from around the world come together and try to build incredible things in 2-3 days. It was interesting to see what you can do when you have little time but endless possibilities brought to life by a group of motivated and passionate individuals.",
     contact: "Contact",
     getInTouch: "Get in Touch",
-    wantToChat: "Want to chat? Just shoot me a dm",
-    onTwitter: "with a direct question on twitter",
+    wantToChat: "Want to chat? Just send me a",
+    onTwitter: "message on WhatsApp",
     andRespond: "and I'll respond whenever I can.",
     scheduleCallTitle: "Schedule a Call",
     scheduleCallDescription:
@@ -72,7 +75,7 @@ const translations = {
     description:
       "Webentwickler und aufstrebender Unternehmer. Ich liebe es, Dinge zu bauen und Menschen zu helfen. Sehr aktiv auf Twitter und LinkedIn.",
     summary:
-      "Ende 2022 wurde ich in die Welt der KI und des Erstellens schöner Websites mit verschiedenen Tools eingeführt. In der Vergangenheit führte ich ein erfolgreiches Content-Creation-Geschäft, bei dem ich meine eigenen Social-Media-Seiten hatte und Content für Unternehmen produzierte. Ich hatte auch das Vergnügen, an einigen verschiedenen Hackathons teilzunehmen. Darüber hinaus habe ich einige schöne Websites für verschiedene Marken und Agenturen erstellt.",
+      "Ich baue Websites, die nicht nur gut aussehen, sondern dein Geschäft voranbringen.\n\nSeit 2022 kombiniere ich KI, klares Design und Conversion-Optimierung, um Landingpages und digitale Produkte zu entwickeln, die Aufmerksamkeit fangen und Besucher in zahlende Kunden verwandeln. Durch meine Erfahrung im Content-Creation-Business, bei Hackathons und als Entwickler für Marken und Agenturen weiß ich genau, worauf es ankommt: eine klare Botschaft, schnelle Ladezeiten und ein Design, das sofort Vertrauen schafft.\n\nMein Spektrum ist dabei breiter als klassische Websites. Ich entwickle auch Online Shops, die verkaufen, maßgeschneiderte SaaS-Lösungen, Automatisierungen, die repetitive Aufgaben übernehmen, sowie strategische Email-Sequenzen, die Leads aufwärmen und zum Kauf führen.\n\nFür dich bedeutet das: weniger Wartezeit, mehr Anfragen und ein digitales Produkt, das sich von selbst verkauft – egal ob du Start-up, etablierte Marke oder Agentur bist.",
     about: "Über mich",
     myProjects: "Meine Projekte",
     checkOutWork: "Schauen Sie sich meine neuesten Arbeiten an",
@@ -88,8 +91,8 @@ const translations = {
       "In den letzten Jahren habe ich an einigen Hackathons teilgenommen. Menschen aus der ganzen Welt kommen zusammen und versuchen, in 2-3 Tagen unglaubliche Dinge zu bauen. Es war interessant zu sehen, was man in kurzer Zeit schaffen kann, wenn endlose Möglichkeiten durch eine Gruppe motivierter und leidenschaftlicher Menschen zum Leben erweckt werden.",
     contact: "Kontakt",
     getInTouch: "Kontakt aufnehmen",
-    wantToChat: "Möchten Sie chatten? Schicken Sie mir einfach eine DM",
-    onTwitter: "mit einer direkten Frage auf Twitter",
+    wantToChat: "Möchten Sie chatten? Schicken Sie mir einfach eine",
+    onTwitter: "Nachricht auf Whatsapp",
     andRespond: "und ich antworte, sobald ich kann.",
     scheduleCallTitle: "Termin vereinbaren",
     scheduleCallDescription:
@@ -177,6 +180,8 @@ export default function Page() {
         </button>
       </div>
 
+      <SummerOfferBanner language={language} />
+
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
@@ -196,6 +201,21 @@ export default function Page() {
               </Avatar>
             </BlurFade>
           </div>
+
+          <BlurFade delay={BLUR_FADE_DELAY * 1.25}>
+            <div
+              className="relative w-full overflow-hidden rounded-xl border shadow-lg"
+              style={{ paddingBottom: "56.25%", height: 0 }}
+            >
+              <iframe
+                src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24"
+                allowFullScreen
+                title="Intro Video"
+                className="absolute left-0 top-0 h-full w-full"
+                style={{ border: 0 }}
+              />
+            </div>
+          </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -292,7 +312,12 @@ export default function Page() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t.getInTouch}</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 {t.wantToChat}{" "}
-                <Link href={DATA.contact.social.X.url} className="text-blue-500 hover:underline">
+                <Link
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
                   {t.onTwitter}
                 </Link>{" "}
                 {t.andRespond}
