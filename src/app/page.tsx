@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
 import { Pricing } from "@/components/ui/pricing"
+import { CalBookingButton } from "@/components/cal-booking-button"
 import { DATA } from "@/data/resume"
 import { Calendar, ArrowRight, Sparkles, FileCheck } from "lucide-react"
 import Link from "next/link"
@@ -192,15 +193,7 @@ export default function Page() {
               </p>
 
               <div className="pt-6">
-                <Link href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    size="lg"
-                    className="gap-2 h-14 px-10 text-lg font-bold bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-100"
-                  >
-                    <Calendar className="size-6" />
-                    Book Your Free Consultation
-                  </Button>
-                </Link>
+                <CalBookingButton />
               </div>
             </div>
           </BlurFade>

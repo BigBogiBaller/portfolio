@@ -67,6 +67,42 @@ export const DATA = {
   education: [],
   projects: [
     {
+      title: "Oberkogleralm",
+      href: "https://oberkogleralm.at",
+      dates: "2026",
+      active: true,
+      description:
+        "Ich habe hier für die Oberkogleralm eine Website mit Onlineshop programmiert um die Alm und ihre Produkte zu zeigen und zu verkaufen. Man kann die Produkte der Alm auf der Seite kaufen aber einfach auch die Alm an sich auf der Website erkunden.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "E-Commerce"],
+      links: [
+        {
+          type: "Website",
+          href: "https://oberkogleralm.at",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://www.youtube.com/embed/-7YwhT3sLLQ",
+    },
+    {
+      title: "PostIQ",
+      href: "https://postiq.app",
+      dates: "2026",
+      active: true,
+      description:
+        "PostIQ ist dadurch entstanden dass ich sowohl bei mir als auch bei meinen Kunden gesehen habe dass es kein Tool gab welches es leicht macht auf Linkedin effektiven und coolen Content zu posten.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "AI"],
+      links: [
+        {
+          type: "Website",
+          href: "https://postiq.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "https://www.youtube.com/embed/6p4kODoc0So",
+    },
+    {
       title: "Newsletter Funnel SJP Development",
       href: "https://news.sjpdevelopment.ch",
       dates: "April 2026",

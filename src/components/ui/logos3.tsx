@@ -24,6 +24,18 @@ interface Logos3Props {
 
 const defaultLogos: Logo[] = [
   {
+    id: "logo-oberkogleralm",
+    description: "Oberkogleralm",
+    image: "/images/logos/oberkogleralm.png",
+    className: "h-20 w-auto",
+  },
+  {
+    id: "logo-postiq",
+    description: "PostIQ",
+    image: "/images/logos/postiq.png",
+    className: "h-16 w-auto",
+  },
+  {
     id: "logo-1",
     description: "Stabil Im Wandel",
     image: "/images/logos/stabil-im-wandel.png",
