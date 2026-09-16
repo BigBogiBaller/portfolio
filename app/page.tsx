@@ -235,7 +235,7 @@ export default function Page() {
 
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">{t.about}</h2>
+          <h2 className="font-serif text-2xl font-semibold tracking-tight">{t.about}</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
               <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -244,9 +244,9 @@ export default function Page() {
         </BlurFade>
       </section>
 
-      <Testimonials language={language} />
-
       <Logos3 language={language} />
+
+      <Testimonials language={language} />
 
       <section id="projects">
         <div className="space-y-12 w-full py-12">
