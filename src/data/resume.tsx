@@ -12,7 +12,7 @@ export const DATA = {
     "Web Developer and Aspiring Entrepeneur. I love building things and helping people. Very active on Twitter and LinkedIn.",
   summary:
     "At the end of 2022, I got introduced to AI and building beautiful websites using different tools. In the past, I ran a successful content creation business where I had my own social media pages and shot content for companies. I also had the pleasure of participating in a couple of different hackathons. Furthermore i created some beautiful websites for different brands and agencies.",
-  avatarUrl: "/profile-updated.png",
+  avatarUrl: "/profile-linkedin.png",
   skills: [
     "React",
     "Next.js",

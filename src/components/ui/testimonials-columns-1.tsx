@@ -115,6 +115,18 @@ const testimonials = {
       name: "Thomas Wagner",
       role: "Geschäftsführer",
     },
+    {
+      text: "Bogdan und ich haben uns hier über LinkedIn kennengelernt, als es sich um das großgefächerte Thema KI und IT handelte. Bogdan ist ein dynamischer, wissenshungriger, sehr freundlicher und zielstrebiger junger Mann, der jetzt schon in seinen jungen Jahren ein Wissenslevel hat, von dem man nur träumen kann. Ich bin sehr froh ihn kennengelernt zu haben und ihn als meinen Mentor nennen zu dürfen! Er baut mich Schritt für Schritt im Themenbereich KI auf und seine Schulung ist ein Träumchen. Bogdan ist für jedes Unternehmen, und auch für Privatpersonen, eine absolute Bereicherung da er voll emphatisch mithört, mitdenkt und sich hineinversetzen kann! Ich wünsche dir weiterhin alles Gute und viel Erfolg auf deinem Weg, mein lieber Bogdan!",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-8O9sHfPFeDeHb0OUVnQ61ihzclQrfC.png",
+      name: "Constantin Raible",
+      role: "Mentoring & KI",
+    },
+    {
+      text: "Ich habe Bogdan im Rahmen mehrerer Gespräche rund um LinkedIn, Positionierung und den Aufbau meines Projekts Mapply kennengelernt. Besonders geschätzt habe ich seine offene und unkomplizierte Art sowie die Bereitschaft, seine Erfahrungen und Perspektiven zu teilen. Unsere Gespräche haben mir einige neue Denkanstöße gegeben und dabei geholfen, bestimmte Themen aus einem anderen Blickwinkel zu betrachten. Wer den Austausch mit jemandem sucht, der sich intensiv mit Sichtbarkeit, persönlicher Positionierung und digitalen Projekten beschäftigt, wird von den Gesprächen mit Bogdan sicherlich profitieren. Vielen Dank für den wertvollen Austausch und die Unterstützung auf meinem bisherigen Weg.",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bg81GD4mbYPuBUTYx880d0DthJweY6.png",
+      name: "Tristan Germer",
+      role: "LinkedIn, Positionierung & Mapply",
+    },
   ],
 }
 
@@ -170,7 +182,7 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
   const currentTestimonials = testimonials[language]
   const firstColumn = currentTestimonials.slice(0, 3)
   const secondColumn = currentTestimonials.slice(3, 6)
-  const thirdColumn = currentTestimonials.slice(6, 9)
+  const thirdColumn = currentTestimonials.slice(6, 11)
 
   return (
     <section className="bg-background my-20 relative">
@@ -183,7 +195,7 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto px-4"
         >
           <div className="flex justify-center">
-            <div className="border py-1 px-4 rounded-lg text-sm">
+            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
               {language === "de" ? "Referenzen" : "Testimonials"}
             </div>
           </div>

@@ -73,9 +73,9 @@ const translations = {
   de: {
     greeting: "Hallo, ich bin",
     description:
-      "Webentwickler und aufstrebender Unternehmer. Ich liebe es, Dinge zu bauen und Menschen zu helfen. Sehr aktiv auf Twitter und LinkedIn.",
+      "D4Y Software & Automatisierung für KMU, CEOs, Coaches & Berater. Konzentriere dich zu 100% auf deine Dienstleistung und gewinne & spare dabei mehr Zeit und Geld!",
     summary:
-      "Ich baue Websites, die nicht nur gut aussehen, sondern dein Geschäft voranbringen.\n\nSeit 2022 kombiniere ich KI, klares Design und Conversion-Optimierung, um Landingpages und digitale Produkte zu entwickeln, die Aufmerksamkeit fangen und Besucher in zahlende Kunden verwandeln. Durch meine Erfahrung im Content-Creation-Business, bei Hackathons und als Entwickler für Marken und Agenturen weiß ich genau, worauf es ankommt: eine klare Botschaft, schnelle Ladezeiten und ein Design, das sofort Vertrauen schafft.\n\nMein Spektrum ist dabei breiter als klassische Websites. Ich entwickle auch Online Shops, die verkaufen, maßgeschneiderte SaaS-Lösungen, Automatisierungen, die repetitive Aufgaben übernehmen, sowie strategische Email-Sequenzen, die Leads aufwärmen und zum Kauf führen.\n\nFür dich bedeutet das: weniger Wartezeit, mehr Anfragen und ein digitales Produkt, das sich von selbst verkauft – egal ob du Start-up, etablierte Marke oder Agentur bist.",
+      "Ich entwickle verkaufsoptimierte Websites, Onlineshops und Automatisierungen für KMU, CEOs, Coaches und Berater. So kannst du dich zu 100 % auf deine Dienstleistung konzentrieren, während deine digitalen Systeme für dich arbeiten.\n\nSeit 2022 verbinde ich klares Design, moderne Webentwicklung und KI, um Websites und Onlineshops zu bauen, die Vertrauen schaffen, Besucher überzeugen und mehr Verkäufe ermöglichen.\n\nZusätzlich automatisiere ich wiederkehrende Abläufe, damit du wertvolle Zeit sparst, effizienter arbeitest und langfristig mehr Geld verdienst. Mein Fokus liegt dabei immer auf Lösungen, die zu deinem Unternehmen passen und messbaren Mehrwert bringen.\n\nKurz gesagt: bessere digitale Auftritte, weniger manuelle Arbeit und mehr Zeit für das, was dein Unternehmen wirklich voranbringt.",
     about: "Über mich",
     myProjects: "Meine Projekte",
     checkOutWork: "Schauen Sie sich meine neuesten Arbeiten an",
@@ -195,8 +195,8 @@ export default function Page() {
               <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={t.description} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border mt-2">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="object-cover object-bottom" />
+<Avatar className="size-28 aspect-square rounded-full border mt-2 overflow-hidden">
+              <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full translate-y-1 scale-[0.98] rounded-full object-contain" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
@@ -208,8 +208,11 @@ export default function Page() {
               style={{ paddingBottom: "56.25%", height: 0 }}
             >
               <iframe
-                src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24"
+                src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+                allow="autoplay; fullscreen"
                 allowFullScreen
+                loading="eager"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Intro Video"
                 className="absolute left-0 top-0 h-full w-full"
                 style={{ border: 0 }}
@@ -235,16 +238,18 @@ export default function Page() {
 
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">{t.about}</h2>
+          <h2 className="font-serif text-2xl font-semibold tracking-tight">{t.about}</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {t.summary}
-          </Markdown>
+              <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+                <Markdown>{t.summary}</Markdown>
+              </div>
         </BlurFade>
       </section>
 
       <Logos3 language={language} />
+
+      <Testimonials language={language} />
 
       <section id="projects">
         <div className="space-y-12 w-full py-12">
@@ -295,8 +300,6 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-
-      <Testimonials language={language} />
 
       <ProcessTimeline language={language} />
 
