@@ -73,9 +73,9 @@ const translations = {
   de: {
     greeting: "Hallo, ich bin",
     description:
-      "Webentwickler und aufstrebender Unternehmer. Ich liebe es, Dinge zu bauen und Menschen zu helfen. Sehr aktiv auf Twitter und LinkedIn.",
+      "D4Y Software und Automatisierung für KMU, CEOs, Coaches und Berater. Konzentriere dich zu 100 % auf deine Dienstleistung und gewinne dabei Zeit und Geld.",
     summary:
-      "Ich baue Websites, die nicht nur gut aussehen, sondern dein Geschäft voranbringen.\n\nSeit 2022 kombiniere ich KI, klares Design und Conversion-Optimierung, um Landingpages und digitale Produkte zu entwickeln, die Aufmerksamkeit fangen und Besucher in zahlende Kunden verwandeln. Durch meine Erfahrung im Content-Creation-Business, bei Hackathons und als Entwickler für Marken und Agenturen weiß ich genau, worauf es ankommt: eine klare Botschaft, schnelle Ladezeiten und ein Design, das sofort Vertrauen schafft.\n\nMein Spektrum ist dabei breiter als klassische Websites. Ich entwickle auch Online Shops, die verkaufen, maßgeschneiderte SaaS-Lösungen, Automatisierungen, die repetitive Aufgaben übernehmen, sowie strategische Email-Sequenzen, die Leads aufwärmen und zum Kauf führen.\n\nFür dich bedeutet das: weniger Wartezeit, mehr Anfragen und ein digitales Produkt, das sich von selbst verkauft – egal ob du Start-up, etablierte Marke oder Agentur bist.",
+      "Ich entwickle D4Y Software und Automatisierungen für KMU, CEOs, Coaches und Berater, damit sie sich zu 100 % auf ihre Dienstleistung konzentrieren können.\n\nSeit 2022 verbinde ich KI, klares Design und moderne Webentwicklung, um digitale Lösungen zu bauen, die Abläufe vereinfachen, Zeit sparen und neue Möglichkeiten für Wachstum schaffen. Dabei reicht mein Spektrum von conversionstarken Websites und Landingpages bis zu individuellen SaaS-Lösungen und Automatisierungen für wiederkehrende Aufgaben.\n\nDurch meine Erfahrung im Content-Creation-Business, bei Hackathons und in Projekten für Marken und Agenturen denke ich nicht nur technisch. Ich achte auf eine klare Botschaft, schnelle Ladezeiten und eine Nutzererfahrung, die Vertrauen schafft.\n\nMein Ziel: weniger manuelle Arbeit, mehr Fokus auf das Wesentliche und digitale Systeme, die dein Unternehmen nachhaltig voranbringen.",
     about: "Über mich",
     myProjects: "Meine Projekte",
     checkOutWork: "Schauen Sie sich meine neuesten Arbeiten an",
@@ -208,8 +208,11 @@ export default function Page() {
               style={{ paddingBottom: "56.25%", height: 0 }}
             >
               <iframe
-                src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24"
+                src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+                allow="autoplay; fullscreen"
                 allowFullScreen
+                loading="eager"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="Intro Video"
                 className="absolute left-0 top-0 h-full w-full"
                 style={{ border: 0 }}
