@@ -195,8 +195,8 @@ export default function Page() {
               <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={t.description} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 aspect-square rounded-xl border mt-2 overflow-hidden">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full rounded-xl object-cover object-bottom" />
+<Avatar className="size-28 aspect-square rounded-full border mt-2 overflow-hidden">
+              <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full rounded-full object-contain" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
