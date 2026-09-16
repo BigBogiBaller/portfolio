@@ -73,9 +73,9 @@ const translations = {
   de: {
     greeting: "Hallo, ich bin",
     description:
-      "D4Y Software und Automatisierung für KMU, CEOs, Coaches und Berater. Konzentriere dich zu 100 % auf deine Dienstleistung und gewinne dabei Zeit und Geld.",
+      "D4Y Software & Automatisierung für KMU, CEOs, Coaches & Berater. Konzentriere dich zu 100% auf deine Dienstleistung und gewinne & spare dabei mehr Zeit und Geld!",
     summary:
-      "Ich entwickle D4Y Software und Automatisierungen für KMU, CEOs, Coaches und Berater, damit sie sich zu 100 % auf ihre Dienstleistung konzentrieren können.\n\nSeit 2022 verbinde ich KI, klares Design und moderne Webentwicklung, um digitale Lösungen zu bauen, die Abläufe vereinfachen, Zeit sparen und neue Möglichkeiten für Wachstum schaffen. Dabei reicht mein Spektrum von conversionstarken Websites und Landingpages bis zu individuellen SaaS-Lösungen und Automatisierungen für wiederkehrende Aufgaben.\n\nDurch meine Erfahrung im Content-Creation-Business, bei Hackathons und in Projekten für Marken und Agenturen denke ich nicht nur technisch. Ich achte auf eine klare Botschaft, schnelle Ladezeiten und eine Nutzererfahrung, die Vertrauen schafft.\n\nMein Ziel: weniger manuelle Arbeit, mehr Fokus auf das Wesentliche und digitale Systeme, die dein Unternehmen nachhaltig voranbringen.",
+      "Ich entwickle verkaufsoptimierte Websites, Onlineshops und Automatisierungen für KMU, CEOs, Coaches und Berater. So kannst du dich zu 100 % auf deine Dienstleistung konzentrieren, während deine digitalen Systeme für dich arbeiten.\n\nSeit 2022 verbinde ich klares Design, moderne Webentwicklung und KI, um Websites und Onlineshops zu bauen, die Vertrauen schaffen, Besucher überzeugen und mehr Verkäufe ermöglichen.\n\nZusätzlich automatisiere ich wiederkehrende Abläufe, damit du wertvolle Zeit sparst, effizienter arbeitest und langfristig mehr Geld verdienst. Mein Fokus liegt dabei immer auf Lösungen, die zu deinem Unternehmen passen und messbaren Mehrwert bringen.\n\nKurz gesagt: bessere digitale Auftritte, weniger manuelle Arbeit und mehr Zeit für das, was dein Unternehmen wirklich voranbringt.",
     about: "Über mich",
     myProjects: "Meine Projekte",
     checkOutWork: "Schauen Sie sich meine neuesten Arbeiten an",
@@ -195,8 +195,8 @@ export default function Page() {
               <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={t.description} />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border mt-2">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="object-cover object-bottom" />
+              <Avatar className="size-28 aspect-square rounded-xl border mt-2 overflow-hidden">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full rounded-xl object-cover object-bottom" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
