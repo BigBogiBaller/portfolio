@@ -244,6 +244,8 @@ export default function Page() {
         </BlurFade>
       </section>
 
+      <Testimonials language={language} />
+
       <Logos3 language={language} />
 
       <section id="projects">
@@ -295,8 +297,6 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-
-      <Testimonials language={language} />
 
       <ProcessTimeline language={language} />
 
