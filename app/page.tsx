@@ -196,7 +196,7 @@ export default function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
 <Avatar className="size-28 aspect-square rounded-full border mt-2 overflow-hidden">
-              <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full rounded-full object-contain" />
+              <AvatarImage alt={DATA.name} src={DATA.avatarUrl || "/placeholder.svg"} className="h-full w-full translate-y-1 scale-[0.98] rounded-full object-contain" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
