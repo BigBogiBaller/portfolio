@@ -6,7 +6,6 @@ import BlurFadeText from "@/components/magicui/blur-fade-text"
 import { ProjectCard } from "@/components/project-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
-import { Pricing } from "@/components/ui/pricing"
 import { Button } from "@/components/ui/button"
 import { DATA } from "@/data/resume"
 import { Icons } from "@/components/icons"
@@ -27,7 +26,7 @@ const translations = {
   en: {
     greeting: "Hi, I'm",
     description:
-      "Web Developer and Aspiring Entrepeneur. I love building things and helping people. Very active on Twitter and LinkedIn.",
+      "Web Developer and Aspiring Entrepreneur. I love building things and helping people. Very active on WhatsApp and LinkedIn.",
     summary:
       "I build websites that don't just look good, but move your business forward.\n\nSince 2022 I've combined AI, clear design and conversion optimization to build landing pages and digital products that grab attention and turn visitors into paying customers. Through my experience in the content creation business, at hackathons and as a developer for brands and agencies, I know exactly what matters: a clear message, fast load times and a design that instantly builds trust.\n\nMy scope goes beyond classic websites. I also build online shops that sell, custom SaaS solutions, automations that take over repetitive tasks, as well as strategic email sequences that warm up leads and drive them to purchase.\n\nFor you that means: less waiting, more inquiries and a digital product that sells itself – whether you're a start-up, established brand or agency.",
     about: "About Me",
@@ -45,7 +44,7 @@ const translations = {
     contact: "Contact",
     getInTouch: "Get in Touch",
     wantToChat: "Want to chat? Just send me a",
-    onTwitter: "message on WhatsApp",
+    onWhatsapp: "message on WhatsApp",
     andRespond: "and I'll respond whenever I can.",
     scheduleCallTitle: "Schedule a Call",
     scheduleCallDescription:
@@ -92,7 +91,7 @@ const translations = {
     contact: "Kontakt",
     getInTouch: "Kontakt aufnehmen",
     wantToChat: "Möchten Sie chatten? Schicken Sie mir einfach eine",
-    onTwitter: "Nachricht auf Whatsapp",
+    onWhatsapp: "Nachricht auf WhatsApp",
     andRespond: "und ich antworte, sobald ich kann.",
     scheduleCallTitle: "Termin vereinbaren",
     scheduleCallDescription:
@@ -303,8 +302,6 @@ export default function Page() {
 
       <ProcessTimeline language={language} />
 
-      <Pricing language={language} />
-
       <FaqSection language={language} />
 
       <section id="contact">
@@ -321,7 +318,7 @@ export default function Page() {
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
-                  {t.onTwitter}
+                  {t.onWhatsapp}
                 </Link>{" "}
                 {t.andRespond}
               </p>
