@@ -38,7 +38,7 @@ export default function Navbar() {
                       href={social.url}
                       className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
                     >
-                      <social.icon className="size-4" />
+                      <social.icon className={cn("size-4", name === "WhatsApp" && "size-5")} />
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
