@@ -43,10 +43,10 @@ export const DATA = {
         icon: Icons.linkedin,
         navbar: true,
       },
-      X: {
-        name: "X",
-        url: "https://x.com/bogi_lekic",
-        icon: Icons.x,
+      WhatsApp: {
+        name: "WhatsApp",
+        url: "https://wa.me/436764716297",
+        icon: Icons.whatsapp,
         navbar: true,
       },
       Instagram: {
