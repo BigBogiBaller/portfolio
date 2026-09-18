@@ -180,6 +180,7 @@ export const TestimonialsColumn = (props: {
 
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
+  const mobileColumn = currentTestimonials
   const firstColumn = currentTestimonials.slice(0, 3)
   const secondColumn = currentTestimonials.slice(3, 6)
   const thirdColumn = currentTestimonials.slice(6, 11)
