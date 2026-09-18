@@ -134,11 +134,12 @@ export const TestimonialsColumn = (props: {
   className?: string
   testimonials: typeof testimonials.en
   duration?: number
+  static?: boolean
 }) => {
   return (
     <div className={props.className}>
       <motion.div
-        animate={{
+        animate={props.static ? undefined : {
           translateY: "-50%",
         }}
         transition={{
@@ -181,6 +182,7 @@ export const TestimonialsColumn = (props: {
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
   const firstColumn = currentTestimonials.slice(0, 3)
+  const mobileColumn = currentTestimonials
   const secondColumn = currentTestimonials.slice(3, 6)
   const thirdColumn = currentTestimonials.slice(6, 11)
 
@@ -210,8 +212,9 @@ export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) =>
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-none overflow-visible md:max-h-[740px] md:overflow-hidden">
+          <TestimonialsColumn testimonials={mobileColumn} className="md:hidden" static />
+          <TestimonialsColumn testimonials={firstColumn} className="hidden md:block" duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
         </div>
