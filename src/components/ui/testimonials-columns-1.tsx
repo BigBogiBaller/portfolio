@@ -134,12 +134,11 @@ export const TestimonialsColumn = (props: {
   className?: string
   testimonials: typeof testimonials.en
   duration?: number
-  static?: boolean
 }) => {
   return (
     <div className={props.className}>
       <motion.div
-        animate={props.static ? undefined : {
+        animate={{
           translateY: "-50%",
         }}
         transition={{
@@ -182,7 +181,6 @@ export const TestimonialsColumn = (props: {
 export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
   const firstColumn = currentTestimonials.slice(0, 3)
-  const mobileColumn = currentTestimonials
   const secondColumn = currentTestimonials.slice(3, 6)
   const thirdColumn = currentTestimonials.slice(6, 11)
 
