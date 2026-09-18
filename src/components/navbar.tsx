@@ -49,14 +49,14 @@ export default function Navbar() {
                           onClick={() => setIsContactModalOpen(true)}
                           className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
                         >
-                          <social.icon className={"size-4"} />
+                          <social.icon className="size-4" />
                         </button>
                       ) : (
                         <Link
                           href={social.url}
                           className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
                         >
-                          <social.icon className={"size-4"} />
+                          <social.icon className="size-4" />
                         </Link>
                       )}
                     </TooltipTrigger>
