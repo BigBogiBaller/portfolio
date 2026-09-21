@@ -18,17 +18,34 @@ const fontSans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    default: "D4Y Software & Automatisierung für KMU | Bogdan Lekic",
+    template: `%s | Bogdan Lekic`,
   },
-  description: DATA.description,
+  description:
+    "Verkaufsoptimierte Websites, Onlineshops und Automatisierungen für KMU, CEOs, Coaches und Berater in Wien und Österreich. Gewinne Zeit und Geld mit digitalen Systemen.",
+  keywords: [
+    "Webdesign Wien",
+    "Website erstellen lassen Österreich",
+    "verkaufsoptimierte Website",
+    "Onlineshop erstellen lassen",
+    "Automatisierung KMU",
+    "KI Automatisierung Österreich",
+    "Bogdan Lekic",
+  ],
+  authors: [{ name: "Bogdan Lekic", url: DATA.url }],
+  creator: "Bogdan Lekic",
+  publisher: "Bogdan Lekic",
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
     url: DATA.url,
     siteName: `${DATA.name}`,
-    locale: "en_US",
+    locale: "de_AT",
     type: "website",
+    images: [{ url: "/profile-linkedin.png", width: 800, height: 800, alt: "Bogdan Lekic – Webentwicklung und Automatisierung" }],
+  },
+  alternates: {
+    canonical: DATA.url,
   },
   robots: {
     index: true,
@@ -58,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="de-AT" suppressHydrationWarning>
       <head>
         <Script
           defer

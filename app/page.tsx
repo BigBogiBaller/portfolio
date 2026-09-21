@@ -158,8 +158,46 @@ export default function Page() {
         : hackathon.description,
   }))
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${DATA.url}/#person`,
+        name: "Bogdan Lekic",
+        url: DATA.url,
+        image: `${DATA.url}/profile-linkedin.png`,
+        jobTitle: "Webentwickler und Automatisierungsexperte",
+        description: t.description,
+        address: { "@type": "PostalAddress", addressLocality: "Wien", addressCountry: "AT" },
+        sameAs: [DATA.contact.social.LinkedIn.url, DATA.contact.social.GitHub.url],
+        knowsAbout: ["Webentwicklung", "Onlineshops", "KI-Automatisierung", "Conversion-Optimierung"],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${DATA.url}/#business`,
+        name: "D4Y Software & Automatisierung",
+        url: DATA.url,
+        description: t.description,
+        areaServed: [{ "@type": "Country", name: "Österreich" }, { "@type": "City", name: "Wien" }],
+        founder: { "@id": `${DATA.url}/#person` },
+        serviceType: ["Verkaufsoptimierte Websites", "Onlineshops", "Automatisierungen"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${DATA.url}/#website`,
+        url: DATA.url,
+        name: "Bogdan Lekic – D4Y Software & Automatisierung",
+        inLanguage: ["de-AT", "en"],
+        about: { "@id": `${DATA.url}/#person` },
+      },
+    ],
+  }
+
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <main className="flex flex-col min-h-[100dvh] space-y-10">
       <div className="fixed top-4 right-4 z-50 flex gap-2 bg-background/80 backdrop-blur-sm border rounded-lg p-2 shadow-lg">
         <button
           onClick={() => setLanguage("de")}
@@ -348,6 +386,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
