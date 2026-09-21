@@ -17,8 +17,13 @@ export default function Navbar() {
             <DockIcon key={item.href}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href={item.href} className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
-                    <item.icon className="size-4" />
+                  <Link
+                    href={item.href}
+                    aria-label={item.label}
+                    title={item.label}
+                    className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
+                  >
+                    <item.icon aria-hidden="true" className="size-4" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -36,9 +41,11 @@ export default function Navbar() {
                   <TooltipTrigger asChild>
                     <Link
                       href={social.url}
+                      aria-label={name}
+                      title={name}
                       className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}
                     >
-                      <social.icon className={cn("size-4", name === "WhatsApp" && "size-8")} />
+                      <social.icon aria-hidden="true" className={cn("size-4", name === "WhatsApp" && "size-8")} />
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
