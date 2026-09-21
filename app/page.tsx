@@ -200,6 +200,8 @@ export default function Page() {
       <main className="flex flex-col min-h-[100dvh] space-y-10">
       <div className="fixed top-4 right-4 z-50 flex gap-2 bg-background/80 backdrop-blur-sm border rounded-lg p-2 shadow-lg">
         <button
+          type="button"
+          aria-label="Deutsch auswählen"
           onClick={() => setLanguage("de")}
           className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
             language === "de" ? "bg-foreground text-background" : "hover:bg-muted"
@@ -208,6 +210,8 @@ export default function Page() {
           DE
         </button>
         <button
+          type="button"
+          aria-label="English auswählen"
           onClick={() => setLanguage("en")}
           className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
             language === "en" ? "bg-foreground text-background" : "hover:bg-muted"
@@ -248,7 +252,7 @@ export default function Page() {
                 src="https://www.loom.com/embed/c6ffdee71fd54809ad5deae6b25a7f24?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
                 allow="autoplay; fullscreen"
                 allowFullScreen
-                loading="eager"
+                loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
                 title="Intro Video"
                 className="absolute left-0 top-0 h-full w-full"
