@@ -93,6 +93,7 @@ export function ProjectCard({
           <iframe
             ref={videoRef}
             src={getYoutubeEmbedUrl(video)}
+            loading="lazy"
             className="pointer-events-none mx-auto h-40 w-full object-cover"
             allow="autoplay; encrypted-media"
             style={{ border: 'none' }}
@@ -105,6 +106,7 @@ export function ProjectCard({
             loop
             muted
             playsInline
+            preload="metadata"
             className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
           />
         ) : null}
