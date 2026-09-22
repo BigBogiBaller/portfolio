@@ -41,14 +41,24 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
           <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 2 ? "lg:col-span-3" : "lg:col-span-2"}>
-            <article className="group relative h-full overflow-hidden rounded-2xl border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="mb-10 flex items-start justify-between">
-                <span className="text-sm font-semibold text-muted-foreground">{service.accent}</span>
-                <span aria-hidden="true" className="size-3 rounded-full bg-foreground transition-transform duration-300 group-hover:scale-150" />
+            <article className="group relative h-full overflow-hidden rounded-2xl border bg-card shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-foreground/30 hover:shadow-xl">
+              <div aria-hidden="true" className="relative h-36 overflow-hidden border-b bg-muted/30 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.08)_1px,transparent_1px)] [background-size:28px_28px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rotate-12 rounded-2xl border border-foreground/20 bg-background/40 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:rotate-0 group-hover:scale-110">
+                  <div className="absolute inset-3 rounded-xl border border-foreground/15" />
+                  <div className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground shadow-[0_0_24px_hsl(var(--foreground)/.7)] animate-pulse" />
+                </div>
+                <div className="absolute left-[18%] top-8 size-2 rounded-full bg-foreground/50 transition-all duration-700 group-hover:left-[28%] group-hover:top-5" />
+                <div className="absolute right-[18%] bottom-8 size-2 rounded-full bg-foreground/40 transition-all duration-700 group-hover:right-[28%] group-hover:bottom-5" />
               </div>
-              <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
-              <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{service.description}</p>
-              <div aria-hidden="true" className="pointer-events-none absolute -bottom-12 -right-8 size-32 rounded-full border border-muted-foreground/10 transition-transform duration-500 group-hover:scale-125" />
+              <div className="relative p-6">
+                <div className="mb-8 flex items-start justify-between">
+                  <span className="text-sm font-semibold text-muted-foreground">{service.accent}</span>
+                  <span aria-hidden="true" className="size-3 rounded-full bg-foreground transition-transform duration-300 group-hover:scale-150" />
+                </div>
+                <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
+                <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{service.description}</p>
+              </div>
             </article>
           </BlurFade>
         ))}
