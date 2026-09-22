@@ -32,6 +32,34 @@ const dashboardTabs = [
   { id: "messages", label: "Nachrichten", icon: MessageSquare },
 ]
 
+function AutomationPreview() {
+  const nodes = [
+    { label: "Trigger", x: "left-[12%]", y: "top-[24%]" },
+    { label: "KI", x: "left-1/2", y: "top-1/2" },
+    { label: "Aktion", x: "right-[12%]", y: "top-[24%]" },
+    { label: "E-Mail", x: "left-1/2", y: "bottom-[16%]" },
+  ]
+
+  return (
+    <div className="relative min-h-[190px] flex-1 overflow-hidden border-b bg-muted/20 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_88%,transparent)]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--foreground)/.12),transparent_55%)]" />
+      <svg aria-hidden="true" className="absolute inset-0 h-full w-full" viewBox="0 0 400 210" fill="none" preserveAspectRatio="none">
+        {[[50, 105, 55, 55], [345, 55, 205, 80], [200, 155, 200, 115]].map(([x1, y1, x2, y2], index) => <motion.path key={index} d={`M ${x1} ${y1} L ${x2} ${y2}`} stroke="currentColor" strokeOpacity=".18" strokeWidth="1" />)}
+        <motion.path d="M 55 55 L 185 94" stroke="currentColor" strokeWidth="2" strokeDasharray="24 70" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -94 }} transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }} />
+        <motion.path d="M 345 55 L 215 94" stroke="currentColor" strokeWidth="2" strokeDasharray="24 70" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -94 }} transition={{ duration: 2.4, repeat: Infinity, ease: "linear", delay: .4 }} />
+        <motion.path d="M 200 155 L 200 116" stroke="currentColor" strokeWidth="2" strokeDasharray="20 50" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -70 }} transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: .8 }} />
+      </svg>
+      {nodes.map((node, index) => (
+        <motion.div key={node.label} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * .15 }} className={cn("absolute z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-lg border bg-background/80 px-2.5 py-2 text-[9px] shadow-lg backdrop-blur-sm transition-transform duration-500 group-hover:scale-105", node.x, node.y)}>
+          <span className={cn("size-2 rounded-full", index === 1 ? "bg-foreground shadow-[0_0_12px_hsl(var(--foreground)/.8)]" : "bg-foreground/40")} />
+          <span>{node.label}</span>
+        </motion.div>
+      ))}
+      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-foreground/30" animate={{ scale: [1, 1.35, 1], opacity: [.7, .15, .7] }} transition={{ duration: 2.8, repeat: Infinity }} />
+    </div>
+  )
+}
+
 function SoftwareDashboardPreview() {
   const [activeTab, setActiveTab] = useState("overview")
   const tab = dashboardTabs.find((item) => item.id === activeTab) ?? dashboardTabs[0]
@@ -87,6 +115,8 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
             <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
+              ) : index === 3 ? (
+                <AutomationPreview />
               ) : (
                 <div aria-hidden="true" className="relative flex min-h-[190px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.1)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_82%,transparent)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.08] via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />
