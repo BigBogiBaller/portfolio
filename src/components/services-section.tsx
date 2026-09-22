@@ -1,6 +1,9 @@
 "use client"
 
 import BlurFade from "@/components/magicui/blur-fade"
+import { Bot, Code2, Globe2, Mail, ShoppingBag } from "lucide-react"
+
+const serviceIcons = [Code2, Globe2, ShoppingBag, Bot, Mail]
 
 const services = {
   de: [
@@ -40,24 +43,28 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 2 ? "lg:col-span-3" : "lg:col-span-2"}>
-            <article className="group relative h-full overflow-hidden rounded-2xl border bg-card shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-foreground/30 hover:shadow-xl">
-              <div aria-hidden="true" className="relative h-36 overflow-hidden border-b bg-muted/30 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.08)_1px,transparent_1px)] [background-size:28px_28px]">
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rotate-12 rounded-2xl border border-foreground/20 bg-background/40 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:rotate-0 group-hover:scale-110">
-                  <div className="absolute inset-3 rounded-xl border border-foreground/15" />
-                  <div className="absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground shadow-[0_0_24px_hsl(var(--foreground)/.7)] animate-pulse" />
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 3 ? "lg:col-span-2" : "lg:col-span-3"}>
+            <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
+              <div aria-hidden="true" className="relative flex min-h-[190px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.1)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_82%,transparent)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.08] via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />
+                <div className="absolute size-32 rounded-full border border-foreground/10 transition-all duration-700 group-hover:size-40 group-hover:rotate-45" />
+                <div className="absolute size-24 rounded-2xl border border-foreground/15 bg-background/60 shadow-2xl backdrop-blur-sm transition-all duration-700 group-hover:rotate-6 group-hover:scale-110">
+                  <div className="absolute inset-3 rounded-xl border border-foreground/10" />
+                  {(() => {
+                    const Icon = serviceIcons[index]
+                    return <Icon aria-hidden="true" className="absolute left-1/2 top-1/2 size-9 -translate-x-1/2 -translate-y-1/2 text-foreground transition-transform duration-500 group-hover:scale-125" strokeWidth={1.4} />
+                  })()}
                 </div>
-                <div className="absolute left-[18%] top-8 size-2 rounded-full bg-foreground/50 transition-all duration-700 group-hover:left-[28%] group-hover:top-5" />
-                <div className="absolute right-[18%] bottom-8 size-2 rounded-full bg-foreground/40 transition-all duration-700 group-hover:right-[28%] group-hover:bottom-5" />
+                <span className="absolute left-[16%] top-[28%] size-2 rounded-full bg-foreground/40 transition-all duration-700 group-hover:left-[24%] group-hover:top-[20%]" />
+                <span className="absolute right-[16%] bottom-[28%] size-2 rounded-full bg-foreground/30 transition-all duration-700 group-hover:right-[24%] group-hover:bottom-[20%]" />
               </div>
-              <div className="relative p-6">
-                <div className="mb-8 flex items-start justify-between">
-                  <span className="text-sm font-semibold text-muted-foreground">{service.accent}</span>
-                  <span aria-hidden="true" className="size-3 rounded-full bg-foreground transition-transform duration-300 group-hover:scale-150" />
+              <div className="relative p-6 pt-5">
+                <div className="mb-5 flex items-start justify-between">
+                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{service.accent}</span>
+                  <span aria-hidden="true" className="size-2 rounded-full bg-foreground transition-transform duration-300 group-hover:scale-150" />
                 </div>
-                <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
-                <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">{service.description}</p>
+                <h3 className="text-[20px] leading-7 font-medium">{service.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
               </div>
             </article>
           </BlurFade>
