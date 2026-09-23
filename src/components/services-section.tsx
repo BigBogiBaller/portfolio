@@ -59,6 +59,39 @@ function AutomationPreview() {
   )
 }
 
+const funnelMessages = [
+  { subject: "Willkommen in deiner Inbox", preview: "Deine neue Kampagne ist bereit...", time: "jetzt" },
+  { subject: "3 Tipps für mehr Verkäufe", preview: "Heute zeigen wir dir, wie...", time: "vor 2 Min." },
+  { subject: "Dein persönliches Angebot", preview: "Nur noch heute verfügbar...", time: "vor 5 Min." },
+  { subject: "Was möchtest du erreichen?", preview: "Antworte einfach auf diese Mail...", time: "vor 8 Min." },
+]
+
+function EmailFunnelPreview() {
+  const [visibleCount, setVisibleCount] = useState(1)
+  const visibleMessages = Array.from({ length: visibleCount }, (_, index) => funnelMessages[index % funnelMessages.length]).reverse()
+
+  return (
+    <div className="relative min-h-[250px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_88%,transparent)]">
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--foreground)/.1),transparent_65%)]" />
+      <div className="relative mx-auto flex h-full min-h-[220px] w-full max-w-[540px] flex-col items-center justify-center gap-2 overflow-hidden">
+        <AnimatePresence initial={false}>
+          {visibleMessages.map((message, index) => (
+            <motion.div key={`${message.subject}-${visibleCount}-${index}`} initial={{ opacity: 0, scale: 0, y: -12 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0, y: 12 }} transition={{ type: "spring", stiffness: 350, damping: 32 }} className="w-full max-w-[410px] rounded-2xl border border-border bg-background/90 p-3 shadow-lg backdrop-blur-md transition-transform duration-200 hover:scale-[1.02]">
+              <div className="flex items-center gap-3">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-foreground text-background"><Mail aria-hidden="true" className="size-5" /></div>
+                <div className="min-w-0 flex-1"><div className="flex items-center gap-2"><p className="truncate text-sm font-medium">{message.subject}</p><span className="shrink-0 text-[10px] text-muted-foreground">{message.time}</span></div><p className="truncate text-xs text-muted-foreground">{message.preview}</p></div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+        <motion.div aria-hidden="true" className="absolute bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 rounded-full bg-foreground/20" animate={{ scaleX: [1, 1.5, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+      </div>
+      <motion.div className="absolute right-5 top-5 flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-2 py-1 text-[9px] text-muted-foreground shadow-sm" animate={{ opacity: [0.55, 1, 0.55] }} transition={{ duration: 2, repeat: Infinity }}><span className="size-1.5 rounded-full bg-foreground" />Live Funnel</motion.div>
+      <motion.div onAnimationComplete={() => setVisibleCount((count) => count === funnelMessages.length ? 1 : count + 1)} animate={{ opacity: [0, 1] }} transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 1.8 }} className="pointer-events-none absolute size-px" />
+    </div>
+  )
+}
+
 function SoftwareDashboardPreview() {
   const [activeTab, setActiveTab] = useState("overview")
   const tab = dashboardTabs.find((item) => item.id === activeTab) ?? dashboardTabs[0]
@@ -110,12 +143,14 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 3 ? "lg:col-span-4" : index === 1 || index === 2 ? "lg:col-span-2" : "lg:col-span-3"}>
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 3 || index === 4 ? "lg:col-span-4" : "lg:col-span-2"}>
             <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
               ) : index === 3 ? (
                 <AutomationPreview />
+              ) : index === 4 ? (
+                <EmailFunnelPreview />
               ) : (
                 <div aria-hidden="true" className="relative flex min-h-[190px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.1)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_82%,transparent)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.08] via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />
