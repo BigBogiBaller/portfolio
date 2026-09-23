@@ -3,6 +3,7 @@
 import { useId, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "motion/react"
 import BlurFade from "@/components/magicui/blur-fade"
+import { AnimatedList } from "@/components/ui/animated-list"
 import { Bot, Code2, FolderKanban, Globe2, LayoutDashboard, Mail, MessageSquare, Search, Settings2, ShoppingBag, Users } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -59,35 +60,32 @@ function AutomationPreview() {
   )
 }
 
-const funnelMessages = [
-  { subject: "Willkommen in deiner Inbox", preview: "Deine neue Kampagne ist bereit...", time: "jetzt" },
-  { subject: "3 Tipps für mehr Verkäufe", preview: "Heute zeigen wir dir, wie...", time: "vor 2 Min." },
-  { subject: "Dein persönliches Angebot", preview: "Nur noch heute verfügbar...", time: "vor 5 Min." },
-  { subject: "Was möchtest du erreichen?", preview: "Antworte einfach auf diese Mail...", time: "vor 8 Min." },
+const funnelNotifications = [
+  { name: "Payment received", description: "D4Y Software", icon: "💸", color: "#00C9A7", time: "15m ago" },
+  { name: "User signed up", description: "D4Y Software", icon: "👤", color: "#FFB800", time: "10m ago" },
+  { name: "New message", description: "D4Y Software", icon: "💬", color: "#FF3D71", time: "5m ago" },
+  { name: "New event", description: "D4Y Software", icon: "🗞️", color: "#1E86FF", time: "2m ago" },
 ]
 
+function EmailFunnelNotification({ item }: { item: (typeof funnelNotifications)[number] }) {
+  return (
+    <figure className="relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl bg-white p-4 shadow-[0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transition-all duration-200 ease-in-out hover:scale-[1.03] dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]">
+      <div className="flex flex-row items-center gap-3">
+        <div className="flex size-10 items-center justify-center rounded-2xl" style={{ backgroundColor: item.color }}><span className="text-lg" aria-hidden="true">{item.icon}</span></div>
+        <div className="flex flex-col overflow-hidden"><figcaption className="flex flex-row items-center whitespace-pre text-lg font-medium dark:text-white"><span className="text-sm sm:text-lg">{item.name}</span><span className="mx-1">·</span><span className="text-xs text-gray-500">{item.time}</span></figcaption><p className="text-sm font-normal dark:text-white/60">{item.description}</p></div>
+      </div>
+    </figure>
+  )
+}
+
 function EmailFunnelPreview() {
-  const [visibleCount, setVisibleCount] = useState(1)
-  const visibleMessages = Array.from({ length: visibleCount }, (_, index) => funnelMessages[index % funnelMessages.length]).reverse()
+  const notifications = Array.from({ length: 10 }, () => funnelNotifications).flat()
 
   return (
-    <div className="relative min-h-[250px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_88%,transparent)]">
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--foreground)/.1),transparent_65%)]" />
-      <div className="relative mx-auto flex h-full min-h-[220px] w-full max-w-[540px] flex-col items-center justify-center gap-2 overflow-hidden">
-        <AnimatePresence initial={false}>
-          {visibleMessages.map((message, index) => (
-            <motion.div key={`${message.subject}-${visibleCount}-${index}`} initial={{ opacity: 0, scale: 0, y: -12 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0, y: 12 }} transition={{ type: "spring", stiffness: 350, damping: 32 }} className="w-full max-w-[410px] rounded-2xl border border-border bg-background/90 p-3 shadow-lg backdrop-blur-md transition-transform duration-200 hover:scale-[1.02]">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-foreground text-background"><Mail aria-hidden="true" className="size-5" /></div>
-                <div className="min-w-0 flex-1"><div className="flex items-center gap-2"><p className="truncate text-sm font-medium">{message.subject}</p><span className="shrink-0 text-[10px] text-muted-foreground">{message.time}</span></div><p className="truncate text-xs text-muted-foreground">{message.preview}</p></div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-        <motion.div aria-hidden="true" className="absolute bottom-3 left-1/2 h-1 w-16 -translate-x-1/2 rounded-full bg-foreground/20" animate={{ scaleX: [1, 1.5, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-      </div>
-      <motion.div className="absolute right-5 top-5 flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-2 py-1 text-[9px] text-muted-foreground shadow-sm" animate={{ opacity: [0.55, 1, 0.55] }} transition={{ duration: 2, repeat: Infinity }}><span className="size-1.5 rounded-full bg-foreground" />Live Funnel</motion.div>
-      <motion.div onAnimationComplete={() => setVisibleCount((count) => count === funnelMessages.length ? 1 : count + 1)} animate={{ opacity: [0, 1] }} transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 1.8 }} className="pointer-events-none absolute size-px" />
+    <div className="relative min-h-[500px] flex-1 overflow-hidden rounded-lg border-b bg-background p-6">
+      <AnimatedList delay={1000} className="h-full w-full">
+        {notifications.map((item, index) => <EmailFunnelNotification item={item} key={index} />)}
+      </AnimatedList>
     </div>
   )
 }
