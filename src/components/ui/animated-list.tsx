@@ -23,14 +23,22 @@ export const AnimatedList = React.memo(({ className, children, delay = 1000, max
   }, [childrenArray.length, delay])
 
   const itemsToShow = useMemo(() => {
-    const count = Math.min(maxItems, childrenArray.length)
+    const count = Math.min(maxItems, index + 1, childrenArray.length)
     return Array.from({ length: count }, (_, offset) => {
       const itemIndex = (index - offset + childrenArray.length) % childrenArray.length
       return { item: childrenArray[itemIndex], itemIndex }
     })
   }, [index, childrenArray, maxItems])
 
-  return <div className={`flex flex-col items-center gap-4 ${className ?? ""}`}>{itemsToShow.map(({ item, itemIndex }) => <AnimatedListItem key={`${itemIndex}-${index}`}>{item}</AnimatedListItem>)}</div>
+  return (
+    <div className={`flex flex-col items-center gap-4 ${className ?? ""}`}>
+      <AnimatePresence initial={false} mode="popLayout">
+        {itemsToShow.map(({ item, itemIndex }) => (
+          <AnimatedListItem key={itemIndex}>{item}</AnimatedListItem>
+        ))}
+      </AnimatePresence>
+    </div>
+  )
 })
 
 AnimatedList.displayName = "AnimatedList"
