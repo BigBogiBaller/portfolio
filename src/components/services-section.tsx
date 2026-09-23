@@ -34,28 +34,28 @@ const dashboardTabs = [
 ]
 
 function AutomationPreview() {
-  const id = useId()
+  const containerId = useId()
   const integrations = [
-    { id: "figma", icon: Globe2, x: 18, y: 22, path: "M 50 105 V 50 H 115" },
-    { id: "claude", icon: Bot, x: 84, y: 18, path: "M 205 105 V 42 H 270" },
-    { id: "database", icon: Settings2, x: 28, y: 51, path: "M 105 105 H 145" },
-    { id: "apps", icon: ShoppingBag, x: 82, y: 51, path: "M 205 105 H 250" },
-    { id: "analytics", icon: Search, x: 50, y: 86, path: "M 175 135 V 190" },
-    { id: "mail", icon: Mail, x: 78, y: 84, path: "M 198 125 V 170 H 255" },
+    { id: "figma", icon: Globe2, x: 19.5, y: 22, path: "M 270 205 V 105 Q 270 90 255 90 H 110", delay: 0.1 },
+    { id: "claude", icon: Bot, x: 64, y: 17, path: "M 294 205 V 85 Q 294 70 309 70 H 360", delay: 0.2 },
+    { id: "database", icon: Settings2, x: 28.5, y: 50, path: "M 250 205 H 160", delay: 0.3 },
+    { id: "apps", icon: ShoppingBag, x: 85, y: 50, path: "M 314 205 H 480", delay: 0.4 },
+    { id: "analytics", icon: Search, x: 50, y: 88, path: "M 282 205 V 360", delay: 0.6 },
+    { id: "mail", icon: Mail, x: 81.5, y: 83, path: "M 314 215 V 325 Q 314 340 329 340 H 460", delay: 0.7 },
   ]
 
   return (
-    <div className="relative min-h-[300px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_6%,black_92%,transparent)]">
-      <div aria-hidden="true" className="absolute inset-0 opacity-25 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:28px_28px]" />
-      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 320 230" fill="none" preserveAspectRatio="none">
-        <defs>{integrations.map((item, index) => <linearGradient key={item.id} id={`${id}-${index}`} gradientUnits="userSpaceOnUse"><stop stopColor="currentColor" stopOpacity="0" /><stop offset=".5" stopColor="currentColor" stopOpacity=".6" /><stop offset="1" stopColor="currentColor" stopOpacity="0" /></linearGradient>)}</defs>
-        {integrations.map((item, index) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".14" strokeWidth="1" /><motion.path d={item.path} stroke={`url(#${id}-${index})`} strokeWidth="2" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * .16 }} /></g>)}
+    <div className="relative min-h-[410px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)]">
+      <div aria-hidden="true" className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:32px_32px]" />
+      <svg aria-hidden="true" className="pointer-events-none absolute inset-4 h-[calc(100%-2rem)] w-[calc(100%-2rem)]" viewBox="0 0 564 410" fill="none" preserveAspectRatio="xMidYMid meet">
+        <defs>{integrations.map((item) => <linearGradient key={item.id} id={`${containerId}-${item.id}`} gradientUnits="userSpaceOnUse"><stop stopColor="transparent" /><stop offset=".5" stopColor="hsl(var(--primary))" stopOpacity=".55" /><stop offset="1" stopColor="transparent" /></linearGradient>)}</defs>
+        {integrations.map((item) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".16" strokeWidth="1" fill="none" /><motion.path d={item.path} stroke={`url(#${containerId}-${item.id})`} strokeWidth="2" fill="none" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: item.delay }} /></g>)}
       </svg>
-      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-background p-1 shadow-xl sm:size-20 sm:rounded-3xl sm:p-2" animate={{ scale: [1, 1.04, 1], opacity: [.92, 1, .92] }} transition={{ duration: 3, repeat: Infinity }}>
-        <div className="flex size-full items-center justify-center rounded-xl border border-border bg-muted/30"><Bot aria-hidden="true" className="size-8 sm:size-10" strokeWidth={1.2} /></div>
-        <motion.span className="absolute inset-0 rounded-2xl border-2 border-foreground/10" animate={{ scale: [1, 1.18, 1], opacity: [.35, 0, .35] }} transition={{ duration: 3, repeat: Infinity }} />
+      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-background p-2 shadow-xl sm:size-24 sm:rounded-3xl">
+        <div className="flex size-full items-center justify-center rounded-xl border border-border bg-muted/30"><Bot className="size-9 sm:size-11" strokeWidth={1.2} /></div>
+        <motion.span className="absolute inset-0 rounded-2xl border-2 border-primary/10" animate={{ scale: [1, 1.15, 1], opacity: [.3, 0, .3] }} transition={{ duration: 3, repeat: Infinity }} />
       </motion.div>
-      {integrations.map((item, index) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * .1 }} className="absolute z-10 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-border bg-background text-foreground shadow-sm sm:size-12 sm:rounded-2xl" style={{ left: `${item.x}%`, top: `${item.y}%` }}><Icon aria-hidden="true" className="size-5 sm:size-6" strokeWidth={1.4} /></motion.div> })}
+      {integrations.map((item) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: item.delay }} className="absolute z-10 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-border bg-background text-foreground shadow-sm sm:size-14 sm:rounded-2xl" style={{ left: `${item.x}%`, top: `${item.y}%` }}><Icon aria-hidden="true" className="size-6" strokeWidth={1.3} /></motion.div> })}
     </div>
   )
 }
