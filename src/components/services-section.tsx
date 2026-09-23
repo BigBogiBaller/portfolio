@@ -81,7 +81,7 @@ function EmailFunnelNotification({ item }: { item: (typeof funnelNotifications)[
 function EmailFunnelPreview() {
   return (
     <div className="relative h-[250px] min-h-[250px] flex-1 overflow-hidden border-b bg-background p-4">
-      <AnimatedList delay={1400} className="absolute inset-4 flex h-[218px] w-auto flex-col justify-end gap-3 overflow-hidden">
+      <AnimatedList delay={1400} maxItems={3} className="absolute inset-4 flex h-[218px] w-auto flex-col justify-end gap-3 overflow-hidden">
         {funnelNotifications.map((item) => <EmailFunnelNotification item={item} key={item.name} />)}
       </AnimatedList>
     </div>

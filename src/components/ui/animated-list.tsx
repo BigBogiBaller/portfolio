@@ -1,15 +1,16 @@
 "use client"
 
-import React, { ReactElement, useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 export interface AnimatedListProps {
   className?: string
   children: React.ReactNode
   delay?: number
+  maxItems?: number
 }
 
-export const AnimatedList = React.memo(({ className, children, delay = 1000 }: AnimatedListProps) => {
+export const AnimatedList = React.memo(({ className, children, delay = 1000, maxItems = 3 }: AnimatedListProps) => {
   const [index, setIndex] = useState(0)
   const childrenArray = React.Children.toArray(children)
 
@@ -21,9 +22,15 @@ export const AnimatedList = React.memo(({ className, children, delay = 1000 }: A
     return () => clearInterval(interval)
   }, [childrenArray.length, delay])
 
-  const itemsToShow = useMemo(() => childrenArray.slice(0, index + 1).reverse(), [index, childrenArray])
+  const itemsToShow = useMemo(() => {
+    const count = Math.min(maxItems, childrenArray.length)
+    return Array.from({ length: count }, (_, offset) => {
+      const itemIndex = (index - offset + childrenArray.length) % childrenArray.length
+      return { item: childrenArray[itemIndex], itemIndex }
+    })
+  }, [index, childrenArray, maxItems])
 
-  return <div className={`flex flex-col items-center gap-4 ${className ?? ""}`}>{itemsToShow.map((item) => <AnimatedListItem key={(item as ReactElement).key}>{item}</AnimatedListItem>)}</div>
+  return <div className={`flex flex-col items-center gap-4 ${className ?? ""}`}>{itemsToShow.map(({ item, itemIndex }) => <AnimatedListItem key={`${itemIndex}-${index}`}>{item}</AnimatedListItem>)}</div>
 })
 
 AnimatedList.displayName = "AnimatedList"
