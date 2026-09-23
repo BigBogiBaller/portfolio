@@ -35,25 +35,26 @@ const dashboardTabs = [
 function AutomationPreview() {
   const id = useId()
   const integrations = [
-    { label: "Formular", x: 12, y: 23, path: "M 31 92 V 40 H 92" },
-    { label: "CRM", x: 88, y: 18, path: "M 244 92 V 34 H 220" },
-    { label: "Kalender", x: 16, y: 58, path: "M 84 105 H 120" },
-    { label: "E-Mail", x: 87, y: 58, path: "M 244 105 H 300" },
-    { label: "Analyse", x: 51, y: 86, path: "M 162 126 V 168" },
-    { label: "Social", x: 83, y: 84, path: "M 214 116 V 154 H 282" },
+    { id: "figma", icon: Globe2, x: 18, y: 22, path: "M 50 105 V 50 H 115" },
+    { id: "claude", icon: Bot, x: 84, y: 18, path: "M 205 105 V 42 H 270" },
+    { id: "database", icon: Settings2, x: 28, y: 51, path: "M 105 105 H 145" },
+    { id: "apps", icon: ShoppingBag, x: 82, y: 51, path: "M 205 105 H 250" },
+    { id: "analytics", icon: Search, x: 50, y: 86, path: "M 175 135 V 190" },
+    { id: "mail", icon: Mail, x: 78, y: 84, path: "M 198 125 V 170 H 255" },
   ]
 
   return (
-    <div className="relative min-h-[250px] flex-1 overflow-hidden border-b bg-muted/20 p-3 [mask-image:linear-gradient(to_bottom,transparent,black_7%,black_90%,transparent)]">
-      <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:24px_24px]" />
-      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 324 210" fill="none" preserveAspectRatio="none">
-        <defs>
-          {integrations.map((_, index) => <linearGradient key={index} id={`${id}-${index}`}><stop stopColor="currentColor" stopOpacity="0" /><stop offset=".5" stopColor="currentColor" stopOpacity=".7" /><stop offset="1" stopColor="currentColor" stopOpacity="0" /></linearGradient>)}
-        </defs>
-        {integrations.map((item, index) => <g key={item.label}><path d={item.path} stroke="currentColor" strokeOpacity=".15" strokeWidth="1" /><motion.path d={item.path} stroke={`url(#${id}-${index})`} strokeWidth="2" strokeDasharray="32 130" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -162 }} transition={{ duration: 3.5, repeat: Infinity, ease: "linear", delay: index * .18 }} /></g>)}
+    <div className="relative min-h-[300px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_6%,black_92%,transparent)]">
+      <div aria-hidden="true" className="absolute inset-0 opacity-25 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:28px_28px]" />
+      <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 320 230" fill="none" preserveAspectRatio="none">
+        <defs>{integrations.map((item, index) => <linearGradient key={item.id} id={`${id}-${index}`} gradientUnits="userSpaceOnUse"><stop stopColor="currentColor" stopOpacity="0" /><stop offset=".5" stopColor="currentColor" stopOpacity=".6" /><stop offset="1" stopColor="currentColor" stopOpacity="0" /></linearGradient>)}</defs>
+        {integrations.map((item, index) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".14" strokeWidth="1" /><motion.path d={item.path} stroke={`url(#${id}-${index})`} strokeWidth="2" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: index * .16 }} /></g>)}
       </svg>
-      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border bg-background shadow-xl" animate={{ boxShadow: ["0 8px 20px rgba(0,0,0,.08)", "0 0 36px hsl(var(--foreground)/.22)", "0 8px 20px rgba(0,0,0,.08)" ] }} transition={{ duration: 3, repeat: Infinity }}><Bot aria-hidden="true" className="size-8" strokeWidth={1.3} /></motion.div>
-      {integrations.map((item, index) => <motion.div key={item.label} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * .1 }} className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-xl border bg-background/80 px-2.5 py-2 text-[9px] shadow-sm backdrop-blur-sm" style={{ left: `${item.x}%`, top: `${item.y}%` }}><span className="size-1.5 rounded-full bg-foreground/50" />{item.label}</motion.div>)}
+      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-border bg-background p-1 shadow-xl sm:size-20 sm:rounded-3xl sm:p-2" animate={{ scale: [1, 1.04, 1], opacity: [.92, 1, .92] }} transition={{ duration: 3, repeat: Infinity }}>
+        <div className="flex size-full items-center justify-center rounded-xl border border-border bg-muted/30"><Bot aria-hidden="true" className="size-8 sm:size-10" strokeWidth={1.2} /></div>
+        <motion.span className="absolute inset-0 rounded-2xl border-2 border-foreground/10" animate={{ scale: [1, 1.18, 1], opacity: [.35, 0, .35] }} transition={{ duration: 3, repeat: Infinity }} />
+      </motion.div>
+      {integrations.map((item, index) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * .1 }} className="absolute z-10 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-border bg-background text-foreground shadow-sm sm:size-12 sm:rounded-2xl" style={{ left: `${item.x}%`, top: `${item.y}%` }}><Icon aria-hidden="true" className="size-5 sm:size-6" strokeWidth={1.4} /></motion.div> })}
     </div>
   )
 }
@@ -109,7 +110,7 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 2 || index === 3 ? "lg:col-span-3" : "lg:col-span-2"}>
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 3 ? "lg:col-span-4" : index === 1 || index === 2 ? "lg:col-span-2" : "lg:col-span-3"}>
             <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
