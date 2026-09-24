@@ -34,34 +34,39 @@ const dashboardTabs = [
 ]
 
 function AutomationPreview() {
-  const containerId = useId()
-  const integrations = [
-    { id: "figma", icon: Globe2, x: 110, y: 90, path: "M 282 205 V 105 Q 282 90 267 90 H 110", delay: 0.1 },
-    { id: "claude", icon: Bot, x: 360, y: 70, path: "M 282 205 V 85 Q 282 70 297 70 H 360", delay: 0.2 },
-    { id: "database", icon: Settings2, x: 160, y: 205, path: "M 282 205 H 160", delay: 0.3 },
-    { id: "apps", icon: ShoppingBag, x: 480, y: 205, path: "M 282 205 H 480", delay: 0.4 },
-    { id: "analytics", icon: Search, x: 282, y: 360, path: "M 282 205 V 360", delay: 0.6 },
-    { id: "mail", icon: Mail, x: 460, y: 340, path: "M 282 205 V 325 Q 282 340 297 340 H 460", delay: 0.7 },
-  ]
+  const cards = [
+    { icon: Globe2, side: "left", position: "top" },
+    { icon: Bot, side: "left", position: "middle" },
+    { icon: Settings2, side: "left", position: "bottom" },
+    { icon: ShoppingBag, side: "right", position: "top" },
+    { icon: Search, side: "right", position: "middle" },
+    { icon: Mail, side: "right", position: "bottom" },
+  ] as const
 
   return (
-    <div className="relative min-h-[320px] flex-1 overflow-hidden border-b bg-muted/20 p-3 sm:min-h-[410px] sm:p-4 [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)]">
-      <div aria-hidden="true" className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:32px_32px]" />
-      <div className="absolute inset-3 flex items-center justify-center sm:inset-4">
-        <div className="relative aspect-[564/410] w-full max-w-[564px]">
-          <svg aria-hidden="true" className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 564 410" fill="none">
-            <defs>{integrations.map((item) => <linearGradient key={item.id} id={`${containerId}-${item.id}`} gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="transparent" /><stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity=".5" /><stop offset="100%" stopColor="transparent" /></linearGradient>)}</defs>
-            {integrations.map((item) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".16" strokeWidth="1" fill="none" /><motion.path d={item.path} stroke={`url(#${containerId}-${item.id})`} strokeWidth="2" fill="none" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: item.delay }} /></g>)}
-          </svg>
-          <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg border border-border bg-background p-1 shadow-md sm:size-20 sm:rounded-2xl sm:p-2 sm:shadow-xl">
-            <div className="rounded-md border p-1.5 sm:rounded-xl sm:p-2.5"><Bot className="size-4 sm:size-9" strokeWidth={1.2} /></div>
-            <motion.span className="absolute inset-0 rounded-lg border-2 border-primary/10 sm:rounded-2xl" animate={{ scale: [1, 1.15, 1], opacity: [.3, 0, .3] }} transition={{ duration: 3, repeat: Infinity }} />
-          </motion.div>
-          {integrations.map((item) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: item.delay }} style={{ left: `${(item.x / 564) * 100}%`, top: `${(item.y / 410) * 100}%` }} className="absolute z-10 flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-border bg-background text-foreground shadow-sm sm:size-12 sm:rounded-xl"><Icon aria-hidden="true" className="size-3.5 sm:size-6" strokeWidth={1.3} /></motion.div> })}
+    <div className="relative flex min-h-[300px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 px-4 py-6 sm:min-h-[410px] sm:px-8">
+      <div aria-hidden="true" className="absolute inset-1/4 bg-[radial-gradient(var(--dots-color)_1px,transparent_1px)] opacity-40 [--dots-color:currentColor] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      <div className="relative flex w-full max-w-[430px] items-center justify-between">
+        <div className="z-10 flex flex-col gap-4 sm:gap-6">
+          {cards.filter((card) => card.side === "left").map((card) => <IntegrationCard key={card.position} icon={card.icon} side="left" position={card.position} />)}
+        </div>
+        <div className="relative z-20 rounded-2xl border bg-muted p-1 sm:rounded-3xl">
+          <div className="flex size-14 items-center justify-center rounded-xl border border-border bg-background shadow-xl sm:size-20 sm:rounded-2xl"><Bot aria-hidden="true" className="size-7 sm:size-10" strokeWidth={1.2} /></div>
+        </div>
+        <div className="z-10 flex flex-col gap-4 sm:gap-6">
+          {cards.filter((card) => card.side === "right").map((card) => <IntegrationCard key={card.position} icon={card.icon} side="right" position={card.position} />)}
         </div>
       </div>
     </div>
   )
+}
+
+function IntegrationCard({ icon: Icon, side, position }: { icon: typeof Globe2; side: "left" | "right"; position: "top" | "middle" | "bottom" }) {
+  const rotation = position === "top" ? (side === "left" ? "rotate-[25deg]" : "rotate-[-25deg]") : position === "bottom" ? (side === "left" ? "rotate-[-25deg]" : "rotate-[25deg]") : ""
+  return <div className="relative flex size-10 items-center justify-center rounded-xl border bg-background sm:size-12">
+    <Icon aria-hidden="true" className="size-5 sm:size-6" strokeWidth={1.4} />
+    <div aria-hidden="true" className={cn("absolute top-1/2 h-px w-[clamp(42px,11vw,82px)] bg-gradient-to-r from-muted-foreground/30 to-muted-foreground/10", side === "left" ? "left-full origin-left" : "right-full origin-right bg-gradient-to-l", rotation)} />
+  </div>
 }
 
 const funnelNotifications = [
