@@ -4,7 +4,7 @@ import { useId, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "motion/react"
 import BlurFade from "@/components/magicui/blur-fade"
 import { AnimatedList } from "@/components/ui/animated-list"
-import { Bot, Code2, FolderKanban, Globe2, LayoutDashboard, Mail, MessageSquare, Search, Settings2, ShoppingBag, Users } from "lucide-react"
+import { Bot, Code2, FolderKanban, Globe2, LayoutDashboard, Mail, MessageSquare, Plus, Search, Settings2, ShoppingBag, ShoppingCart, Users, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const serviceIcons = [Code2, Globe2, ShoppingBag, Bot, Mail]
@@ -50,6 +50,39 @@ function ConversionWebsitePreview() {
             <div className="px-3 pt-3"><span className="block h-1.5 w-12 bg-black/40" /><span className="mt-2 block h-1 w-20 bg-black/15" /><span className="mt-1 block h-1 w-14 bg-black/10" /></div>
           </div>
         </motion.div>
+      </div>
+    </div>
+  )
+}
+
+const shopProducts = [
+  { id: "shirt", name: "Essential Tee", price: 39 },
+  { id: "sneaker", name: "Studio Sneaker", price: 129 },
+  { id: "bag", name: "Daily Bag", price: 79 },
+]
+
+function OnlineShopPreview() {
+  const [cart, setCart] = useState<string[]>([])
+  const addToCart = (id: string) => setCart((current) => [...current, id])
+  const removeFromCart = () => setCart((current) => current.slice(0, -1))
+  const total = cart.reduce((sum, id) => sum + (shopProducts.find((product) => product.id === id)?.price ?? 0), 0)
+
+  return (
+    <div className="relative min-h-[250px] flex-1 overflow-hidden border-b bg-muted/20 p-3 sm:min-h-[280px] sm:p-4">
+      <div className="relative mx-auto flex h-full min-h-[218px] max-w-[560px] gap-3 rounded-xl border border-border bg-background p-3 shadow-sm sm:gap-4 sm:p-4">
+        <div className="min-w-0 flex-1 space-y-2 overflow-hidden">
+          <div className="mb-3 flex items-center justify-between"><span className="text-[10px] font-semibold sm:text-xs">Shop Collection</span><ShoppingBag className="size-3 text-muted-foreground" /></div>
+          {shopProducts.map((product, index) => <motion.div key={product.id} layout className="flex items-center gap-2 rounded-lg border bg-muted/20 p-2" whileHover={{ scale: 1.02 }}>
+            <div className={cn("size-9 shrink-0 rounded-md bg-gradient-to-br", index === 0 ? "from-foreground/20 to-foreground/5" : index === 1 ? "from-foreground/30 to-muted" : "from-muted to-foreground/15")} />
+            <div className="min-w-0 flex-1"><p className="truncate text-[9px] font-medium sm:text-[10px]">{product.name}</p><p className="text-[9px] text-muted-foreground">${product.price}</p></div>
+            <motion.button type="button" aria-label={`Add ${product.name}`} onClick={() => addToCart(product.id)} whileTap={{ scale: .9 }} className="flex size-6 items-center justify-center rounded-md bg-foreground text-background"><Plus className="size-3" /></motion.button>
+          </motion.div>)}
+        </div>
+        <motion.aside layout className="flex w-[108px] shrink-0 flex-col rounded-lg border bg-muted/20 p-2.5 sm:w-[145px] sm:p-3">
+          <div className="mb-3 flex items-center gap-1.5"><ShoppingCart className="size-3" /><span className="text-[9px] font-medium sm:text-[10px]">Cart ({cart.length})</span></div>
+          <div className="min-h-0 flex-1 space-y-1.5 overflow-hidden">{cart.slice(-3).map((id, index) => { const product = shopProducts.find((item) => item.id === id); return <motion.div key={`${id}-${index}`} initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} className="flex items-center justify-between rounded bg-background px-1.5 py-1 text-[8px]"><span className="truncate">{product?.name}</span><X className="size-2.5 shrink-0 text-muted-foreground" /></motion.div> })}</div>
+          <div className="mt-2 border-t pt-2"><div className="mb-2 flex justify-between text-[9px]"><span>Total</span><motion.span key={total}>${total}</motion.span></div><motion.button type="button" onClick={removeFromCart} disabled={!cart.length} whileTap={{ scale: .97 }} className="w-full rounded-md bg-foreground py-1.5 text-[8px] text-background disabled:opacity-40">Checkout</motion.button></div>
+        </motion.aside>
       </div>
     </div>
   )
@@ -170,12 +203,14 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 1 || index === 3 || index === 4 ? "lg:col-span-4" : "lg:col-span-2"}>
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 1 || index === 2 || index === 3 || index === 4 ? "lg:col-span-4" : "lg:col-span-2"}>
             <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
               ) : index === 1 ? (
                 <ConversionWebsitePreview />
+              ) : index === 2 ? (
+                <OnlineShopPreview />
               ) : index === 3 ? (
                 <AutomationPreview />
               ) : index === 4 ? (
