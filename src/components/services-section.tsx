@@ -33,6 +33,29 @@ const dashboardTabs = [
   { id: "messages", label: "Nachrichten", icon: MessageSquare },
 ]
 
+function ConversionWebsitePreview() {
+  const bars = [42, 68, 94]
+
+  return (
+    <div className="relative min-h-[280px] flex-1 overflow-hidden border-b bg-[#292929] px-5 py-6 text-white sm:min-h-[330px] sm:px-10">
+      <div aria-hidden="true" className="absolute inset-0 opacity-40 [background-image:linear-gradient(30deg,transparent_49%,rgba(255,255,255,.08)_50%,transparent_51%),linear-gradient(150deg,transparent_49%,rgba(255,255,255,.06)_50%,transparent_51%)] [background-size:110px_64px]" />
+      <motion.div aria-hidden="true" className="absolute left-[8%] top-[17%] h-[62%] w-[84%] [transform:perspective(700px)_rotateX(58deg)_rotateZ(-14deg)]" animate={{ y: [0, -5, 0], rotateZ: [-14, -12, -14] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+        <div className="absolute inset-0 rounded-[28%_12%_24%_10%] border border-white/30 bg-gradient-to-br from-white/[0.08] via-transparent to-white/[0.02] shadow-[0_25px_35px_rgba(0,0,0,.35)]" />
+        <div className="absolute right-[5%] top-[8%] h-[32%] w-[48%] rounded border border-white/25 bg-white/[0.06] p-3">
+          <div className="mb-3 h-1.5 w-10 rounded-full bg-white/60" />
+          <div className="grid grid-cols-2 gap-1.5"><span className="h-1 rounded bg-white/30" /><span className="h-1 rounded bg-white/20" /><span className="h-1 rounded bg-white/20" /><span className="h-1 rounded bg-white/30" /></div>
+        </div>
+        <div className="absolute left-[15%] bottom-[9%] flex items-end gap-2">
+          {bars.map((height, index) => <motion.span key={height} className="w-7 rounded-t-sm border border-white/20 bg-white/[0.16] sm:w-10" initial={{ height: 0 }} animate={{ height: `${height * 0.55}px` }} transition={{ delay: index * .18, duration: 1.2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} />)}
+        </div>
+        <div className="absolute left-[44%] top-[26%] h-[48%] w-px bg-white/20" />
+        <div className="absolute left-[58%] top-[22%] h-[48%] w-px bg-white/15" />
+      </motion.div>
+      <motion.div aria-hidden="true" className="absolute bottom-[13%] left-[12%] h-px w-20 bg-white/35" animate={{ scaleX: [1, 1.2, 1], opacity: [.35, .7, .35] }} transition={{ duration: 3, repeat: Infinity }} />
+    </div>
+  )
+}
+
 function AutomationPreview() {
   const cards = [
     { icon: Globe2, side: "left", position: "top" },
@@ -148,10 +171,12 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 3 || index === 4 ? "lg:col-span-4" : "lg:col-span-2"}>
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index === 0 || index === 1 || index === 3 || index === 4 ? "lg:col-span-4" : "lg:col-span-2"}>
             <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
+              ) : index === 1 ? (
+                <ConversionWebsitePreview />
               ) : index === 3 ? (
                 <AutomationPreview />
               ) : index === 4 ? (
