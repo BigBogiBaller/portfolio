@@ -34,24 +34,23 @@ const dashboardTabs = [
 ]
 
 function ConversionWebsitePreview() {
-  const bars = [42, 68, 94]
+  const panels = [0, 1, 2, 3, 4, 5]
 
   return (
-    <div className="relative min-h-[280px] flex-1 overflow-hidden border-b bg-[#292929] px-5 py-6 text-white sm:min-h-[330px] sm:px-10">
-      <div aria-hidden="true" className="absolute inset-0 opacity-40 [background-image:linear-gradient(30deg,transparent_49%,rgba(255,255,255,.08)_50%,transparent_51%),linear-gradient(150deg,transparent_49%,rgba(255,255,255,.06)_50%,transparent_51%)] [background-size:110px_64px]" />
-      <motion.div aria-hidden="true" className="absolute left-[8%] top-[17%] h-[62%] w-[84%] [transform:perspective(700px)_rotateX(58deg)_rotateZ(-14deg)]" animate={{ y: [0, -5, 0], rotateZ: [-14, -12, -14] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-        <div className="absolute inset-0 rounded-[28%_12%_24%_10%] border border-white/30 bg-gradient-to-br from-white/[0.08] via-transparent to-white/[0.02] shadow-[0_25px_35px_rgba(0,0,0,.35)]" />
-        <div className="absolute right-[5%] top-[8%] h-[32%] w-[48%] rounded border border-white/25 bg-white/[0.06] p-3">
-          <div className="mb-3 h-1.5 w-10 rounded-full bg-white/60" />
-          <div className="grid grid-cols-2 gap-1.5"><span className="h-1 rounded bg-white/30" /><span className="h-1 rounded bg-white/20" /><span className="h-1 rounded bg-white/20" /><span className="h-1 rounded bg-white/30" /></div>
-        </div>
-        <div className="absolute left-[15%] bottom-[9%] flex items-end gap-2">
-          {bars.map((height, index) => <motion.span key={height} className="w-7 rounded-t-sm border border-white/20 bg-white/[0.16] sm:w-10" initial={{ height: 0 }} animate={{ height: `${height * 0.55}px` }} transition={{ delay: index * .18, duration: 1.2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }} />)}
-        </div>
-        <div className="absolute left-[44%] top-[26%] h-[48%] w-px bg-white/20" />
-        <div className="absolute left-[58%] top-[22%] h-[48%] w-px bg-white/15" />
-      </motion.div>
-      <motion.div aria-hidden="true" className="absolute bottom-[13%] left-[12%] h-px w-20 bg-white/35" animate={{ scaleX: [1, 1.2, 1], opacity: [.35, .7, .35] }} transition={{ duration: 3, repeat: Infinity }} />
+    <div className="relative min-h-[280px] flex-1 overflow-hidden border-b bg-[#f7f7f5] px-5 py-6 text-[#171717] sm:min-h-[330px] sm:px-10">
+      <div aria-hidden="true" className="absolute inset-0 opacity-50 [background-image:linear-gradient(30deg,transparent_49%,rgba(0,0,0,.08)_50%,transparent_51%),linear-gradient(150deg,transparent_49%,rgba(0,0,0,.06)_50%,transparent_51%)] [background-size:110px_64px]" />
+      <div className="relative mx-auto h-[230px] w-full max-w-[560px] [perspective:900px] sm:h-[270px]">
+        <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[150px] w-[300px] -translate-x-1/2 -translate-y-1/2 [transform:rotateX(58deg)_rotateZ(-20deg)] sm:h-[180px] sm:w-[390px]" animate={{ y: [0, -4, 0], rotateZ: [-20, -18, -20] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+          {panels.map((panel) => <motion.div key={panel} className="absolute inset-y-0 w-[52px] border border-black/15 bg-white shadow-[0_8px_16px_rgba(0,0,0,.08)] sm:w-[68px]" style={{ left: `${panel * 38}px`, transform: `translateZ(${panel * -18}px)` }} animate={{ y: panel === 2 ? [0, -3, 0] : 0 }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: panel * .08 }}>
+            <div className="absolute inset-x-2 top-3 h-1 rounded-full bg-black/20" />
+            <div className="absolute inset-x-2 top-7 space-y-1 opacity-60"><span className="block h-px bg-black/15" /><span className="block h-px bg-black/10" /><span className="block h-px w-2/3 bg-black/10" /></div>
+          </motion.div>)}
+          <div className="absolute left-[76px] top-[34px] z-10 h-[88px] w-[120px] overflow-hidden rounded border border-black/20 bg-[#ededeb] shadow-[0_10px_20px_rgba(0,0,0,.14)] sm:left-[98px] sm:top-[42px] sm:h-[108px] sm:w-[150px]">
+            <div className="flex h-4 items-center gap-1 border-b border-black/10 px-2"><i className="size-1 rounded-full bg-black/25" /><i className="size-1 rounded-full bg-black/15" /><i className="size-1 rounded-full bg-black/15" /></div>
+            <div className="px-3 pt-3"><span className="block h-1.5 w-12 bg-black/40" /><span className="mt-2 block h-1 w-20 bg-black/15" /><span className="mt-1 block h-1 w-14 bg-black/10" /></div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   )
 }
