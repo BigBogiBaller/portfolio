@@ -36,12 +36,12 @@ const dashboardTabs = [
 function AutomationPreview() {
   const containerId = useId()
   const integrations = [
-    { id: "figma", icon: Globe2, x: 110, y: 90, path: "M 270 205 V 105 Q 270 90 255 90 H 110", delay: 0.1 },
-    { id: "claude", icon: Bot, x: 360, y: 70, path: "M 294 205 V 85 Q 294 70 309 70 H 360", delay: 0.2 },
-    { id: "database", icon: Settings2, x: 160, y: 205, path: "M 250 205 H 160", delay: 0.3 },
-    { id: "apps", icon: ShoppingBag, x: 480, y: 205, path: "M 314 205 H 480", delay: 0.4 },
+    { id: "figma", icon: Globe2, x: 110, y: 90, path: "M 282 205 V 105 Q 282 90 267 90 H 110", delay: 0.1 },
+    { id: "claude", icon: Bot, x: 360, y: 70, path: "M 282 205 V 85 Q 282 70 297 70 H 360", delay: 0.2 },
+    { id: "database", icon: Settings2, x: 160, y: 205, path: "M 282 205 H 160", delay: 0.3 },
+    { id: "apps", icon: ShoppingBag, x: 480, y: 205, path: "M 282 205 H 480", delay: 0.4 },
     { id: "analytics", icon: Search, x: 282, y: 360, path: "M 282 205 V 360", delay: 0.6 },
-    { id: "mail", icon: Mail, x: 460, y: 340, path: "M 314 215 V 325 Q 314 340 329 340 H 460", delay: 0.7 },
+    { id: "mail", icon: Mail, x: 460, y: 340, path: "M 282 205 V 325 Q 282 340 297 340 H 460", delay: 0.7 },
   ]
 
   return (
