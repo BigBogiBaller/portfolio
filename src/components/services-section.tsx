@@ -45,17 +45,21 @@ function AutomationPreview() {
   ]
 
   return (
-    <div className="relative min-h-[410px] flex-1 overflow-hidden border-b bg-muted/20 p-4 [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)]">
+    <div className="relative min-h-[320px] flex-1 overflow-hidden border-b bg-muted/20 p-3 sm:min-h-[410px] sm:p-4 [mask-image:linear-gradient(to_bottom,transparent,black_5%,black_94%,transparent)]">
       <div aria-hidden="true" className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle,currentColor_1px,transparent_1px)] [background-size:32px_32px]" />
-      <svg aria-hidden="true" className="pointer-events-none absolute inset-4 h-[calc(100%-2rem)] w-[calc(100%-2rem)]" viewBox="0 0 564 410" fill="none" preserveAspectRatio="xMidYMid meet">
-        <defs>{integrations.map((item) => <linearGradient key={item.id} id={`${containerId}-${item.id}`} gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="transparent" /><stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity=".5" /><stop offset="100%" stopColor="transparent" /></linearGradient>)}</defs>
-        {integrations.map((item) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".16" strokeWidth="1" fill="none" /><motion.path d={item.path} stroke={`url(#${containerId}-${item.id})`} strokeWidth="2" fill="none" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: item.delay }} /></g>)}
-      </svg>
-      <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg border border-border bg-background p-1 shadow-md sm:rounded-2xl sm:p-2 sm:shadow-xl">
-        <div className="rounded-lg border p-2.5 sm:rounded-xl"><Bot className="size-5 sm:size-9" strokeWidth={1.2} /></div>
-        <motion.span className="absolute inset-0 rounded-lg border-2 border-primary/10 sm:rounded-2xl" animate={{ scale: [1, 1.15, 1], opacity: [.3, 0, .3] }} transition={{ duration: 3, repeat: Infinity }} />
-      </motion.div>
-      {integrations.map((item) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: item.delay }} style={{ left: `${(item.x / 564) * 100}%`, top: `${(item.y / 410) * 100}%` }} className="absolute z-10 flex size-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg border border-border bg-background text-foreground shadow-sm sm:size-12 sm:rounded-xl"><Icon aria-hidden="true" className="size-4 sm:size-6" strokeWidth={1.3} /></motion.div> })}
+      <div className="absolute inset-3 flex items-center justify-center sm:inset-4">
+        <div className="relative aspect-[564/410] w-full max-w-[564px]">
+          <svg aria-hidden="true" className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 564 410" fill="none">
+            <defs>{integrations.map((item) => <linearGradient key={item.id} id={`${containerId}-${item.id}`} gradientUnits="userSpaceOnUse"><stop offset="0%" stopColor="transparent" /><stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity=".5" /><stop offset="100%" stopColor="transparent" /></linearGradient>)}</defs>
+            {integrations.map((item) => <g key={item.id}><path d={item.path} stroke="currentColor" strokeOpacity=".16" strokeWidth="1" fill="none" /><motion.path d={item.path} stroke={`url(#${containerId}-${item.id})`} strokeWidth="2" fill="none" strokeDasharray="40 160" initial={{ strokeDashoffset: 200 }} animate={{ strokeDashoffset: -200 }} transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: item.delay }} /></g>)}
+          </svg>
+          <motion.div aria-hidden="true" className="absolute left-1/2 top-1/2 z-20 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg border border-border bg-background p-1 shadow-md sm:size-20 sm:rounded-2xl sm:p-2 sm:shadow-xl">
+            <div className="rounded-md border p-1.5 sm:rounded-xl sm:p-2.5"><Bot className="size-4 sm:size-9" strokeWidth={1.2} /></div>
+            <motion.span className="absolute inset-0 rounded-lg border-2 border-primary/10 sm:rounded-2xl" animate={{ scale: [1, 1.15, 1], opacity: [.3, 0, .3] }} transition={{ duration: 3, repeat: Infinity }} />
+          </motion.div>
+          {integrations.map((item) => { const Icon = item.icon; return <motion.div key={item.id} initial={{ opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: item.delay }} style={{ left: `${(item.x / 564) * 100}%`, top: `${(item.y / 410) * 100}%` }} className="absolute z-10 flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-border bg-background text-foreground shadow-sm sm:size-12 sm:rounded-xl"><Icon aria-hidden="true" className="size-3.5 sm:size-6" strokeWidth={1.3} /></motion.div> })}
+        </div>
+      </div>
     </div>
   )
 }
