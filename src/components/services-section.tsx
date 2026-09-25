@@ -99,7 +99,7 @@ function AutomationPreview() {
   ] as const
 
   return (
-    <div className="relative flex min-h-[300px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 px-4 py-6 sm:min-h-[410px] sm:px-8">
+    <div className="relative flex min-h-[260px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 px-4 py-5 sm:min-h-[340px] sm:px-8">
       <div aria-hidden="true" className="absolute inset-1/4 bg-[radial-gradient(var(--dots-color)_1px,transparent_1px)] opacity-40 [--dots-color:currentColor] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
       <div className="relative flex w-full max-w-[430px] items-center justify-between">
         <div className="z-10 flex flex-col gap-4 sm:gap-6">
@@ -186,7 +186,7 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
   const items = services[language]
 
   return (
-    <section id="services" aria-labelledby="services-heading" className="w-full py-12">
+    <section id="services" aria-labelledby="services-heading" className="w-full py-12 lg:px-4 xl:px-8">
       <BlurFade delay={0.24}>
         <div className="mb-8 text-center">
           <div className="mb-3 inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
@@ -201,10 +201,10 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
         </div>
       </BlurFade>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:-mx-10 lg:grid-cols-6 lg:gap-5 xl:-mx-16">
         {items.map((service, index) => (
           <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 3 ? "lg:col-span-2" : "lg:col-span-3"}>
-            <article className="group relative flex min-h-[390px] h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
+            <article className="group relative flex min-h-0 h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
               ) : index === 1 ? (
