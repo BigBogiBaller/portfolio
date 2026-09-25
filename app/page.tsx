@@ -16,6 +16,7 @@ import { ProcessTimeline } from "@/components/process-timeline"
 import { FaqSection } from "@/components/faq-section"
 import { Logos3 } from "@/components/ui/logos3"
 import { SummerOfferBanner } from "@/components/summer-offer-banner"
+import { ServicesSection } from "@/components/services-section"
 
 const WHATSAPP_LINK = "https://wa.me/436764716297"
 
@@ -289,6 +290,8 @@ export default function Page() {
       </section>
 
       <Logos3 language={language} />
+
+      <ServicesSection language={language} />
 
       <Testimonials language={language} />
 
