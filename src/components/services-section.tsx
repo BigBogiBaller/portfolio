@@ -148,8 +148,10 @@ function EmailFunnelNotification({ item }: { item: (typeof funnelNotifications)[
 
 function EmailFunnelPreview() {
   return (
-    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-background p-4">
-      <Funnel config={{ data: [{ category: "Visitors", value: 1000 }, { category: "Leads", value: 620 }, { category: "Nurtured", value: 360 }, { category: "Customers", value: 145 }], title: "Email funnel" }} theme="academy" width={560} height={230} className="min-h-0 w-full" />
+    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-background p-3 sm:p-5">
+      <div className="flex w-full max-w-[560px] items-center justify-center overflow-hidden rounded-xl border bg-background/70 px-2 py-3 sm:px-4">
+        <Funnel config={{ data: [{ category: "Visitors", value: 1000 }, { category: "Leads", value: 620 }, { category: "Nurtured", value: 360 }, { category: "Customers", value: 145 }], title: "Email funnel" }} theme="academy" width={560} height={210} className="h-auto min-h-0 w-full max-w-full" />
+      </div>
     </div>
   )
 }
@@ -189,7 +191,9 @@ function SeoOptimizationPreview() {
 
   return (
     <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 p-4">
-      <ModelPicker providers={defaultModelProviders} value={modelId} onValueChange={(id) => setModelId(id)} side="bottom" align="center" defaultOpen />
+      <div className="flex min-h-[170px] w-full max-w-[420px] items-center justify-center rounded-xl border bg-background/80 p-4 shadow-sm">
+        <ModelPicker providers={defaultModelProviders} value={modelId} onValueChange={(id) => setModelId(id)} side="bottom" align="center" />
+      </div>
     </div>
   )
 }
