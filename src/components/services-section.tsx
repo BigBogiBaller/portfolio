@@ -2,6 +2,8 @@
 
 import { useId, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "motion/react"
+import { Funnel } from "@/components/ui/funnel"
+import { ModelPicker, defaultModelProviders } from "@/components/ui/model-picker"
 import BlurFade from "@/components/magicui/blur-fade"
 import { AnimatedList } from "@/components/ui/animated-list"
 import { Bot, Code2, FolderKanban, Globe2, LayoutDashboard, Mail, MessageSquare, Plus, Search, Settings2, ShoppingBag, ShoppingCart, Users, X } from "lucide-react"
@@ -16,6 +18,7 @@ const services = {
     { title: "Online Shops", description: "Schnelle, vertrauenswürdige Onlineshops mit einem reibungslosen Einkaufserlebnis und Fokus auf mehr Verkäufe.", accent: "03" },
     { title: "KI Automatisierung", description: "Intelligente Automatisierungen, die wiederkehrende Aufgaben übernehmen und dir wertvolle Zeit sparen.", accent: "04" },
     { title: "Email Funnels", description: "Strategische E-Mail-Sequenzen, die Leads aufbauen, Vertrauen schaffen und aus Interesse Umsatz machen.", accent: "05" },
+    { title: "SEO/GEO/AEO Optimierung", description: "Wir machen deine Website sichtbar: in Suchmaschinen, KI-Antworten und den passenden Antworten deiner Zielgruppe.", accent: "06" },
   ],
   en: [
     { title: "Software Solutions", description: "Custom digital products and SaaS solutions that simplify operations and help your business scale.", accent: "01" },
@@ -23,6 +26,7 @@ const services = {
     { title: "Online Shops", description: "Fast, trustworthy online stores with a smooth shopping experience and a focus on more sales.", accent: "03" },
     { title: "AI Automation", description: "Intelligent automations that take repetitive tasks off your plate and save valuable time.", accent: "04" },
     { title: "Email Funnels", description: "Strategic email sequences that nurture leads, build trust and turn interest into revenue.", accent: "05" },
+    { title: "SEO/GEO/AEO Optimization", description: "We make your website discoverable in search engines, AI answers and the moments that matter to your audience.", accent: "06" },
   ],
 }
 
@@ -73,7 +77,7 @@ function OnlineShopPreview() {
         <div className="min-w-0 flex-1 space-y-2 overflow-hidden">
           <div className="mb-3 flex items-center justify-between"><span className="text-[10px] font-semibold sm:text-xs">Shop Collection</span><ShoppingBag className="size-3 text-muted-foreground" /></div>
           {shopProducts.map((product, index) => <motion.div key={product.id} layout className="flex items-center gap-2 rounded-lg border bg-muted/20 p-2" whileHover={{ scale: 1.02 }}>
-            <div className={cn("size-9 shrink-0 rounded-md bg-gradient-to-br", index === 0 ? "from-foreground/20 to-foreground/5" : index === 1 ? "from-foreground/30 to-muted" : "from-muted to-foreground/15")} />
+            <div className="size-9 shrink-0 overflow-hidden rounded-md border bg-white"><img src={["/images/product-tshirt.png", "/images/product-sneaker.png", "/images/product-bag.png"][index]} alt={product.name} className="size-full object-cover" /></div>
             <div className="min-w-0 flex-1"><p className="truncate text-[9px] font-medium sm:text-[10px]">{product.name}</p><p className="text-[9px] text-muted-foreground">${product.price}</p></div>
             <motion.button type="button" aria-label={`Add ${product.name}`} onClick={() => addToCart(product.id)} whileTap={{ scale: .9 }} className="flex size-6 items-center justify-center rounded-md bg-foreground text-background"><Plus className="size-3" /></motion.button>
           </motion.div>)}
@@ -144,10 +148,10 @@ function EmailFunnelNotification({ item }: { item: (typeof funnelNotifications)[
 
 function EmailFunnelPreview() {
   return (
-    <div className="relative h-[250px] min-h-[250px] flex-1 overflow-hidden border-b bg-background p-4">
-      <AnimatedList delay={1400} maxItems={3} className="absolute inset-4 flex h-[218px] w-auto flex-col justify-end gap-3 overflow-hidden">
-        {funnelNotifications.map((item) => <EmailFunnelNotification item={item} key={item.name} />)}
-      </AnimatedList>
+    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-background p-3 sm:p-5">
+      <div className="flex w-full max-w-[560px] items-center justify-center overflow-hidden rounded-xl border bg-background/70 px-2 py-3 sm:px-4">
+        <Funnel config={{ data: [{ category: "Visitors", value: 1000 }, { category: "Leads", value: 620 }, { category: "Nurtured", value: 360 }, { category: "Customers", value: 145 }], title: "Email funnel" }} theme="academy" width={560} height={210} className="h-auto min-h-0 w-full max-w-full" />
+      </div>
     </div>
   )
 }
@@ -182,6 +186,18 @@ function SoftwareDashboardPreview() {
   )
 }
 
+function SeoOptimizationPreview() {
+  const [modelId, setModelId] = useState("grok-4.6")
+
+  return (
+    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 p-4">
+      <div className="flex min-h-[170px] w-full max-w-[420px] items-center justify-center rounded-xl border bg-background/80 p-4 shadow-sm">
+        <ModelPicker providers={defaultModelProviders} value={modelId} onValueChange={(id) => setModelId(id)} side="bottom" align="center" />
+      </div>
+    </div>
+  )
+}
+
 export function ServicesSection({ language = "de" }: { language?: "de" | "en" }) {
   const items = services[language]
 
@@ -201,9 +217,9 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
         </div>
       </BlurFade>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:-mx-10 lg:grid-cols-12 lg:gap-6 xl:-mx-20 2xl:-mx-28">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:-mx-12 lg:gap-7 xl:-mx-20 2xl:-mx-28">
         {items.map((service, index) => (
-          <BlurFade key={service.title} delay={0.28 + index * 0.05} className={index < 4 ? "lg:col-span-6" : "lg:col-start-3 lg:col-span-8"}>
+          <BlurFade key={service.title} delay={0.28 + index * 0.05} className="min-w-0">
             <article className="group relative flex min-h-0 h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
               {index === 0 ? (
                 <SoftwareDashboardPreview />
@@ -215,6 +231,8 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
                 <AutomationPreview />
               ) : index === 4 ? (
                 <EmailFunnelPreview />
+              ) : index === 5 ? (
+                <SeoOptimizationPreview />
               ) : (
                 <div aria-hidden="true" className="relative flex min-h-[190px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 [background-image:linear-gradient(to_right,hsl(var(--muted-foreground)/.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted-foreground)/.1)_1px,transparent_1px)] [background-size:36px_36px] [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_82%,transparent)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.08] via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-0" />

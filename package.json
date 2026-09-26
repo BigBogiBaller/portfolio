@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@antv/gpt-vis": "^1.0.2",
     "@calcom/embed-react": "1.5.3",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
@@ -59,6 +60,7 @@
     "next": "15.3.6",
     "next-themes": "latest",
     "path": "latest",
+    "radix-ui": "^1.6.7",
     "react": "^19",
     "react-day-picker": "latest",
     "react-dom": "^19",
