@@ -3,6 +3,7 @@
 import { useId, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "motion/react"
 import { Funnel } from "@/components/ui/funnel"
+import { ModelPicker, defaultModelProviders } from "@/components/ui/model-picker"
 import BlurFade from "@/components/magicui/blur-fade"
 import { AnimatedList } from "@/components/ui/animated-list"
 import { Bot, Code2, FolderKanban, Globe2, LayoutDashboard, Mail, MessageSquare, Plus, Search, Settings2, ShoppingBag, ShoppingCart, Users, X } from "lucide-react"
@@ -76,7 +77,7 @@ function OnlineShopPreview() {
         <div className="min-w-0 flex-1 space-y-2 overflow-hidden">
           <div className="mb-3 flex items-center justify-between"><span className="text-[10px] font-semibold sm:text-xs">Shop Collection</span><ShoppingBag className="size-3 text-muted-foreground" /></div>
           {shopProducts.map((product, index) => <motion.div key={product.id} layout className="flex items-center gap-2 rounded-lg border bg-muted/20 p-2" whileHover={{ scale: 1.02 }}>
-            <div aria-label={`${product.name} product image`} role="img" className="size-9 shrink-0 rounded-md border bg-white bg-[url('/images/shop-products.png')] bg-cover" style={{ backgroundPosition: `${index * 50}% center` }} />
+            <div className="size-9 shrink-0 overflow-hidden rounded-md border bg-white"><img src={["/images/product-tshirt.png", "/images/product-sneaker.png", "/images/product-bag.png"][index]} alt={product.name} className="size-full object-cover" /></div>
             <div className="min-w-0 flex-1"><p className="truncate text-[9px] font-medium sm:text-[10px]">{product.name}</p><p className="text-[9px] text-muted-foreground">${product.price}</p></div>
             <motion.button type="button" aria-label={`Add ${product.name}`} onClick={() => addToCart(product.id)} whileTap={{ scale: .9 }} className="flex size-6 items-center justify-center rounded-md bg-foreground text-background"><Plus className="size-3" /></motion.button>
           </motion.div>)}
@@ -147,10 +148,8 @@ function EmailFunnelNotification({ item }: { item: (typeof funnelNotifications)[
 
 function EmailFunnelPreview() {
   return (
-    <div className="relative h-[250px] min-h-[250px] flex-1 overflow-hidden border-b bg-background p-4">
-      <AnimatedList delay={1400} maxItems={3} className="absolute inset-4 flex h-[218px] w-auto flex-col justify-end gap-3 overflow-hidden">
-        {funnelNotifications.map((item) => <EmailFunnelNotification item={item} key={item.name} />)}
-      </AnimatedList>
+    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-background p-4">
+      <Funnel config={{ data: [{ category: "Visitors", value: 1000 }, { category: "Leads", value: 620 }, { category: "Nurtured", value: 360 }, { category: "Customers", value: 145 }], title: "Email funnel" }} theme="academy" width={560} height={230} className="min-h-0 w-full" />
     </div>
   )
 }
@@ -186,11 +185,11 @@ function SoftwareDashboardPreview() {
 }
 
 function SeoOptimizationPreview() {
+  const [modelId, setModelId] = useState("grok-4.6")
+
   return (
-    <div className="relative min-h-[250px] flex-1 overflow-hidden border-b bg-muted/20 p-3 sm:min-h-[280px] sm:p-5">
-      <div className="flex h-full min-h-[218px] items-center justify-center rounded-xl border bg-background/70 p-2 sm:p-4">
-        <Funnel config={{ data: [{ category: "Search", value: 1000 }, { category: "AI answers", value: 680 }, { category: "Qualified visits", value: 410 }, { category: "Conversions", value: 180 }], title: "Visibility to conversion" }} theme="academy" width={560} height={230} className="min-h-0 w-full" />
-      </div>
+    <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden border-b bg-muted/20 p-4">
+      <ModelPicker providers={defaultModelProviders} value={modelId} onValueChange={(id) => setModelId(id)} side="bottom" align="center" defaultOpen />
     </div>
   )
 }

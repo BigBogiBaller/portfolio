@@ -60,6 +60,7 @@
     "next": "15.3.6",
     "next-themes": "latest",
     "path": "latest",
+    "radix-ui": "^1.6.7",
     "react": "^19",
     "react-day-picker": "latest",
     "react-dom": "^19",
