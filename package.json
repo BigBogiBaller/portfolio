@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@antv/gpt-vis": "^1.0.2",
     "@calcom/embed-react": "1.5.3",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
