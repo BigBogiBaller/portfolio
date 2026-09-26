@@ -214,7 +214,7 @@ export function ServicesSection({ language = "de" }: { language?: "de" | "en" })
         </div>
       </BlurFade>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:-mx-12 lg:gap-7 xl:-mx-20 2xl:-mx-28">
         {items.map((service, index) => (
           <BlurFade key={service.title} delay={0.28 + index * 0.05} className="min-w-0">
             <article className="group relative flex min-h-0 h-full flex-col overflow-hidden rounded-[20px] border border-black/[0.06] bg-card shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl dark:border-white/10">
