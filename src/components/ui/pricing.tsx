@@ -104,7 +104,7 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
 )
 PricingCard.displayName = "PricingCard"
 
-export function Pricing({ language = "en" }: { language?: "en" | "de" }) {
+export function Pricing({ language = "de" }: { language?: "en" | "de" }) {
   const CALENDLY_LINK = "https://calendly.com/bogilekic123/30min"
 
   const [currency, setCurrency] = React.useState<"EUR" | "USD">("EUR")

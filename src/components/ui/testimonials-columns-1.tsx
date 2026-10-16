@@ -178,7 +178,7 @@ export const TestimonialsColumn = (props: {
   )
 }
 
-export const Testimonials = ({ language = "en" }: { language?: "en" | "de" }) => {
+export const Testimonials = ({ language = "de" }: { language?: "en" | "de" }) => {
   const currentTestimonials = testimonials[language]
   const mobileColumn = currentTestimonials
   const firstColumn = currentTestimonials.slice(0, 3)
