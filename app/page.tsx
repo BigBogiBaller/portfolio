@@ -10,12 +10,11 @@ import { Button } from "@/components/ui/button"
 import { DATA } from "@/data/resume"
 import { Icons } from "@/components/icons"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import Markdown from "react-markdown"
-import { useState } from "react"
 import { ProcessTimeline } from "@/components/process-timeline"
 import { FaqSection } from "@/components/faq-section"
 import { Logos3 } from "@/components/ui/logos3"
-import { SummerOfferBanner } from "@/components/summer-offer-banner"
 import { ServicesSection } from "@/components/services-section"
 
 const WHATSAPP_LINK = "https://wa.me/436764716297"
@@ -120,8 +119,8 @@ const translations = {
 }
 
 export default function Page() {
-  const [language, setLanguage] = useState<"en" | "de">("de")
-  const t = translations[language]
+  const language = "de" as const
+  const t = translations.de
 
   const translatedProjects = DATA.projects.map((project) => ({
     ...project,
@@ -189,7 +188,7 @@ export default function Page() {
         "@id": `${DATA.url}/#website`,
         url: DATA.url,
         name: "Bogdan Lekic – D4Y Software & Automatisierung",
-        inLanguage: ["de-AT", "en"],
+        inLanguage: "de-AT",
         about: { "@id": `${DATA.url}/#person` },
       },
     ],
@@ -199,30 +198,14 @@ export default function Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <main className="flex flex-col min-h-[100dvh] space-y-10">
-      <div className="fixed top-4 right-4 z-50 flex gap-2 bg-background/80 backdrop-blur-sm border rounded-lg p-2 shadow-lg">
-        <button
-          type="button"
-          aria-label="Deutsch auswählen"
-          onClick={() => setLanguage("de")}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            language === "de" ? "bg-foreground text-background" : "hover:bg-muted"
-          }`}
-        >
-          DE
-        </button>
-        <button
-          type="button"
-          aria-label="English auswählen"
-          onClick={() => setLanguage("en")}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            language === "en" ? "bg-foreground text-background" : "hover:bg-muted"
-          }`}
-        >
-          EN
-        </button>
-      </div>
-
-      <SummerOfferBanner language={language} />
+      <Link
+        href="/audit"
+        className="group flex min-h-10 items-center justify-center gap-2 bg-foreground px-4 py-2 text-center text-sm font-semibold text-background transition-colors hover:bg-foreground/90"
+        aria-label="Kostenlosen Website-Audit anfragen"
+      >
+        <span>Kostenlosen Website-Audit anfragen</span>
+        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+      </Link>
 
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
