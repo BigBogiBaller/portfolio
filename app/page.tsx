@@ -200,10 +200,10 @@ export default function Page() {
       <main className="flex flex-col min-h-[100dvh] space-y-10">
       <Link
         href="/audit"
-        className="group -mx-6 flex min-h-10 items-center justify-center gap-2 bg-[#232323] px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-[#181818] sm:-mx-8"
-        aria-label="Get your product or website audited for free"
+        className="group relative left-1/2 flex min-h-11 w-screen -translate-x-1/2 items-center justify-center gap-2 bg-[#232323] px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-[#181818]"
+        aria-label="Lass dein Produkt oder deine Website kostenlos prüfen"
       >
-        <span>Get your product/website audited. For Free</span>
+        <span>Lass dein Produkt/deine Website kostenlos prüfen</span>
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
       </Link>
 
