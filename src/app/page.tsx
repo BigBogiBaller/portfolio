@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Testimonials } from "@/components/ui/testimonials-columns-1"
 import { CalBookingButton } from "@/components/cal-booking-button"
+import { AuditRequestBanner } from "@/components/audit-request-banner"
 import { DATA } from "@/data/resume"
 import { Calendar, ArrowRight, Sparkles, FileCheck } from "lucide-react"
 import Link from "next/link"
@@ -71,6 +72,10 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
+      <BlurFade delay={BLUR_FADE_DELAY * 2.5} className="w-full">
+        <AuditRequestBanner />
+      </BlurFade>
 
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
