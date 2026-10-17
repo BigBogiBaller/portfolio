@@ -201,9 +201,9 @@ export default function Page() {
       <Link
         href="/audit"
         className="group fixed inset-x-0 top-0 z-[100] flex h-11 w-full items-center justify-center gap-2 bg-[#232323] px-4 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#181818]"
-        aria-label="Get your product or website audited. For Free"
+        aria-label="Lass dein Produkt oder deine Website kostenlos prüfen"
       >
-        <span>Get your product/website audited. For Free</span>
+        <span>Lass dein Produkt/deine Website kostenlos prüfen</span>
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
       </Link>
 

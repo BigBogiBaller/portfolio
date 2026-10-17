@@ -30,7 +30,7 @@ export default function AuditPage() {
           Wir finden heraus, was dein Design zurückhält. Kostenlos.
         </h1>
         <p className="mx-auto mt-5 max-w-[590px] text-center text-base leading-6 text-[#667085] sm:text-lg">
-          Sende uns einen Link zu deiner Website, Web-App, Desktop-App oder mobilen App. Ein Senior Designer nimmt eine 2–3-minütige Loom-Aufnahme auf und zeigt dir genau, was du für bessere Nutzererfahrung und Conversion verbessern kannst.
+          Sende uns einen Link zu deiner Website, Web-App, Desktop-App oder mobilen App. Ich nehme dann eine 2–3-minütige Loom-Aufnahme auf und zeigt dir genau, was du für bessere Nutzererfahrung und Conversion verbessern kannst.
         </p>
 
         {submitted ? (
