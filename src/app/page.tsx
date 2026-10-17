@@ -72,6 +72,10 @@ export default function Page() {
         </div>
       </section>
 
+      <BlurFade delay={BLUR_FADE_DELAY * 2.5} className="w-full">
+        <AuditRequestBanner />
+      </BlurFade>
+
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">About</h2>

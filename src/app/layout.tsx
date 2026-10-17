@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "sonner"
 import { DATA } from "@/data/resume"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import { Mona_Sans as FontSans } from "next/font/google"
 import "./globals.css"
@@ -57,10 +59,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="de" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto pb-12 pt-20 sm:pb-24 sm:pt-28 px-6",
           fontSans.variable,
         )}
       >
@@ -74,6 +76,14 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
+            <Link
+              href="/audit"
+              className="fixed inset-x-0 top-0 z-[100] flex min-h-10 items-center justify-center gap-2 bg-foreground px-4 py-2 text-center text-sm font-semibold text-background shadow-sm transition-colors hover:bg-foreground/90"
+              aria-label="Kostenlosen Website-Audit anfragen"
+            >
+              <span>Kostenlosen Website-Audit anfragen</span>
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
             {children}
             <Navbar />
             <Toaster position="top-center" />
